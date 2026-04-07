@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "AutoBattler",
+			"Path": "..\\Source\\AutoBattler.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "AutoBattlerEditor",
+			"Path": "..\\Source\\AutoBattlerEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

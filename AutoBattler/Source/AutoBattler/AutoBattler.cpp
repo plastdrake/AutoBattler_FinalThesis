@@ -1,0 +1,8 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+
+#include "AutoBattler.h"
+#include "Modules/ModuleManager.h"
+
+IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, AutoBattler, "AutoBattler" );
+
+DEFINE_LOG_CATEGORY(LogAutoBattler)

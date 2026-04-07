@@ -1,0 +1,38 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\school\\autobattler_finalthesis\\autobattler\\source\\autobattler\\variant_combat\\ai\\combatenemyspawner.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\school\\autobattler_finalthesis\\autobattler\\intermediate\\build\\win64\\x64\\autobattlereditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\school\\autobattler_finalthesis\\autobattler\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\autobattler\\definitions.autobattler.h",
+            "d:\\school\\autobattler_finalthesis\\autobattler\\source\\autobattler\\variant_combat\\ai\\combatenemyspawner.h",
+            "d:\\school\\autobattler_finalthesis\\autobattler\\source\\autobattler\\variant_combat\\interfaces\\combatactivatable.h",
+            "d:\\school\\autobattler_finalthesis\\autobattler\\intermediate\\build\\win64\\unrealeditor\\inc\\autobattler\\uht\\combatactivatable.generated.h",
+            "d:\\school\\autobattler_finalthesis\\autobattler\\intermediate\\build\\win64\\unrealeditor\\inc\\autobattler\\uht\\combatenemyspawner.generated.h",
+            "d:\\epic games\\ue_5.7\\engine\\source\\runtime\\engine\\classes\\components\\capsulecomponent.h",
+            "d:\\epic games\\ue_5.7\\engine\\source\\runtime\\engine\\classes\\components\\shapecomponent.h",
+            "d:\\epic games\\ue_5.7\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\shapecomponent.generated.h",
+            "d:\\epic games\\ue_5.7\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\capsulecomponent.generated.h",
+            "d:\\epic games\\ue_5.7\\engine\\source\\runtime\\engine\\classes\\components\\arrowcomponent.h",
+            "d:\\epic games\\ue_5.7\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\arrowcomponent.generated.h",
+            "d:\\school\\autobattler_finalthesis\\autobattler\\source\\autobattler\\variant_combat\\ai\\combatenemy.h",
+            "d:\\epic games\\ue_5.7\\engine\\source\\runtime\\engine\\classes\\gameframework\\character.h",
+            "d:\\epic games\\ue_5.7\\engine\\source\\runtime\\engine\\classes\\gameframework\\charactermovementreplication.h",
+            "d:\\epic games\\ue_5.7\\engine\\source\\runtime\\net\\core\\public\\net\\core\\nettoken\\nettokenexportcontext.h",
+            "d:\\epic games\\ue_5.7\\engine\\source\\runtime\\net\\iris\\public\\iris\\serialization\\irisobjectreferencepackagemap.h",
+            "d:\\epic games\\ue_5.7\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\iriscore\\uht\\irisobjectreferencepackagemap.generated.h",
+            "d:\\epic games\\ue_5.7\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\charactermovementreplication.generated.h",
+            "d:\\epic games\\ue_5.7\\engine\\source\\runtime\\engine\\classes\\gameframework\\rootmotionsource.h",
+            "d:\\epic games\\ue_5.7\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\rootmotionsource.generated.h",
+            "d:\\epic games\\ue_5.7\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\character.generated.h",
+            "d:\\school\\autobattler_finalthesis\\autobattler\\source\\autobattler\\variant_combat\\interfaces\\combatattacker.h",
+            "d:\\school\\autobattler_finalthesis\\autobattler\\intermediate\\build\\win64\\unrealeditor\\inc\\autobattler\\uht\\combatattacker.generated.h",
+            "d:\\school\\autobattler_finalthesis\\autobattler\\source\\autobattler\\variant_combat\\interfaces\\combatdamageable.h",
+            "d:\\school\\autobattler_finalthesis\\autobattler\\intermediate\\build\\win64\\unrealeditor\\inc\\autobattler\\uht\\combatdamageable.generated.h",
+            "d:\\school\\autobattler_finalthesis\\autobattler\\intermediate\\build\\win64\\unrealeditor\\inc\\autobattler\\uht\\combatenemy.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

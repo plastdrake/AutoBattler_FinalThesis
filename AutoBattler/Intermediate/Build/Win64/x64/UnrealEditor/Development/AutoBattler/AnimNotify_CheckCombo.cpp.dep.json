@@ -1,0 +1,17 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\school\\autobattler_finalthesis\\autobattler\\source\\autobattler\\variant_combat\\animation\\animnotify_checkcombo.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\school\\autobattler_finalthesis\\autobattler\\intermediate\\build\\win64\\x64\\autobattlereditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\school\\autobattler_finalthesis\\autobattler\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\autobattler\\definitions.autobattler.h",
+            "d:\\school\\autobattler_finalthesis\\autobattler\\source\\autobattler\\variant_combat\\animation\\animnotify_checkcombo.h",
+            "d:\\school\\autobattler_finalthesis\\autobattler\\intermediate\\build\\win64\\unrealeditor\\inc\\autobattler\\uht\\animnotify_checkcombo.generated.h",
+            "d:\\school\\autobattler_finalthesis\\autobattler\\source\\autobattler\\variant_combat\\interfaces\\combatattacker.h",
+            "d:\\school\\autobattler_finalthesis\\autobattler\\intermediate\\build\\win64\\unrealeditor\\inc\\autobattler\\uht\\combatattacker.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
