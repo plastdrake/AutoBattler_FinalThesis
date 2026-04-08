@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AutoBattlerModuleRules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Development")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d66c6bc5a10adf3404e1438a4b5c31a8430956a4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c8ee2794e9ffcbfe3585754eda051bae7cf09dbb")]
 [assembly: System.Reflection.AssemblyProductAttribute("AutoBattlerModuleRules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AutoBattlerModuleRules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

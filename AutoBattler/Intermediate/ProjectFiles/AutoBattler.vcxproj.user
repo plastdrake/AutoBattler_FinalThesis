@@ -33,6 +33,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development_Editor|x64'">
     <LocalDebuggerCommandArguments>"$(SolutionDir)AutoBattler.uproject" -skipcompile</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArgumentsHistory>"D:\School\AutoBattler_FinalThesis\AutoBattler\AutoBattler.uproject" -skipcompile|</LocalDebuggerCommandArgumentsHistory>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win64_arm64_Development_Editor|x64'">
     <RemoteDebuggerCommandArguments>"$(SolutionDir)AutoBattler.uproject" -skipcompile</RemoteDebuggerCommandArguments>

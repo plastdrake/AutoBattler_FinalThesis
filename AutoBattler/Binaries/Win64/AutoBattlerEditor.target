@@ -3832,6 +3832,82 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassAIBehavior.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassAIBehavior.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassAIBehaviorEditor.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassAIBehaviorEditor.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassAIDebug.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassAIDebug.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassAIReplication.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassAIReplication.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassAITestSuite.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassAITestSuite.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassNavMeshNavigation.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassNavMeshNavigation.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassNavigation.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassNavigation.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassNavigationEditor.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassNavigationEditor.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassZoneGraphNavigation.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor-MassZoneGraphNavigation.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Animation/ACLPlugin/Binaries/Win64/UnrealEditor-ACLPlugin.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -5516,6 +5592,18 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Experimental/GameplayTargetingSystem/Binaries/Win64/UnrealEditor-TargetingSystem.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/GameplayTargetingSystem/Binaries/Win64/UnrealEditor-TargetingSystem.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/GameplayTargetingSystem/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Experimental/GeometryCollectionPlugin/Binaries/Win64/UnrealEditor-GeometryCollectionDepNodes.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -6888,6 +6976,26 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Runtime/DataRegistry/Binaries/Win64/UnrealEditor-DataRegistry.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/DataRegistry/Binaries/Win64/UnrealEditor-DataRegistry.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/DataRegistry/Binaries/Win64/UnrealEditor-DataRegistryEditor.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/DataRegistry/Binaries/Win64/UnrealEditor-DataRegistryEditor.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/DataRegistry/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Runtime/ExampleDeviceProfileSelector/Binaries/Win64/UnrealEditor-ExampleDeviceProfileSelector.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -6897,6 +7005,26 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/Runtime/ExampleDeviceProfileSelector/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/GameplayAbilities/Binaries/Win64/UnrealEditor-GameplayAbilities.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/GameplayAbilities/Binaries/Win64/UnrealEditor-GameplayAbilities.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/GameplayAbilities/Binaries/Win64/UnrealEditor-GameplayAbilitiesEditor.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/GameplayAbilities/Binaries/Win64/UnrealEditor-GameplayAbilitiesEditor.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/GameplayAbilities/Binaries/Win64/UnrealEditor.modules",
 			"Type": "RequiredResource"
 		},
 		{
@@ -7096,6 +7224,138 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassActors.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassActors.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassCommon.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassCommon.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassEQS.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassEQS.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassGameplayDebug.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassGameplayDebug.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassGameplayEditor.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassGameplayEditor.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassGameplayExternalTraits.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassGameplayExternalTraits.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassGameplayTestSuite.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassGameplayTestSuite.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassLOD.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassLOD.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassMovement.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassMovement.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassMovementEditor.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassMovementEditor.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassReplication.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassReplication.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassRepresentation.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassRepresentation.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassSignals.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassSignals.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassSimulation.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassSimulation.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassSmartObjects.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassSmartObjects.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassSpawner.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor-MassSpawner.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Runtime/MeshModelingToolset/Binaries/Win64/UnrealEditor-MeshModelingTools.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -7240,6 +7500,18 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Runtime/NavCorridor/Binaries/Win64/UnrealEditor-NavCorridor.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/NavCorridor/Binaries/Win64/UnrealEditor-NavCorridor.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/NavCorridor/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Runtime/ProceduralMeshComponent/Binaries/Win64/UnrealEditor-ProceduralMeshComponent.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -7357,6 +7629,34 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/Runtime/SignificanceManager/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/SmartObjects/Binaries/Win64/UnrealEditor-SmartObjectsEditorModule.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/SmartObjects/Binaries/Win64/UnrealEditor-SmartObjectsEditorModule.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/SmartObjects/Binaries/Win64/UnrealEditor-SmartObjectsModule.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/SmartObjects/Binaries/Win64/UnrealEditor-SmartObjectsModule.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/SmartObjects/Binaries/Win64/UnrealEditor-SmartObjectsTestSuite.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/SmartObjects/Binaries/Win64/UnrealEditor-SmartObjectsTestSuite.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/SmartObjects/Binaries/Win64/UnrealEditor.modules",
 			"Type": "RequiredResource"
 		},
 		{
@@ -7493,6 +7793,82 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/Runtime/Windows/XInputDevice/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/WorldConditions/Binaries/Win64/UnrealEditor-WorldConditions.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/WorldConditions/Binaries/Win64/UnrealEditor-WorldConditions.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/WorldConditions/Binaries/Win64/UnrealEditor-WorldConditionsEditor.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/WorldConditions/Binaries/Win64/UnrealEditor-WorldConditionsEditor.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/WorldConditions/Binaries/Win64/UnrealEditor-WorldConditionsTestSuite.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/WorldConditions/Binaries/Win64/UnrealEditor-WorldConditionsTestSuite.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/WorldConditions/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/ZoneGraphAnnotations/Binaries/Win64/UnrealEditor-ZoneGraphAnnotations.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/ZoneGraphAnnotations/Binaries/Win64/UnrealEditor-ZoneGraphAnnotations.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/ZoneGraphAnnotations/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/ZoneGraph/Binaries/Win64/UnrealEditor-ZoneGraph.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/ZoneGraph/Binaries/Win64/UnrealEditor-ZoneGraph.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/ZoneGraph/Binaries/Win64/UnrealEditor-ZoneGraphDebug.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/ZoneGraph/Binaries/Win64/UnrealEditor-ZoneGraphDebug.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/ZoneGraph/Binaries/Win64/UnrealEditor-ZoneGraphEditor.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/ZoneGraph/Binaries/Win64/UnrealEditor-ZoneGraphEditor.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/ZoneGraph/Binaries/Win64/UnrealEditor-ZoneGraphTestSuite.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/ZoneGraph/Binaries/Win64/UnrealEditor-ZoneGraphTestSuite.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/ZoneGraph/Binaries/Win64/UnrealEditor.modules",
 			"Type": "RequiredResource"
 		},
 		{
@@ -31402,6 +31778,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/AI/MassAI/MassAI.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Animation/ACLPlugin/ACLPlugin.uplugin",
 			"Type": "UFS"
 		},
@@ -31798,6 +32178,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Experimental/GameplayTargetingSystem/TargetingSystem.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Experimental/GeometryCollectionPlugin/GeometryCollectionPlugin.uplugin",
 			"Type": "UFS"
 		},
@@ -32078,7 +32462,15 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Runtime/DataRegistry/DataRegistry.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Runtime/ExampleDeviceProfileSelector/ExampleDeviceProfileSelector.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/GameplayAbilities/GameplayAbilities.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -32110,6 +32502,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MassGameplay/MassGameplay.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Runtime/MeshModelingToolset/MeshModelingToolset.uplugin",
 			"Type": "UFS"
 		},
@@ -32123,6 +32519,10 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/Runtime/MsQuic/MsQuic.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/NavCorridor/NavCorridor.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -32147,6 +32547,10 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/Runtime/SignificanceManager/SignificanceManager.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/SmartObjects/SmartObjects.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -32179,6 +32583,18 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/Runtime/Windows/XInputDevice/XInputDevice.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/WorldConditions/WorldConditions.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/ZoneGraphAnnotations/ZoneGraphAnnotations.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/ZoneGraph/ZoneGraph.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -32271,6 +32687,7 @@
 		"CryptoKeys",
 		"CurveEditorTools",
 		"CustomMeshComponent",
+		"DataRegistry",
 		"DataValidation",
 		"Dataflow",
 		"DatasmithContent",
@@ -32295,6 +32712,7 @@
 		"FullBodyIK",
 		"GLTFExporter",
 		"GPUReshape",
+		"GameplayAbilities",
 		"GameplayCameras",
 		"GameplayInsights",
 		"GameplayStateTree",
@@ -32328,6 +32746,8 @@
 		"LocalizableMessage",
 		"LocationServicesBPLibrary",
 		"MacGraphicsSwitching",
+		"MassAI",
+		"MassGameplay",
 		"MassInsights",
 		"MaterialAnalyzer",
 		"MediaCompositing",
@@ -32348,6 +32768,7 @@
 		"NNEDenoiser",
 		"NNERuntimeORT",
 		"NamingTokens",
+		"NavCorridor",
 		"Niagara",
 		"NiagaraPreviewContent",
 		"NiagaraSimCaching",
@@ -32391,6 +32812,7 @@
 		"SignificanceManager",
 		"SkeletalMeshModelingTools",
 		"SkeletalReduction",
+		"SmartObjects",
 		"SoundFields",
 		"SpeedTreeImporter",
 		"StateTree",
@@ -32398,6 +32820,7 @@
 		"SubversionSourceControl",
 		"Synthesis",
 		"Takes",
+		"TargetingSystem",
 		"TcpMessaging",
 		"TemplateSequence",
 		"TextureFormatOodle",
@@ -32419,11 +32842,14 @@
 		"WindowsDeviceProfileSelector",
 		"WindowsMoviePlayer",
 		"WmfMedia",
+		"WorldConditions",
 		"WorldMetrics",
 		"WorldPartitionHLODUtilities",
 		"XCodeSourceCodeAccess",
 		"XGEController",
-		"XInputDevice"
+		"XInputDevice",
+		"ZoneGraph",
+		"ZoneGraphAnnotations"
 	],
 	"AdditionalProperties": [
 		{
