@@ -30,6 +30,8 @@
 			"CombatStateTreeUtility.gen.cpp.obj",
 			"EnvQueryContext_Danger.gen.cpp.obj",
 			"EnvQueryContext_Player.gen.cpp.obj",
+			"OOPBattleAgent.gen.cpp.obj",
+			"OOPBattleAgentSpawner.gen.cpp.obj",
 			"PlatformingCharacter.gen.cpp.obj",
 			"PlatformingGameMode.gen.cpp.obj",
 			"PlatformingPlayerController.gen.cpp.obj",
@@ -41,11 +43,11 @@
 			"SideScrollingJumpPad.gen.cpp.obj",
 			"SideScrollingMovingPlatform.gen.cpp.obj",
 			"SideScrollingNPC.gen.cpp.obj",
-			"SideScrollingPickup.gen.cpp.obj",
-			"SideScrollingPlayerController.gen.cpp.obj",
-			"SideScrollingSoftPlatform.gen.cpp.obj"
+			"SideScrollingPickup.gen.cpp.obj"
 		],
 		"Module.AutoBattler.3.cpp.obj": [
+			"SideScrollingPlayerController.gen.cpp.obj",
+			"SideScrollingSoftPlatform.gen.cpp.obj",
 			"SideScrollingStateTreeUtility.gen.cpp.obj",
 			"SideScrollingUI.gen.cpp.obj",
 			"PerModuleInline.gen.cpp.obj",
@@ -90,7 +92,9 @@
 			"SideScrollingCharacter.cpp.obj",
 			"SideScrollingGameMode.cpp.obj",
 			"SideScrollingPlayerController.cpp.obj",
-			"SideScrollingUI.cpp.obj"
+			"SideScrollingUI.cpp.obj",
+			"OOPBattleAgent.cpp.obj",
+			"OOPBattleAgentSpawner.cpp.obj"
 		]
 	}
 }
