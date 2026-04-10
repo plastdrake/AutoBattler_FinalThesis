@@ -110,8 +110,13 @@ void AOOPBattleAgent::MoveOrAttackTarget()
 {
 	if (!IsValid(CurrentTarget) || !CurrentTarget->IsAlive())
 	{
-		AddMovementInput(GetActorForwardVector(), 1.0f);
-		return;
+        RefreshTarget();
+
+		if (!IsValid(CurrentTarget) || !CurrentTarget->IsAlive())
+		{
+			GetCharacterMovement()->StopMovementImmediately();
+			return;
+		}
 	}
 
 	const FVector ToTarget = CurrentTarget->GetActorLocation() - GetActorLocation();

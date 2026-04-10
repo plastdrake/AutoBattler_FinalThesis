@@ -82,3 +82,10 @@ Plugins/**/Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 **/DerivedDataCache/*
+
+# Explicit project-level Unreal generated folders
+AutoBattler/Binaries/
+AutoBattler/Build/
+AutoBattler/DerivedDataCache/
+AutoBattler/Intermediate/
+AutoBattler/Saved/

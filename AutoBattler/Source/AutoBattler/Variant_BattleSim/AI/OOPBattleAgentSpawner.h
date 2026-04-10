@@ -33,6 +33,12 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Spawner", meta = (ClampMin = 0.0, Units = "cm"))
 	float SpawnSpacing = 120.0f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Spawner", meta = (ClampMin = 1, ClampMax = 100))
+	int32 SpawnRows = 1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Spawner", meta = (ClampMin = 0.0, Units = "cm"))
+	float RowSpacing = 120.0f;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Spawner")
 	EBattleAgentTeam Team = EBattleAgentTeam::Red;
 

@@ -34,12 +34,21 @@ void AOOPBattleAgentSpawner::SpawnAgents()
 
 	const FVector StartLocation = SpawnDirection->GetComponentLocation();
 	const FVector RightVector = SpawnDirection->GetRightVector();
+  const FVector ForwardVector = SpawnDirection->GetForwardVector();
 	const FRotator SpawnRotation = SpawnDirection->GetComponentRotation();
+	const int32 Rows = FMath::Max(1, SpawnRows);
+	const int32 Columns = FMath::CeilToInt(static_cast<float>(SpawnCount) / static_cast<float>(Rows));
 
 	for (int32 Index = 0; Index < SpawnCount; ++Index)
 	{
-		const float Offset = (Index - ((SpawnCount - 1) * 0.5f)) * SpawnSpacing;
-		const FVector SpawnLocation = StartLocation + (RightVector * Offset);
+        const int32 RowIndex = Index / Columns;
+		const int32 ColumnIndex = Index % Columns;
+		const int32 RemainingAgents = SpawnCount - (RowIndex * Columns);
+		const int32 AgentsInThisRow = FMath::Min(Columns, RemainingAgents);
+
+		const float SideOffset = (ColumnIndex - ((AgentsInThisRow - 1) * 0.5f)) * SpawnSpacing;
+		const float ForwardOffset = RowIndex * RowSpacing;
+		const FVector SpawnLocation = StartLocation + (RightVector * SideOffset) - (ForwardVector * ForwardOffset);
 
 		FActorSpawnParameters SpawnParams;
 		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
