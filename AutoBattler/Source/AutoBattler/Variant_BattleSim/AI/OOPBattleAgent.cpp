@@ -1,5 +1,6 @@
 #include "OOPBattleAgent.h"
 
+#include "AIController.h"
 #include "EngineUtils.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
@@ -9,13 +10,20 @@ AOOPBattleAgent::AOOPBattleAgent()
 	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 	bUseControllerRotationYaw = false;
 
-    GetCharacterMovement()->MaxWalkSpeed = MoveSpeed;
+   GetCharacterMovement()->MaxWalkSpeed = MoveSpeed;
 	GetCharacterMovement()->bOrientRotationToMovement = true;
+    GetCharacterMovement()->bRequestedMoveUseAcceleration = true;
+	GetCharacterMovement()->bUseRVOAvoidance = true;
 }
 
 void AOOPBattleAgent::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (!Controller)
+	{
+		SpawnDefaultController();
+	}
 
 	CurrentHealth = MaxHealth;
 	TimeUntilTargetRefresh = 0.0f;
@@ -27,6 +35,11 @@ void AOOPBattleAgent::BeginPlay()
 void AOOPBattleAgent::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
+
+	if (!Controller)
+	{
+		SpawnDefaultController();
+	}
 
 	if (!IsAlive())
 	{
@@ -111,19 +124,30 @@ void AOOPBattleAgent::MoveOrAttackTarget()
 	if (!IsValid(CurrentTarget) || !CurrentTarget->IsAlive())
 	{
         RefreshTarget();
+		AAIController* AIController = Cast<AAIController>(GetController());
 
 		if (!IsValid(CurrentTarget) || !CurrentTarget->IsAlive())
 		{
+          if (AIController)
+			{
+				AIController->StopMovement();
+			}
 			GetCharacterMovement()->StopMovementImmediately();
 			return;
 		}
 	}
 
+    AAIController* AIController = Cast<AAIController>(GetController());
 	const FVector ToTarget = CurrentTarget->GetActorLocation() - GetActorLocation();
 	const float DistanceToTarget = ToTarget.Size();
 
 	if (DistanceToTarget <= AttackRange)
 	{
+     if (AIController)
+		{
+			AIController->StopMovement();
+		}
+
 		if (Controller)
 		{
 			Controller->SetControlRotation(ToTarget.Rotation());
@@ -142,7 +166,38 @@ void AOOPBattleAgent::MoveOrAttackTarget()
 		return;
 	}
 
-	const FVector MoveDirection = ToTarget.GetSafeNormal2D();
+    FVector MoveDirection = ToTarget.GetSafeNormal2D();
+
+	const FVector MyLocation = GetActorLocation();
+	constexpr float FriendlyAvoidanceRadius = 180.0f;
+	const float FriendlyAvoidanceRadiusSquared = FMath::Square(FriendlyAvoidanceRadius);
+	FVector AvoidanceDirection = FVector::ZeroVector;
+
+	for (TActorIterator<AOOPBattleAgent> It(GetWorld()); It; ++It)
+	{
+		AOOPBattleAgent* Friendly = *It;
+		if (!IsValid(Friendly) || Friendly == this || !Friendly->IsAlive() || Friendly->GetTeam() != Team)
+		{
+			continue;
+		}
+
+		const FVector Offset = MyLocation - Friendly->GetActorLocation();
+		const float DistanceSquared = Offset.SizeSquared2D();
+		if (DistanceSquared <= KINDA_SMALL_NUMBER || DistanceSquared > FriendlyAvoidanceRadiusSquared)
+		{
+			continue;
+		}
+
+		const float Distance = FMath::Sqrt(DistanceSquared);
+		const float Weight = 1.0f - (Distance / FriendlyAvoidanceRadius);
+		AvoidanceDirection += Offset.GetSafeNormal2D() * Weight;
+	}
+
+	if (!AvoidanceDirection.IsNearlyZero())
+	{
+		MoveDirection = (MoveDirection + AvoidanceDirection * 1.5f).GetSafeNormal2D();
+	}
+
 	if (!MoveDirection.IsNearlyZero())
 	{
 		AddMovementInput(MoveDirection, 1.0f);
@@ -154,6 +209,10 @@ void AOOPBattleAgent::MoveOrAttackTarget()
 void AOOPBattleAgent::Die()
 {
 	CurrentTarget = nullptr;
+	if (AAIController* AIController = Cast<AAIController>(GetController()))
+	{
+		AIController->StopMovement();
+	}
 
     GetCharacterMovement()->DisableMovement();
 
