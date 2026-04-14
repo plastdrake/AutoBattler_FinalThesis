@@ -15,6 +15,8 @@ public class AutoBattler : ModuleRules
 			"InputCore",
 			"EnhancedInput",
 			"AIModule",
+          "MassEntity",
+			"MassCommon",
 			"StateTreeModule",
 			"GameplayStateTreeModule",
 			"UMG",
@@ -25,6 +27,10 @@ public class AutoBattler : ModuleRules
 
 		PublicIncludePaths.AddRange(new string[] {
 			"AutoBattler",
+          "AutoBattler/Variant_BattleSim",
+			"AutoBattler/Variant_BattleSim/AI",
+			"AutoBattler/Variant_ECS",
+			"AutoBattler/Variant_ECS/AI",
 			"AutoBattler/Variant_Platforming",
 			"AutoBattler/Variant_Platforming/Animation",
 			"AutoBattler/Variant_Combat",

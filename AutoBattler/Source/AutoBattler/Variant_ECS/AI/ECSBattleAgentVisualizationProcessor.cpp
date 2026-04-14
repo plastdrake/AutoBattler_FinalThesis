@@ -1,0 +1,102 @@
+#include "ECSBattleAgentVisualizationProcessor.h"
+
+#include "ECSBattleAgentFragments.h"
+#include "ECSBattleAgentVisual.h"
+#include "MassCommonFragments.h"
+#include "MassEntityManager.h"
+#include "MassExecutionContext.h"
+
+UECSBattleAgentVisualizationProcessor::UECSBattleAgentVisualizationProcessor()
+	: AgentQuery(*this)
+{
+	ProcessingPhase = EMassProcessingPhase::PostPhysics;
+	ExecutionFlags = static_cast<uint8>(EProcessorExecutionFlags::All);
+	bAutoRegisterWithProcessingPhases = true;
+	bRequiresGameThreadExecution = true;
+}
+
+void UECSBattleAgentVisualizationProcessor::ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager)
+{
+	AgentQuery.AddRequirement<FECSBattleAgentFragment>(EMassFragmentAccess::ReadWrite);
+	AgentQuery.AddRequirement<FECSBattleAgentRepresentationFragment>(EMassFragmentAccess::ReadWrite);
+	AgentQuery.AddRequirement<FTransformFragment>(EMassFragmentAccess::ReadOnly);
+	AgentQuery.RequireMutatingWorldAccess();
+	AgentQuery.RegisterWithProcessor(*this);
+}
+
+void UECSBattleAgentVisualizationProcessor::Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context)
+{
+    AgentQuery.ForEachEntityChunk(Context, [this, &EntityManager](FMassExecutionContext& QueryContext)
+	{
+		UWorld* World = QueryContext.GetWorld();
+		if (!World)
+		{
+			return;
+		}
+
+		TArrayView<FECSBattleAgentFragment> AgentFragments = QueryContext.GetMutableFragmentView<FECSBattleAgentFragment>();
+		TArrayView<FECSBattleAgentRepresentationFragment> RepresentationFragments = QueryContext.GetMutableFragmentView<FECSBattleAgentRepresentationFragment>();
+		const TConstArrayView<FTransformFragment> TransformFragments = QueryContext.GetFragmentView<FTransformFragment>();
+		const TConstArrayView<FMassEntityHandle> Entities = QueryContext.GetEntities();
+
+		for (int32 EntityIndex = 0; EntityIndex < QueryContext.GetNumEntities(); ++EntityIndex)
+		{
+			FECSBattleAgentFragment& AgentData = AgentFragments[EntityIndex];
+			FECSBattleAgentRepresentationFragment& RepresentationData = RepresentationFragments[EntityIndex];
+			const FTransform& EntityTransform = TransformFragments[EntityIndex].GetTransform();
+			const FMassEntityHandle Entity = Entities[EntityIndex];
+			ACharacter* VisualCharacter = nullptr;
+
+			if (const TWeakObjectPtr<ACharacter>* FoundVisual = VisualsByEntity.Find(Entity))
+			{
+				VisualCharacter = FoundVisual->Get();
+			}
+
+			if (AgentData.bPendingEntityDestroy)
+			{
+                if (IsValid(VisualCharacter))
+				{
+                  VisualCharacter->Destroy();
+				}
+
+				VisualsByEntity.Remove(Entity);
+
+              QueryContext.Defer().DestroyEntity(Entity);
+				AgentData.bPendingEntityDestroy = false;
+				continue;
+			}
+
+            if (!IsValid(VisualCharacter) && RepresentationData.VisualCharacterClassAddress != 0)
+			{
+              UClass* VisualCharacterClass = reinterpret_cast<UClass*>(RepresentationData.VisualCharacterClassAddress);
+				if (!VisualCharacterClass || !VisualCharacterClass->IsChildOf(ACharacter::StaticClass()))
+				{
+					continue;
+				}
+
+				FActorSpawnParameters SpawnParams;
+				SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+                VisualCharacter = World->SpawnActor<ACharacter>(VisualCharacterClass, EntityTransform, SpawnParams);
+				VisualsByEntity.FindOrAdd(Entity) = VisualCharacter;
+
+             if (AECSBattleAgentVisual* TypedVisual = Cast<AECSBattleAgentVisual>(VisualCharacter))
+				{
+					TypedVisual->OnTeamAssigned(AgentData.Team);
+				}
+			}
+
+            if (IsValid(VisualCharacter))
+			{
+             VisualCharacter->SetActorTransform(EntityTransform, false, nullptr, ETeleportType::TeleportPhysics);
+
+				if (AgentData.bTriggerAttackMontage)
+				{
+                   if (AECSBattleAgentVisual* TypedVisual = Cast<AECSBattleAgentVisual>(VisualCharacter))
+					{
+						TypedVisual->PlayAttackMontage();
+					}
+				}
+			}
+		}
+	});
+}
