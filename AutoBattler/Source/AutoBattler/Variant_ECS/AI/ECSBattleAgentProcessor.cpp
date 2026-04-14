@@ -172,6 +172,11 @@ void UECSBattleAgentProcessor::Execute(FMassEntityManager& EntityManager, FMassE
 
 			if (DistanceToTarget <= Agent.AttackRange)
 			{
+              if (!ToTarget.IsNearlyZero())
+				{
+					Transform.SetRotation(ToTarget.ToOrientationQuat());
+				}
+
 				if (Agent.TimeUntilNextAttack <= 0.0f)
 				{
 					FECSQueuedDamage& QueuedDamage = PendingDamage.FindOrAdd(TargetSnapshot.Entity);
@@ -215,6 +220,7 @@ void UECSBattleAgentProcessor::Execute(FMassEntityManager& EntityManager, FMassE
 			if (!MoveDirection.IsNearlyZero())
 			{
 				Transform.SetLocation(Transform.GetLocation() + (MoveDirection * Agent.MoveSpeed * DeltaTime));
+               Transform.SetRotation(MoveDirection.ToOrientationQuat());
 			}
 		}
 	});

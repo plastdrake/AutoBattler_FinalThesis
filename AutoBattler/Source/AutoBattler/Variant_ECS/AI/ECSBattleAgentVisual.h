@@ -14,6 +14,7 @@ class AUTOBATTLER_API AECSBattleAgentVisual : public ACharacter
 
 public:
 	AECSBattleAgentVisual();
+	virtual FVector GetVelocity() const override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Battle Agent|Combat|Animation")
 	TObjectPtr<UAnimMontage> AttackMontage;
@@ -23,4 +24,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Battle Agent|Combat|Animation")
 	void PlayAttackMontage();
+
+	void SyncFromMassTransform(const FTransform& WorldTransform, float DeltaTimeSeconds);
+
+private:
+	FVector CachedVelocity = FVector::ZeroVector;
 };

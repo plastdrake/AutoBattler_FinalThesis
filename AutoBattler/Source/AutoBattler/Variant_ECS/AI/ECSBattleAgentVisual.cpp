@@ -5,12 +5,39 @@
 AECSBattleAgentVisual::AECSBattleAgentVisual()
 {
 	PrimaryActorTick.bCanEverTick = false;
-	AutoPossessAI = EAutoPossessAI::Disabled;
+   AutoPossessAI = EAutoPossessAI::Disabled;
 	bUseControllerRotationYaw = false;
 
 	if (UCharacterMovementComponent* Movement = GetCharacterMovement())
 	{
-		Movement->DisableMovement();
+        Movement->SetMovementMode(EMovementMode::MOVE_Walking);
+		Movement->bOrientRotationToMovement = true;
+		Movement->bRequestedMoveUseAcceleration = true;
+		Movement->GravityScale = 0.0f;
+	}
+}
+
+FVector AECSBattleAgentVisual::GetVelocity() const
+{
+	return CachedVelocity;
+}
+
+void AECSBattleAgentVisual::SyncFromMassTransform(const FTransform& WorldTransform, float DeltaTimeSeconds)
+{
+	const FVector PreviousLocation = GetActorLocation();
+	SetActorTransform(WorldTransform, false, nullptr, ETeleportType::TeleportPhysics);
+
+	const float SafeDelta = FMath::Max(DeltaTimeSeconds, KINDA_SMALL_NUMBER);
+	CachedVelocity = (GetActorLocation() - PreviousLocation) / SafeDelta;
+
+	if (UCharacterMovementComponent* Movement = GetCharacterMovement())
+	{
+		if (Movement->MovementMode == EMovementMode::MOVE_None)
+		{
+			Movement->SetMovementMode(EMovementMode::MOVE_Walking);
+		}
+
+		Movement->Velocity = CachedVelocity;
 	}
 }
 

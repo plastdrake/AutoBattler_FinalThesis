@@ -2,6 +2,8 @@
 
 #include "ECSBattleAgentFragments.h"
 #include "ECSBattleAgentVisual.h"
+#include "Components/CapsuleComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "MassCommonFragments.h"
 #include "MassEntityManager.h"
 #include "MassExecutionContext.h"
@@ -26,7 +28,9 @@ void UECSBattleAgentVisualizationProcessor::ConfigureQueries(const TSharedRef<FM
 
 void UECSBattleAgentVisualizationProcessor::Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context)
 {
-    AgentQuery.ForEachEntityChunk(Context, [this, &EntityManager](FMassExecutionContext& QueryContext)
+    const float DeltaTime = FMath::Max(Context.GetDeltaTimeSeconds(), KINDA_SMALL_NUMBER);
+
+  AgentQuery.ForEachEntityChunk(Context, [this, &EntityManager, DeltaTime](FMassExecutionContext& QueryContext)
 	{
 		UWorld* World = QueryContext.GetWorld();
 		if (!World)
@@ -87,7 +91,18 @@ void UECSBattleAgentVisualizationProcessor::Execute(FMassEntityManager& EntityMa
 
             if (IsValid(VisualCharacter))
 			{
-             VisualCharacter->SetActorTransform(EntityTransform, false, nullptr, ETeleportType::TeleportPhysics);
+				const float HalfHeight = VisualCharacter->GetCapsuleComponent() ? VisualCharacter->GetCapsuleComponent()->GetScaledCapsuleHalfHeight() : 0.0f;
+				FTransform AdjustedTransform = EntityTransform;
+				AdjustedTransform.AddToTranslation(FVector(0.0f, 0.0f, HalfHeight));
+
+				if (AECSBattleAgentVisual* TypedVisual = Cast<AECSBattleAgentVisual>(VisualCharacter))
+				{
+					TypedVisual->SyncFromMassTransform(AdjustedTransform, DeltaTime);
+				}
+				else
+				{
+					VisualCharacter->SetActorTransform(AdjustedTransform, false, nullptr, ETeleportType::TeleportPhysics);
+				}
 
 				if (AgentData.bTriggerAttackMontage)
 				{

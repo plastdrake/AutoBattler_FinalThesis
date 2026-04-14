@@ -31,12 +31,14 @@ void AECSBattleAgentSpawner::SpawnAgents()
 	UWorld* World = GetWorld();
 	if (!World || SpawnCount <= 0)
 	{
+     UE_LOG(LogTemp, Warning, TEXT("ECS Spawner '%s': invalid world or SpawnCount <= 0"), *GetName());
 		return;
 	}
 
 	UMassEntitySubsystem* MassSubsystem = World->GetSubsystem<UMassEntitySubsystem>();
 	if (!MassSubsystem)
 	{
+     UE_LOG(LogTemp, Error, TEXT("ECS Spawner '%s': MassEntitySubsystem not found"), *GetName());
 		return;
 	}
 
@@ -44,6 +46,7 @@ void AECSBattleAgentSpawner::SpawnAgents()
 	const FMassArchetypeHandle Archetype = CreateOrGetAgentArchetype(EntityManager);
 	if (!Archetype.IsValid())
 	{
+     UE_LOG(LogTemp, Error, TEXT("ECS Spawner '%s': Failed to create archetype"), *GetName());
 		return;
 	}
 
@@ -57,6 +60,7 @@ void AECSBattleAgentSpawner::SpawnAgents()
 	TArray<FMassEntityHandle> SpawnedEntities;
 	SpawnedEntities.Reserve(SpawnCount);
 	EntityManager.BatchCreateEntities(Archetype, SpawnCount, SpawnedEntities);
+	UE_LOG(LogTemp, Warning, TEXT("ECS Spawner '%s': requested %d, created %d entities"), *GetName(), SpawnCount, SpawnedEntities.Num());
 
 	for (int32 Index = 0; Index < SpawnedEntities.Num(); ++Index)
 	{
