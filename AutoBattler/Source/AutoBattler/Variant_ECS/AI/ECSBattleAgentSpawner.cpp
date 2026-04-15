@@ -2,8 +2,13 @@
 
 #include "Components/ArrowComponent.h"
 #include "Components/SceneComponent.h"
+#include "Avoidance/MassAvoidanceFragments.h"
+#include "MassMovementFragments.h"
+#include "MassNavigationFragments.h"
+#include "Steering/MassSteeringFragments.h"
 #include "MassEntityManager.h"
 #include "MassEntitySubsystem.h"
+#include "StructUtils/StructView.h"
 
 AECSBattleAgentSpawner::AECSBattleAgentSpawner()
 {
@@ -59,7 +64,35 @@ void AECSBattleAgentSpawner::SpawnAgents()
 
 	TArray<FMassEntityHandle> SpawnedEntities;
 	SpawnedEntities.Reserve(SpawnCount);
-	EntityManager.BatchCreateEntities(Archetype, SpawnCount, SpawnedEntities);
+
+	FMassMovementParameters MovementParameters;
+	MovementParameters.MaxSpeed = MoveSpeed;
+	MovementParameters.DefaultDesiredSpeed = MoveSpeed;
+	MovementParameters.MaxAcceleration = MoveSpeed * 8.0f;
+	MovementParameters.bIsCodeDrivenMovement = true;
+	const FConstSharedStruct MovementParamsShared = EntityManager.GetOrCreateConstSharedFragment<FMassMovementParameters>(FConstStructView::Make(MovementParameters), MovementParameters);
+
+	FMassMovingAvoidanceParameters AvoidanceParameters;
+	const FConstSharedStruct AvoidanceParamsShared = EntityManager.GetOrCreateConstSharedFragment<FMassMovingAvoidanceParameters>(FConstStructView::Make(AvoidanceParameters), AvoidanceParameters);
+
+	FMassStandingAvoidanceParameters StandingAvoidanceParameters;
+	const FConstSharedStruct StandingAvoidanceParamsShared = EntityManager.GetOrCreateConstSharedFragment<FMassStandingAvoidanceParameters>(FConstStructView::Make(StandingAvoidanceParameters), StandingAvoidanceParameters);
+
+	FMassMovingSteeringParameters MovingSteeringParameters;
+	const FConstSharedStruct MovingSteeringParamsShared = EntityManager.GetOrCreateConstSharedFragment<FMassMovingSteeringParameters>(FConstStructView::Make(MovingSteeringParameters), MovingSteeringParameters);
+
+	FMassStandingSteeringParameters StandingSteeringParameters;
+	const FConstSharedStruct StandingSteeringParamsShared = EntityManager.GetOrCreateConstSharedFragment<FMassStandingSteeringParameters>(FConstStructView::Make(StandingSteeringParameters), StandingSteeringParameters);
+
+	FMassArchetypeSharedFragmentValues SharedFragmentValues;
+	SharedFragmentValues.Add(MovementParamsShared);
+	SharedFragmentValues.Add(AvoidanceParamsShared);
+    SharedFragmentValues.Add(StandingAvoidanceParamsShared);
+    SharedFragmentValues.Add(MovingSteeringParamsShared);
+	SharedFragmentValues.Add(StandingSteeringParamsShared);
+	SharedFragmentValues.Sort();
+
+	EntityManager.BatchCreateEntities(Archetype, SharedFragmentValues, SpawnCount, SpawnedEntities);
 	UE_LOG(LogTemp, Warning, TEXT("ECS Spawner '%s': requested %d, created %d entities"), *GetName(), SpawnCount, SpawnedEntities.Num());
 
 	for (int32 Index = 0; Index < SpawnedEntities.Num(); ++Index)
@@ -90,6 +123,28 @@ void AECSBattleAgentSpawner::SpawnAgents()
 		AgentData.CurrentTarget = FMassEntityHandle();
 		AgentData.bDying = false;
 		AgentData.bPendingEntityDestroy = false;
+		AgentData.bTriggerAttackMontage = false;
+
+		FMassVelocityFragment& VelocityData = EntityManager.GetFragmentDataChecked<FMassVelocityFragment>(SpawnedEntities[Index]);
+		VelocityData.Value = FVector::ZeroVector;
+
+		FMassDesiredMovementFragment& DesiredMovementData = EntityManager.GetFragmentDataChecked<FMassDesiredMovementFragment>(SpawnedEntities[Index]);
+		DesiredMovementData.DesiredVelocity = FVector::ZeroVector;
+		DesiredMovementData.DesiredFacing = SpawnRotation.Quaternion();
+
+		FMassForceFragment& ForceData = EntityManager.GetFragmentDataChecked<FMassForceFragment>(SpawnedEntities[Index]);
+		ForceData.Value = FVector::ZeroVector;
+
+		FMassMoveTargetFragment& MoveTargetData = EntityManager.GetFragmentDataChecked<FMassMoveTargetFragment>(SpawnedEntities[Index]);
+		MoveTargetData.Center = SpawnLocation;
+		MoveTargetData.Forward = SpawnRotation.Vector();
+		MoveTargetData.DistanceToGoal = 0.0f;
+		MoveTargetData.SlackRadius = 0.0f;
+		MoveTargetData.DesiredSpeed = FMassInt16Real(MoveSpeed);
+		MoveTargetData.IntentAtGoal = EMassMovementAction::Stand;
+
+		FAgentRadiusFragment& AgentRadiusData = EntityManager.GetFragmentDataChecked<FAgentRadiusFragment>(SpawnedEntities[Index]);
+		AgentRadiusData.Radius = AgentRadius;
 
 		FECSBattleAgentRepresentationFragment& RepresentationData = EntityManager.GetFragmentDataChecked<FECSBattleAgentRepresentationFragment>(SpawnedEntities[Index]);
      RepresentationData.VisualCharacterClassAddress = reinterpret_cast<uint64>(VisualCharacterClass.Get());
@@ -104,6 +159,17 @@ FMassArchetypeHandle AECSBattleAgentSpawner::CreateOrGetAgentArchetype(FMassEnti
 	FMassArchetypeCompositionDescriptor Composition;
    Composition.GetFragments().Add<FECSBattleAgentFragment>();
    Composition.GetFragments().Add<FECSBattleAgentRepresentationFragment>();
+   Composition.GetFragments().Add<FMassVelocityFragment>();
+	Composition.GetFragments().Add<FMassDesiredMovementFragment>();
+	Composition.GetFragments().Add<FMassForceFragment>();
+	Composition.GetFragments().Add<FMassMoveTargetFragment>();
+  Composition.GetFragments().Add<FMassSteeringFragment>();
+	Composition.GetFragments().Add<FMassStandingSteeringFragment>();
+ Composition.GetFragments().Add<FMassGhostLocationFragment>();
+	Composition.GetFragments().Add<FMassNavigationEdgesFragment>();
+	Composition.GetFragments().Add<FMassNavigationObstacleGridCellLocationFragment>();
+	Composition.GetFragments().Add<FAgentRadiusFragment>();
+	Composition.GetTags().Add<FMassCodeDrivenMovementTag>();
 	Composition.GetFragments().Add<FTransformFragment>();
 	return EntityManager.CreateArchetype(Composition);
 }

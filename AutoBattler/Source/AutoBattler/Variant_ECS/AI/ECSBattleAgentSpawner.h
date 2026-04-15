@@ -51,6 +51,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Battle Agent|Stats", meta = (ClampMin = 0.0))
 	float MoveSpeed = 300.0f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Battle Agent|Stats", meta = (ClampMin = 1.0, Units = "cm"))
+	float AgentRadius = 42.0f;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Battle Agent|Combat", meta = (ClampMin = 0.0, Units = "cm"))
 	float AttackRange = 140.0f;
 

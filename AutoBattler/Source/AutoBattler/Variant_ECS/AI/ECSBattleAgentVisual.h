@@ -25,7 +25,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Battle Agent|Combat|Animation")
 	void PlayAttackMontage();
 
-	void SyncFromMassTransform(const FTransform& WorldTransform, float DeltaTimeSeconds);
+   void SyncFromMassTransform(const FTransform& WorldTransform, float DeltaTimeSeconds);
+	const FVector& GetCachedVelocity() const { return CachedVelocity; }
 
 private:
 	FVector CachedVelocity = FVector::ZeroVector;

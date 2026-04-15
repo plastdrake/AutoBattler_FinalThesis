@@ -17,6 +17,8 @@ public class AutoBattler : ModuleRules
 			"AIModule",
           "MassEntity",
 			"MassCommon",
+          "MassMovement",
+			"MassNavigation",
 			"StateTreeModule",
 			"GameplayStateTreeModule",
 			"UMG",

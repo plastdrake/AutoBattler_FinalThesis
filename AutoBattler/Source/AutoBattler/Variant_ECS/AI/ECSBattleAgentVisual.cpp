@@ -24,8 +24,11 @@ FVector AECSBattleAgentVisual::GetVelocity() const
 
 void AECSBattleAgentVisual::SyncFromMassTransform(const FTransform& WorldTransform, float DeltaTimeSeconds)
 {
-	const FVector PreviousLocation = GetActorLocation();
-	SetActorTransform(WorldTransform, false, nullptr, ETeleportType::TeleportPhysics);
+    const FVector PreviousLocation = GetActorLocation();
+
+	FHitResult SweepHit;
+	SetActorLocation(WorldTransform.GetLocation(), true, &SweepHit, ETeleportType::None);
+	SetActorRotation(WorldTransform.GetRotation(), ETeleportType::None);
 
 	const float SafeDelta = FMath::Max(DeltaTimeSeconds, KINDA_SMALL_NUMBER);
 	CachedVelocity = (GetActorLocation() - PreviousLocation) / SafeDelta;

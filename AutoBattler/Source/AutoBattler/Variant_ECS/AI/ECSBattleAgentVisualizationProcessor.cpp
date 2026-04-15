@@ -21,7 +21,7 @@ void UECSBattleAgentVisualizationProcessor::ConfigureQueries(const TSharedRef<FM
 {
 	AgentQuery.AddRequirement<FECSBattleAgentFragment>(EMassFragmentAccess::ReadWrite);
 	AgentQuery.AddRequirement<FECSBattleAgentRepresentationFragment>(EMassFragmentAccess::ReadWrite);
-	AgentQuery.AddRequirement<FTransformFragment>(EMassFragmentAccess::ReadOnly);
+   AgentQuery.AddRequirement<FTransformFragment>(EMassFragmentAccess::ReadWrite);
 	AgentQuery.RequireMutatingWorldAccess();
 	AgentQuery.RegisterWithProcessor(*this);
 }
@@ -40,7 +40,7 @@ void UECSBattleAgentVisualizationProcessor::Execute(FMassEntityManager& EntityMa
 
 		TArrayView<FECSBattleAgentFragment> AgentFragments = QueryContext.GetMutableFragmentView<FECSBattleAgentFragment>();
 		TArrayView<FECSBattleAgentRepresentationFragment> RepresentationFragments = QueryContext.GetMutableFragmentView<FECSBattleAgentRepresentationFragment>();
-		const TConstArrayView<FTransformFragment> TransformFragments = QueryContext.GetFragmentView<FTransformFragment>();
+      TArrayView<FTransformFragment> TransformFragments = QueryContext.GetMutableFragmentView<FTransformFragment>();
 		const TConstArrayView<FMassEntityHandle> Entities = QueryContext.GetEntities();
 
 		for (int32 EntityIndex = 0; EntityIndex < QueryContext.GetNumEntities(); ++EntityIndex)
@@ -101,8 +101,13 @@ void UECSBattleAgentVisualizationProcessor::Execute(FMassEntityManager& EntityMa
 				}
 				else
 				{
-					VisualCharacter->SetActorTransform(AdjustedTransform, false, nullptr, ETeleportType::TeleportPhysics);
+                  VisualCharacter->SetActorLocation(AdjustedTransform.GetLocation(), true, nullptr, ETeleportType::None);
+					VisualCharacter->SetActorRotation(AdjustedTransform.GetRotation(), ETeleportType::None);
 				}
+
+				FTransform SyncedTransform = VisualCharacter->GetActorTransform();
+				SyncedTransform.AddToTranslation(FVector(0.0f, 0.0f, -HalfHeight));
+				TransformFragments[EntityIndex].SetTransform(SyncedTransform);
 
 				if (AgentData.bTriggerAttackMontage)
 				{

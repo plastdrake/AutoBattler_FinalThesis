@@ -2,6 +2,10 @@
 
 #include "AutoBattler.h"
 #include "MassEntitySettings.h"
+#include "Avoidance/MassAvoidanceProcessors.h"
+#include "MassNavigationProcessors.h"
+#include "Movement/MassMovementProcessors.h"
+#include "Steering/MassSteeringProcessors.h"
 #include "Modules/ModuleManager.h"
 #include "Variant_ECS/AI/ECSBattleAgentProcessor.h"
 #include "Variant_ECS/AI/ECSBattleAgentVisualizationProcessor.h"
@@ -35,6 +39,13 @@ private:
 
         Settings->AddToActiveProcessorsList(UECSBattleAgentProcessor::StaticClass());
         Settings->AddToActiveProcessorsList(UECSBattleAgentVisualizationProcessor::StaticClass());
+        Settings->AddToActiveProcessorsList(UMassMoveTargetFragmentInitializer::StaticClass());
+        Settings->AddToActiveProcessorsList(UMassNavigationObstacleGridProcessor::StaticClass());
+      Settings->AddToActiveProcessorsList(UMassSteerToMoveTargetProcessor::StaticClass());
+        Settings->AddToActiveProcessorsList(UMassMovingAvoidanceProcessor::StaticClass());
+       Settings->AddToActiveProcessorsList(UMassStandingAvoidanceProcessor::StaticClass());
+        Settings->AddToActiveProcessorsList(UMassApplyForceProcessor::StaticClass());
+        Settings->AddToActiveProcessorsList(UMassApplyMovementProcessor::StaticClass());
         Settings->BuildProcessorListAndPhases();
 
         UE_LOG(LogAutoBattler, Log, TEXT("Registered ECS battle processors in Mass settings"));
