@@ -76,5 +76,5 @@ struct AUTOBATTLER_API FECSBattleAgentRepresentationFragment : public FMassFragm
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, Category = "Battle Agent|Visual")
-   uint64 VisualCharacterClassAddress = 0;
+ uint64 VisualCharacterClassAddress = 0;
 };

@@ -147,7 +147,7 @@ void AECSBattleAgentSpawner::SpawnAgents()
 		AgentRadiusData.Radius = AgentRadius;
 
 		FECSBattleAgentRepresentationFragment& RepresentationData = EntityManager.GetFragmentDataChecked<FECSBattleAgentRepresentationFragment>(SpawnedEntities[Index]);
-     RepresentationData.VisualCharacterClassAddress = reinterpret_cast<uint64>(VisualCharacterClass.Get());
+        RepresentationData.VisualCharacterClassAddress = reinterpret_cast<uint64>(VisualCharacterClass.Get());
 
 		FTransformFragment& TransformData = EntityManager.GetFragmentDataChecked<FTransformFragment>(SpawnedEntities[Index]);
 		TransformData.SetTransform(FTransform(SpawnRotation, SpawnLocation));
