@@ -72,15 +72,32 @@ void UECSBattleAgentVisualizationProcessor::Execute(FMassEntityManager& EntityMa
 
             if (!IsValid(VisualCharacter) && RepresentationData.VisualCharacterClassAddress != 0)
 			{
-              UClass* VisualCharacterClass = reinterpret_cast<UClass*>(RepresentationData.VisualCharacterClassAddress);
+             UClass* VisualCharacterClass = reinterpret_cast<UClass*>(RepresentationData.VisualCharacterClassAddress);
 				if (!VisualCharacterClass || !VisualCharacterClass->IsChildOf(ACharacter::StaticClass()))
 				{
 					continue;
 				}
 
-				FActorSpawnParameters SpawnParams;
+              FActorSpawnParameters SpawnParams;
 				SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
                 VisualCharacter = World->SpawnActor<ACharacter>(VisualCharacterClass, EntityTransform, SpawnParams);
+				if (!IsValid(VisualCharacter))
+				{
+					continue;
+				}
+
+				VisualCharacter->SetActorEnableCollision(false);
+				if (UCapsuleComponent* Capsule = VisualCharacter->GetCapsuleComponent())
+				{
+					Capsule->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+				}
+				if (UCharacterMovementComponent* Movement = VisualCharacter->GetCharacterMovement())
+				{
+					Movement->StopMovementImmediately();
+					Movement->SetMovementMode(EMovementMode::MOVE_None);
+					Movement->Deactivate();
+					Movement->SetComponentTickEnabled(false);
+				}
 				VisualsByEntity.FindOrAdd(Entity) = VisualCharacter;
 
              if (AECSBattleAgentVisual* TypedVisual = Cast<AECSBattleAgentVisual>(VisualCharacter))
@@ -101,8 +118,7 @@ void UECSBattleAgentVisualizationProcessor::Execute(FMassEntityManager& EntityMa
 				}
 				else
 				{
-                  VisualCharacter->SetActorLocation(AdjustedTransform.GetLocation(), true, nullptr, ETeleportType::None);
-					VisualCharacter->SetActorRotation(AdjustedTransform.GetRotation(), ETeleportType::None);
+                   VisualCharacter->SetActorLocationAndRotation(AdjustedTransform.GetLocation(), AdjustedTransform.GetRotation(), false, nullptr, ETeleportType::TeleportPhysics);
 				}
 
 				if (AgentData.bTriggerAttackMontage)

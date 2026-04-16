@@ -1,19 +1,36 @@
 #include "ECSBattleAgentVisual.h"
 
+#include "Components/CapsuleComponent.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 AECSBattleAgentVisual::AECSBattleAgentVisual()
 {
 	PrimaryActorTick.bCanEverTick = false;
-   AutoPossessAI = EAutoPossessAI::Disabled;
+    AutoPossessAI = EAutoPossessAI::Disabled;
 	bUseControllerRotationYaw = false;
+	SetActorEnableCollision(false);
+
+	if (UCapsuleComponent* Capsule = GetCapsuleComponent())
+	{
+		Capsule->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	}
+
+   if (USkeletalMeshComponent* SkeletalMeshComponent = GetMesh())
+	{
+      SkeletalMeshComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		SkeletalMeshComponent->SetGenerateOverlapEvents(false);
+		SkeletalMeshComponent->KinematicBonesUpdateType = EKinematicBonesUpdateToPhysics::SkipAllBones;
+		SkeletalMeshComponent->bEnableUpdateRateOptimizations = true;
+		SkeletalMeshComponent->bComponentUseFixedSkelBounds = true;
+	}
 
 	if (UCharacterMovementComponent* Movement = GetCharacterMovement())
 	{
-        Movement->SetMovementMode(EMovementMode::MOVE_Walking);
-		Movement->bOrientRotationToMovement = true;
-		Movement->bRequestedMoveUseAcceleration = true;
-		Movement->GravityScale = 0.0f;
+     Movement->StopMovementImmediately();
+		Movement->SetMovementMode(EMovementMode::MOVE_None);
+		Movement->Deactivate();
+		Movement->SetComponentTickEnabled(false);
 	}
 }
 
@@ -25,23 +42,10 @@ FVector AECSBattleAgentVisual::GetVelocity() const
 void AECSBattleAgentVisual::SyncFromMassTransform(const FTransform& WorldTransform, float DeltaTimeSeconds)
 {
     const FVector PreviousLocation = GetActorLocation();
-
-	FHitResult SweepHit;
-	SetActorLocation(WorldTransform.GetLocation(), true, &SweepHit, ETeleportType::None);
-	SetActorRotation(WorldTransform.GetRotation(), ETeleportType::None);
+	SetActorLocationAndRotation(WorldTransform.GetLocation(), WorldTransform.GetRotation(), false, nullptr, ETeleportType::TeleportPhysics);
 
 	const float SafeDelta = FMath::Max(DeltaTimeSeconds, KINDA_SMALL_NUMBER);
 	CachedVelocity = (GetActorLocation() - PreviousLocation) / SafeDelta;
-
-	if (UCharacterMovementComponent* Movement = GetCharacterMovement())
-	{
-		if (Movement->MovementMode == EMovementMode::MOVE_None)
-		{
-			Movement->SetMovementMode(EMovementMode::MOVE_Walking);
-		}
-
-		Movement->Velocity = CachedVelocity;
-	}
 }
 
 void AECSBattleAgentVisual::PlayAttackMontage()
