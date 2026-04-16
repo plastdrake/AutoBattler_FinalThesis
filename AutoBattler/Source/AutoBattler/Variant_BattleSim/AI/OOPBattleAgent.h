@@ -22,6 +22,7 @@ public:
 	AOOPBattleAgent();
 
 	virtual void Tick(float DeltaSeconds) override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 	UFUNCTION(BlueprintCallable, Category = "Battle Agent")
 	void SetTeam(EBattleAgentTeam NewTeam);
@@ -79,6 +80,8 @@ private:
 
 	float TimeUntilNextAttack = 0.0f;
 	float TimeUntilTargetRefresh = 0.0f;
+
+	static TArray<TWeakObjectPtr<AOOPBattleAgent>> AgentRegistry;
 
 	void RefreshTarget();
     void MoveOrAttackTarget();
