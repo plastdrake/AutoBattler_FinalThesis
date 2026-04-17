@@ -112,7 +112,7 @@ namespace
 		const float SearchRadiusSquared = FMath::Square(SourceAgent.TargetSearchRadius);
 		float BestScore = MAX_flt;
 		int32 BestIndex = INDEX_NONE;
-		const float CongestionRadius = SourceAgent.AttackRange * 2.0f;
+		const float CongestionRadius = SourceAgent.AttackRange * 0.5f;
 
 		auto EvaluateCandidate = [&](const int32 CandidateIndex)
 		{
