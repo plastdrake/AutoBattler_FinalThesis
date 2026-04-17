@@ -92,6 +92,8 @@ namespace
 							Visitor(SnapshotIndex);
 						}
 					}
+
+
 				}
 			}
 		}
@@ -208,12 +210,15 @@ void UECSBattleAgentProcessor::Execute(FMassEntityManager& EntityManager, FMassE
 	FECSSpatialHash SpatialHash;
 	SpatialHash.Build(Snapshots, 220.0f);
 
-	TArray<float> PendingDamageBySnapshot;
-	PendingDamageBySnapshot.Init(0.0f, Snapshots.Num());
-	TArray<FMassEntityHandle> LastDamageCauserBySnapshot;
-	LastDamageCauserBySnapshot.Init(FMassEntityHandle(), Snapshots.Num());
+    TArray<float> PendingDamageBySnapshot;
+    PendingDamageBySnapshot.Init(0.0f, Snapshots.Num());
+    TArray<FMassEntityHandle> LastDamageCauserBySnapshot;
+    LastDamageCauserBySnapshot.Init(FMassEntityHandle(), Snapshots.Num());
 
-    AgentQuery.ForEachEntityChunk(Context, [&Snapshots, &SnapshotIndexByEntityIndex, &SpatialHash, &PendingDamageBySnapshot, &LastDamageCauserBySnapshot, DeltaTime](FMassExecutionContext& QueryContext)
+    // Instrumentation counters
+    int64 SeparationChecks = 0;
+
+    AgentQuery.ForEachEntityChunk(Context, [&Snapshots, &SnapshotIndexByEntityIndex, &SpatialHash, &PendingDamageBySnapshot, &LastDamageCauserBySnapshot, &EntityManager, &SeparationChecks, DeltaTime](FMassExecutionContext& QueryContext)
 	{
 		TArrayView<FECSBattleAgentFragment> AgentFragments = QueryContext.GetMutableFragmentView<FECSBattleAgentFragment>();
 		TArrayView<FTransformFragment> TransformFragments = QueryContext.GetMutableFragmentView<FTransformFragment>();
@@ -331,29 +336,54 @@ void UECSBattleAgentProcessor::Execute(FMassEntityManager& EntityManager, FMassE
 			MoveTarget.Forward = SlotDirection.IsNearlyZero() ? Transform.GetRotation().Vector() : SlotDirection;
 			MoveTarget.DistanceToGoal = DistanceToStandoff;
 			MoveTarget.DesiredSpeed = FMassInt16Real(Agent.MoveSpeed);
+            if (DistanceToTarget <= Agent.AttackRange)
+            {
+                if (!ToTarget.IsNearlyZero())
+                {
+                    Transform.SetRotation(ToTarget.ToOrientationQuat());
+                }
 
-			if (DistanceToTarget <= Agent.AttackRange)
-			{
-             if (!ToTarget.IsNearlyZero())
-				{
-					Transform.SetRotation(ToTarget.ToOrientationQuat());
-				}
+                MoveTarget.DesiredSpeed = FMassInt16Real(0.0f);
+                if (World && MoveTarget.GetCurrentAction() != EMassMovementAction::Stand)
+                {
+                    MoveTarget.CreateNewAction(EMassMovementAction::Stand, *World);
+                }
 
-             MoveTarget.DesiredSpeed = FMassInt16Real(0.0f);
-				if (World && MoveTarget.GetCurrentAction() != EMassMovementAction::Stand)
-				{
-					MoveTarget.CreateNewAction(EMassMovementAction::Stand, *World);
-				}
+                if (Agent.TimeUntilNextAttack <= 0.0f)
+                {
+                    // Apply damage immediately to match OOP behavior
+                    FECSBattleAgentFragment* TargetAgent = EntityManager.GetFragmentDataPtr<FECSBattleAgentFragment>(TargetSnapshot.Entity);
+                    if (TargetAgent && !TargetAgent->bDying && TargetAgent->CurrentHealth > 0.0f)
+                    {
+                        TargetAgent->CurrentHealth = FMath::Max(0.0f, TargetAgent->CurrentHealth - Agent.AttackDamage);
+                        if (TargetAgent->CurrentHealth <= 0.0f)
+                        {
+                            TargetAgent->bDying = true;
+                            TargetAgent->LifeTimeRemaining = TargetAgent->DestroyDelay;
+                            TargetAgent->CurrentTarget = FMassEntityHandle();
+                            TargetAgent->bPendingEntityDestroy = false;
+                            const int32 EntityIdx = TargetSnapshot.Entity.Index;
+                            if (EntityIdx >= 0 && EntityIdx < SnapshotIndexByEntityIndex.Num())
+                            {
+                                const int32 SnapshotIdx = SnapshotIndexByEntityIndex[EntityIdx];
+                                if (SnapshotIdx != INDEX_NONE && SnapshotIdx >= 0 && SnapshotIdx < Snapshots.Num())
+                                {
+                                    Snapshots[SnapshotIdx].bAlive = false;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            TargetAgent->CurrentTarget = Entity;
+                        }
+                    }
 
-				if (Agent.TimeUntilNextAttack <= 0.0f)
-				{
-                    PendingDamageBySnapshot[TargetSnapshotIndex] += Agent.AttackDamage;
-					LastDamageCauserBySnapshot[TargetSnapshotIndex] = Entity;
-					Agent.TimeUntilNextAttack = Agent.AttackInterval;
-					Agent.bTriggerAttackMontage = true;
-				}
-				continue;
-			}
+                    Agent.TimeUntilNextAttack = Agent.AttackInterval;
+                    Agent.bTriggerAttackMontage = true;
+                }
+
+                continue;
+            }
 
 			if (!MoveDirection.IsNearlyZero())
 			{
@@ -364,6 +394,7 @@ void UECSBattleAgentProcessor::Execute(FMassEntityManager& EntityManager, FMassE
 				const float FriendlyAvoidanceRadius = FMath::Max(AgentRadius * FriendlyAvoidanceRadiusScale, 120.0f);
                 SpatialHash.ForEachSnapshotInRadius(SelfLocation, FriendlyAvoidanceRadius, Snapshots, [&](const int32 FriendlyIndex)
 				{
+                    ++SeparationChecks;
                    const FECSAgentSnapshot& Friendly = Snapshots[FriendlyIndex];
 					if (!Friendly.bAlive || Friendly.Team != Agent.Team || Friendly.Entity == Entity)
 					{
