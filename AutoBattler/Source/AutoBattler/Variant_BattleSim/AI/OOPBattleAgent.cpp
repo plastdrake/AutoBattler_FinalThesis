@@ -54,6 +54,23 @@ void AOOPBattleAgent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 	Super::EndPlay(EndPlayReason);
 }
 
+int32 AOOPBattleAgent::GetAliveTeamCount(const EBattleAgentTeam InTeam)
+{
+	int32 TeamCount = 0;
+	for (const TWeakObjectPtr<AOOPBattleAgent>& WeakAgent : AgentRegistry)
+	{
+		const AOOPBattleAgent* Agent = WeakAgent.Get();
+		if (!IsValid(Agent) || !Agent->IsAlive() || Agent->GetTeam() != InTeam)
+		{
+			continue;
+		}
+
+		++TeamCount;
+	}
+
+	return TeamCount;
+}
+
 void AOOPBattleAgent::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);

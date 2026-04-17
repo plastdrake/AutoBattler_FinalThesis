@@ -22,6 +22,15 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Battle Agent|Visual")
 	void OnTeamAssigned(EECSBattleAgentTeam Team);
 
+	UFUNCTION(BlueprintCallable, Category = "Battle Agent|Visual")
+	void SetAssignedTeam(EECSBattleAgentTeam Team);
+
+	UFUNCTION(BlueprintPure, Category = "Battle Agent|Visual")
+	EECSBattleAgentTeam GetAssignedTeam() const { return AssignedTeam; }
+
+	UFUNCTION(BlueprintPure, Category = "Battle Agent|Visual")
+	bool HasAssignedTeam() const { return bHasAssignedTeam; }
+
 	UFUNCTION(BlueprintCallable, Category = "Battle Agent|Combat|Animation")
 	void PlayAttackMontage();
 
@@ -30,4 +39,6 @@ public:
 
 private:
 	FVector CachedVelocity = FVector::ZeroVector;
+  EECSBattleAgentTeam AssignedTeam = EECSBattleAgentTeam::Red;
+	bool bHasAssignedTeam = false;
 };

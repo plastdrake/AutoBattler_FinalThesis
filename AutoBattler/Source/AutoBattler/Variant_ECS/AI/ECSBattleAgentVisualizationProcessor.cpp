@@ -102,7 +102,7 @@ void UECSBattleAgentVisualizationProcessor::Execute(FMassEntityManager& EntityMa
 
              if (AECSBattleAgentVisual* TypedVisual = Cast<AECSBattleAgentVisual>(VisualCharacter))
 				{
-					TypedVisual->OnTeamAssigned(AgentData.Team);
+                    TypedVisual->SetAssignedTeam(AgentData.Team);
 				}
 			}
 
