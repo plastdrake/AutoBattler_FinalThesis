@@ -36,6 +36,9 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Battle Agent")
 	EBattleAgentTeam GetTeam() const { return Team; }
 
+	UFUNCTION(BlueprintPure, Category = "Battle Agent")
+	static int32 GetAliveTeamCount(EBattleAgentTeam InTeam);
+
 	void ReceiveDamage(float DamageAmount, AOOPBattleAgent* DamageCauser);
 
 protected:

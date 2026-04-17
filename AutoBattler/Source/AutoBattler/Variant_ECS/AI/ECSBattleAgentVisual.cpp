@@ -39,6 +39,13 @@ FVector AECSBattleAgentVisual::GetVelocity() const
 	return CachedVelocity;
 }
 
+void AECSBattleAgentVisual::SetAssignedTeam(const EECSBattleAgentTeam Team)
+{
+	AssignedTeam = Team;
+	bHasAssignedTeam = true;
+	OnTeamAssigned(Team);
+}
+
 void AECSBattleAgentVisual::SyncFromMassTransform(const FTransform& WorldTransform, float DeltaTimeSeconds)
 {
     const FVector PreviousLocation = GetActorLocation();
