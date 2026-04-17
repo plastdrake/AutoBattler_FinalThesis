@@ -68,6 +68,10 @@ struct AUTOBATTLER_API FECSBattleAgentFragment : public FMassFragment
 
 	UPROPERTY(Transient)
 	bool bTriggerAttackMontage = false;
+
+    /** Persistent slot angle (degrees) used for stable formation positioning. Set by the spawner. */
+    UPROPERTY(Transient)
+    float SlotAngleDegrees = 0.0f;
 };
 
 USTRUCT()

@@ -107,64 +107,32 @@ namespace
 		return SnapshotIndexByEntityIndex[Entity.Index];
 	}
 
-	int32 FindNearestEnemyIndex(const FECSAgentSnapshot& SourceSnapshot, const FECSBattleAgentFragment& SourceAgent, const TArray<FECSAgentSnapshot>& Snapshots, const FECSSpatialHash& SpatialHash)
-	{
-		const float SearchRadiusSquared = FMath::Square(SourceAgent.TargetSearchRadius);
-		float BestScore = MAX_flt;
-		int32 BestIndex = INDEX_NONE;
-		const float CongestionRadius = SourceAgent.AttackRange * 0.5f;
+int32 FindNearestEnemyIndex(const FECSAgentSnapshot& SourceSnapshot, const FECSBattleAgentFragment& SourceAgent, const TArray<FECSAgentSnapshot>& Snapshots, const FECSSpatialHash& SpatialHash)
+{
+    const float SearchRadiusSquared = FMath::Square(SourceAgent.TargetSearchRadius);
+    float BestDistanceSquared = MAX_flt;
+    int32 BestIndex = INDEX_NONE;
 
-		auto EvaluateCandidate = [&](const int32 CandidateIndex)
-		{
-			const FECSAgentSnapshot& Candidate = Snapshots[CandidateIndex];
-			if (!Candidate.bAlive || Candidate.Entity == SourceSnapshot.Entity || Candidate.Team == SourceAgent.Team)
-			{
-				return;
-			}
+    for (int32 CandidateIndex = 0; CandidateIndex < Snapshots.Num(); ++CandidateIndex)
+    {
+        const FECSAgentSnapshot& Candidate = Snapshots[CandidateIndex];
+        if (!Candidate.bAlive || Candidate.Entity == SourceSnapshot.Entity || Candidate.Team == SourceAgent.Team)
+        {
+            continue;
+        }
 
-			const float DistanceSquared = FVector::DistSquared2D(SourceSnapshot.Location, Candidate.Location);
-			if (DistanceSquared > SearchRadiusSquared)
-			{
-				return;
-			}
+        const float DistanceSquared = FVector::DistSquared2D(SourceSnapshot.Location, Candidate.Location);
+        if (DistanceSquared > SearchRadiusSquared || DistanceSquared >= BestDistanceSquared)
+        {
+            continue;
+        }
 
-			int32 FriendlyCongestion = 0;
-			SpatialHash.ForEachSnapshotInRadius(Candidate.Location, CongestionRadius, Snapshots, [&](const int32 NearbyIndex)
-			{
-				const FECSAgentSnapshot& Nearby = Snapshots[NearbyIndex];
-				if (Nearby.bAlive && Nearby.Team == SourceAgent.Team && Nearby.Entity != SourceSnapshot.Entity)
-				{
-					++FriendlyCongestion;
-				}
-			});
+        BestDistanceSquared = DistanceSquared;
+        BestIndex = CandidateIndex;
+    }
 
-			const float Score = DistanceSquared + (FriendlyCongestion * FMath::Square(SourceAgent.AttackRange * 1.5f));
-			if (Score < BestScore)
-			{
-				BestScore = Score;
-				BestIndex = CandidateIndex;
-			}
-		};
-
-		const float GridQueryRadiusThreshold = SpatialHash.CellSize * 16.0f;
-		if (SourceAgent.TargetSearchRadius > GridQueryRadiusThreshold)
-		{
-			const int32 EnemyTeamIndex = FECSSpatialHash::TeamToIndex(SourceAgent.Team == EECSBattleAgentTeam::Red ? EECSBattleAgentTeam::Blue : EECSBattleAgentTeam::Red);
-			for (const int32 EnemySnapshotIndex : SpatialHash.AliveByTeam[EnemyTeamIndex])
-			{
-				EvaluateCandidate(EnemySnapshotIndex);
-			}
-		}
-		else
-		{
-			SpatialHash.ForEachSnapshotInRadius(SourceSnapshot.Location, SourceAgent.TargetSearchRadius, Snapshots, [&](const int32 CandidateIndex)
-			{
-				EvaluateCandidate(CandidateIndex);
-			});
-		}
-
-		return BestIndex;
-	}
+    return BestIndex;
+}
 }
 
 UECSBattleAgentProcessor::UECSBattleAgentProcessor()
@@ -245,7 +213,7 @@ void UECSBattleAgentProcessor::Execute(FMassEntityManager& EntityManager, FMassE
 	TArray<FMassEntityHandle> LastDamageCauserBySnapshot;
 	LastDamageCauserBySnapshot.Init(FMassEntityHandle(), Snapshots.Num());
 
- AgentQuery.ForEachEntityChunk(Context, [&Snapshots, &SnapshotIndexByEntityIndex, &SpatialHash, &PendingDamageBySnapshot, &LastDamageCauserBySnapshot, DeltaTime](FMassExecutionContext& QueryContext)
+    AgentQuery.ForEachEntityChunk(Context, [&Snapshots, &SnapshotIndexByEntityIndex, &SpatialHash, &PendingDamageBySnapshot, &LastDamageCauserBySnapshot, DeltaTime](FMassExecutionContext& QueryContext)
 	{
 		TArrayView<FECSBattleAgentFragment> AgentFragments = QueryContext.GetMutableFragmentView<FECSBattleAgentFragment>();
 		TArrayView<FTransformFragment> TransformFragments = QueryContext.GetMutableFragmentView<FTransformFragment>();
@@ -343,18 +311,21 @@ void UECSBattleAgentProcessor::Execute(FMassEntityManager& EntityManager, FMassE
 			}
 
             const FVector ToTarget = TargetSnapshot.Location - SelfLocation;
-			const FVector MoveDirection = ToTarget.GetSafeNormal2D();
+            const FVector MoveDirection = ToTarget.GetSafeNormal2D();
+            const int32 SelfSnapshotIndex = FindSnapshotIndex(SnapshotIndexByEntityIndex, Entity);
 			const float DistanceToTarget = ToTarget.Size2D();
 			const float AgentRadius = RadiusFragments[EntityIndex].Radius;
 			const float StandoffDistance = FMath::Max(AgentRadius, Agent.AttackRange - AgentRadius);
 
-			const float SlotHash = FMath::Frac(static_cast<float>(Entity.Index) * 0.61803398875f);
-			const float SlotAngleDegrees = (SlotHash * 2.0f - 1.0f) * 70.0f;
-			FVector SlotDirection = MoveDirection.IsNearlyZero() ? Transform.GetRotation().GetForwardVector().GetSafeNormal2D() : MoveDirection;
-			SlotDirection = SlotDirection.RotateAngleAxis(SlotAngleDegrees, FVector::UpVector).GetSafeNormal2D();
+            // Use persistent slot angle assigned at spawn to keep formation stable
+            const float SlotAngleDegrees = Agent.SlotAngleDegrees;
+            FVector SlotDirection = MoveDirection.IsNearlyZero() ? Transform.GetRotation().GetForwardVector().GetSafeNormal2D() : MoveDirection;
+            SlotDirection = SlotDirection.RotateAngleAxis(SlotAngleDegrees, FVector::UpVector).GetSafeNormal2D();
 			const FVector StandoffCenter = TargetSnapshot.Location - (SlotDirection * StandoffDistance);
 			const FVector ToStandoff = StandoffCenter - SelfLocation;
-			const float DistanceToStandoff = ToStandoff.Size2D();
+            const float DistanceToStandoff = ToStandoff.Size2D();
+            // Small hysteresis tolerance to avoid rapid Move/Stand toggles when near goal
+            const float GoalTolerance = 30.0f;
 
             MoveTarget.Center = MoveDirection.IsNearlyZero() ? TargetSnapshot.Location : StandoffCenter;
 			MoveTarget.Forward = SlotDirection.IsNearlyZero() ? Transform.GetRotation().Vector() : SlotDirection;
@@ -411,23 +382,37 @@ void UECSBattleAgentProcessor::Execute(FMassEntityManager& EntityManager, FMassE
 					LocalSeparation += Offset.GetSafeNormal2D() * Weight;
                });
 
-				if (!LocalSeparation.IsNearlyZero())
-				{
-					DesiredDirection = (DesiredDirection + LocalSeparation * 1.6f).GetSafeNormal2D();
-				}
+                if (!LocalSeparation.IsNearlyZero())
+                {
+                    DesiredDirection = (DesiredDirection + LocalSeparation * 1.6f).GetSafeNormal2D();
+                }
 
-				DesiredMovement.DesiredVelocity = DesiredDirection * Agent.MoveSpeed;
-				DesiredMovement.DesiredFacing = DesiredDirection.ToOrientationQuat();
-				Transform.SetRotation(DesiredMovement.DesiredFacing);
-             if (World && MoveTarget.GetCurrentAction() != EMassMovementAction::Move)
-				{
-					MoveTarget.CreateNewAction(EMassMovementAction::Move, *World);
-				}
+                DesiredMovement.DesiredVelocity = DesiredDirection * Agent.MoveSpeed;
+                const FQuat TargetFacing = DesiredDirection.ToOrientationQuat();
+                // Smooth facing changes to avoid 180-degree twitch when path is blocked or vectors flip
+                const FQuat CurrentFacing = Transform.GetRotation();
+                const float LerpAlpha = FMath::Clamp(DeltaTime * 8.0f, 0.05f, 1.0f);
+                const FQuat SmoothedFacing = FQuat::Slerp(CurrentFacing, TargetFacing, LerpAlpha).GetNormalized();
+                DesiredMovement.DesiredFacing = SmoothedFacing;
+                // Only update the transform rotation when we have meaningful movement
+                if (!DesiredMovement.DesiredVelocity.IsNearlyZero())
+                {
+                    Transform.SetRotation(DesiredMovement.DesiredFacing);
+                }
+
+                if (World && MoveTarget.GetCurrentAction() != EMassMovementAction::Move)
+                {
+                    MoveTarget.CreateNewAction(EMassMovementAction::Move, *World);
+                }
 			}
            else if (World && MoveTarget.GetCurrentAction() != EMassMovementAction::Stand)
-			{
-				MoveTarget.CreateNewAction(EMassMovementAction::Stand, *World);
-			}
+            {
+                MoveTarget.CreateNewAction(EMassMovementAction::Stand, *World);
+            }
+            else if (World && MoveTarget.GetCurrentAction() != EMassMovementAction::Stand)
+            {
+                MoveTarget.CreateNewAction(EMassMovementAction::Stand, *World);
+            }
 		}
 	});
 
