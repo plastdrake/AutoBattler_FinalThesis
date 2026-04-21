@@ -54,6 +54,8 @@ private:
 
 	bool bCaptureActive = false;
 	bool bCaptureFinalized = false;
+	double CaptureStartRealSeconds = 0.0;
+	double LastSampleRealSeconds = 0.0;
 
 	float RoundElapsedSeconds = 0.0f;
 	float CapturedElapsedSeconds = 0.0f;

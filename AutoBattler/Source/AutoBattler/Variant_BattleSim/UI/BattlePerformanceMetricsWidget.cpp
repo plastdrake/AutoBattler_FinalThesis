@@ -2,6 +2,7 @@
 
 #include "Components/TextBlock.h"
 #include "EngineUtils.h"
+#include "HAL/PlatformTime.h"
 #include "TimerManager.h"
 #include "Variant_BattleSim/AI/OOPBattleAgent.h"
 #include "Variant_ECS/AI/ECSBattleAgentVisual.h"
@@ -86,6 +87,9 @@ void UBattlePerformanceMetricsWidget::StartCapture()
 {
 	bCaptureActive = true;
 	bCaptureFinalized = false;
+ const UWorld* World = GetWorld();
+	CaptureStartRealSeconds = World ? static_cast<double>(World->GetRealTimeSeconds()) : FPlatformTime::Seconds();
+	LastSampleRealSeconds = CaptureStartRealSeconds;
 	RoundElapsedSeconds = 0.0f;
 	CapturedElapsedSeconds = 0.0f;
 }
@@ -110,22 +114,39 @@ void UBattlePerformanceMetricsWidget::FinalizeCapture()
 
 void UBattlePerformanceMetricsWidget::SampleFrame(const float InDeltaTime)
 {
+    (void)InDeltaTime;
+
 	if (!bCaptureActive)
 	{
 		return;
 	}
 
-	RoundElapsedSeconds += InDeltaTime;
+	const UWorld* World = GetWorld();
+	const double CurrentRealSeconds = World ? static_cast<double>(World->GetRealTimeSeconds()) : FPlatformTime::Seconds();
+	if (LastSampleRealSeconds <= 0.0)
+	{
+		LastSampleRealSeconds = CurrentRealSeconds;
+		return;
+	}
+
+	const float RealDeltaSeconds = static_cast<float>(CurrentRealSeconds - LastSampleRealSeconds);
+	LastSampleRealSeconds = CurrentRealSeconds;
+	if (RealDeltaSeconds <= 0.0f)
+	{
+		return;
+	}
+
+ RoundElapsedSeconds = static_cast<float>(CurrentRealSeconds - CaptureStartRealSeconds);
 	if (RoundElapsedSeconds < WarmupDurationSeconds)
 	{
 		return;
 	}
 
-	const float SafeDelta = FMath::Max(InDeltaTime, KINDA_SMALL_NUMBER);
+    const float SafeDelta = FMath::Max(RealDeltaSeconds, KINDA_SMALL_NUMBER);
 	const float FrameTimeMs = SafeDelta * 1000.0f;
 	const float FPS = 1.0f / SafeDelta;
 
-	CapturedElapsedSeconds += InDeltaTime;
+  CapturedElapsedSeconds += RealDeltaSeconds;
 	++SampleCount;
 	SumFPS += FPS;
 	SumFrameTimeMs += FrameTimeMs;
@@ -188,6 +209,8 @@ void UBattlePerformanceMetricsWidget::ResetRuntimeStats()
 {
 	bCaptureActive = false;
 	bCaptureFinalized = false;
+	CaptureStartRealSeconds = 0.0;
+	LastSampleRealSeconds = 0.0;
 
 	RoundElapsedSeconds = 0.0f;
 	CapturedElapsedSeconds = 0.0f;
