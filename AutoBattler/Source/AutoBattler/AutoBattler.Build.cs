@@ -45,7 +45,8 @@ public class AutoBattler : ModuleRules
 			"AutoBattler/Variant_SideScrolling/AI",
 			"AutoBattler/Variant_SideScrolling/Gameplay",
 			"AutoBattler/Variant_SideScrolling/Interfaces",
-			"AutoBattler/Variant_SideScrolling/UI"
+			"AutoBattler/Variant_SideScrolling/UI",
+			"AutoBattler/Benchmark"
 		});
 
 		// Uncomment if you are using Slate UI

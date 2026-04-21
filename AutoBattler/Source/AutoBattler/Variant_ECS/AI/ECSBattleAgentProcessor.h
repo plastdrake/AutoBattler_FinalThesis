@@ -21,4 +21,12 @@ protected:
 
 private:
 	FMassEntityQuery AgentQuery;
+
+    // Simple aggregated performance metrics
+    int64 TotalSeparationChecks = 0; // Resetting to zero
+    int64 TotalAttacks = 0; // Resetting to zero
+    int64 TotalDeaths = 0; // Resetting to zero
+    int64 FramesProcessed = 0; // Resetting to zero
+    double TotalProcessorTimeSeconds = 0.0; // Resetting to zero
+    bool bFinalSummaryLogged = false; // Resetting to false
 };

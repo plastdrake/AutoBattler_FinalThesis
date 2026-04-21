@@ -26,7 +26,6 @@ namespace
 		{
 			return (Team == EECSBattleAgentTeam::Blue) ? 1 : 0;
 		}
-
 		static FIntPoint ToCell(const FVector& Location, const float InCellSize)
 		{
 			return FIntPoint(
@@ -158,6 +157,8 @@ void UECSBattleAgentProcessor::ConfigureQueries(const TSharedRef<FMassEntityMana
 
 void UECSBattleAgentProcessor::Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context)
 {
+    const double StartTime = FPlatformTime::Seconds();
+
 	const float DeltaTime = Context.GetDeltaTimeSeconds();
 	if (DeltaTime <= 0.0f)
 	{
@@ -215,10 +216,12 @@ void UECSBattleAgentProcessor::Execute(FMassEntityManager& EntityManager, FMassE
     TArray<FMassEntityHandle> LastDamageCauserBySnapshot;
     LastDamageCauserBySnapshot.Init(FMassEntityHandle(), Snapshots.Num());
 
-    // Instrumentation counters
+    // Instrumentation counters (per-frame)
     int64 SeparationChecks = 0;
+    int64 FrameAttacks = 0;
+    int64 FrameDeaths = 0;
 
-    AgentQuery.ForEachEntityChunk(Context, [&Snapshots, &SnapshotIndexByEntityIndex, &SpatialHash, &PendingDamageBySnapshot, &LastDamageCauserBySnapshot, &EntityManager, &SeparationChecks, DeltaTime](FMassExecutionContext& QueryContext)
+    AgentQuery.ForEachEntityChunk(Context, [&Snapshots, &SnapshotIndexByEntityIndex, &SpatialHash, &PendingDamageBySnapshot, &LastDamageCauserBySnapshot, &EntityManager, &SeparationChecks, &FrameAttacks, &FrameDeaths, DeltaTime](FMassExecutionContext& QueryContext)
 	{
 		TArrayView<FECSBattleAgentFragment> AgentFragments = QueryContext.GetMutableFragmentView<FECSBattleAgentFragment>();
 		TArrayView<FTransformFragment> TransformFragments = QueryContext.GetMutableFragmentView<FTransformFragment>();
@@ -356,12 +359,14 @@ void UECSBattleAgentProcessor::Execute(FMassEntityManager& EntityManager, FMassE
                     if (TargetAgent && !TargetAgent->bDying && TargetAgent->CurrentHealth > 0.0f)
                     {
                         TargetAgent->CurrentHealth = FMath::Max(0.0f, TargetAgent->CurrentHealth - Agent.AttackDamage);
+                            ++FrameAttacks;
                         if (TargetAgent->CurrentHealth <= 0.0f)
                         {
                             TargetAgent->bDying = true;
                             TargetAgent->LifeTimeRemaining = TargetAgent->DestroyDelay;
                             TargetAgent->CurrentTarget = FMassEntityHandle();
                             TargetAgent->bPendingEntityDestroy = false;
+                                ++FrameDeaths;
                             const int32 EntityIdx = TargetSnapshot.Entity.Index;
                             if (EntityIdx >= 0 && EntityIdx < SnapshotIndexByEntityIndex.Num())
                             {
@@ -446,8 +451,7 @@ void UECSBattleAgentProcessor::Execute(FMassEntityManager& EntityManager, FMassE
             }
 		}
 	});
-
-    for (int32 SnapshotIndex = 0; SnapshotIndex < PendingDamageBySnapshot.Num(); ++SnapshotIndex)
+	for (int32 SnapshotIndex = 0; SnapshotIndex < PendingDamageBySnapshot.Num(); ++SnapshotIndex)
 	{
        const float QueuedDamage = PendingDamageBySnapshot[SnapshotIndex];
 		if (QueuedDamage <= 0.0f)
