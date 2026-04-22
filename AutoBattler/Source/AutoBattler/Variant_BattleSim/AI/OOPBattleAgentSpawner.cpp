@@ -3,8 +3,6 @@
 #include "Components/ArrowComponent.h"
 #include "Components/SceneComponent.h"
 #include "Engine/World.h"
-#include "Misc/FileHelper.h"
-#include "Misc/Paths.h"
 
 AOOPBattleAgentSpawner::AOOPBattleAgentSpawner()
 {
@@ -21,70 +19,19 @@ void AOOPBattleAgentSpawner::BeginPlay()
 {
 	Super::BeginPlay();
 
-  bool bShouldSpawn = bSpawnOnBeginPlay;
- const FString RunStatePath = FPaths::ProjectSavedDir() / TEXT("Benchmark/BattleBenchmark_RunState.ini");
-	FString RunStateText;
-	if (FFileHelper::LoadFileToString(RunStateText, *RunStatePath))
+    bool bShouldSpawn = bSpawnOnBeginPlay;
+    if (UWorld* World = GetWorld())
 	{
-      bool bBatchEnabled = false;
-		FString ModelOption;
-		FString CountOption;
-
-		TArray<FString> Lines;
-		RunStateText.ParseIntoArrayLines(Lines, true);
-		for (const FString& Line : Lines)
+        const FString BatchFlag = World->URL.GetOption(TEXT("BenchmarkBatch="), TEXT(""));
+		if (BatchFlag == TEXT("1"))
 		{
-           if (Line.StartsWith(TEXT("Enabled=")))
-			{
-				bBatchEnabled = FCString::Atoi(*Line.RightChop(8)) != 0;
-			}
-          else if (Line.StartsWith(TEXT("BenchmarkModel=")))
-			{
-				ModelOption = Line.RightChop(15);
-			}
-			else if (Line.StartsWith(TEXT("ModelIndex=")))
-			{
-               if (ModelOption.IsEmpty())
-				{
-					const int32 ModelIndex = FCString::Atoi(*Line.RightChop(11));
-					ModelOption = (ModelIndex == 1) ? TEXT("ECS") : TEXT("OOP");
-				}
-			}
-			else if (Line.StartsWith(TEXT("CountIndex=")))
-			{
-				// not needed here
-			}
-			else if (Line.StartsWith(TEXT("BenchmarkCount=")))
-			{
-				CountOption = Line.RightChop(15);
-			}
-		}
-
-		if (bBatchEnabled)
-		{
-			// Count is indexed by the controller, but we also support direct count value if present.
-			if (CountOption.IsEmpty())
-			{
-               for (const FString& Line : Lines)
-				{
-					if (Line.StartsWith(TEXT("CountIndex=")))
-					{
-						const int32 CountIndex = FCString::Atoi(*Line.RightChop(11));
-						static const int32 BatchCounts[] = { 10, 20, 40, 80, 160, 320, 640 };
-						if (CountIndex >= 0 && CountIndex < UE_ARRAY_COUNT(BatchCounts))
-						{
-							SpawnCount = BatchCounts[CountIndex];
-						}
-						break;
-					}
-				}
-			}
-			else
-			{
-				SpawnCount = FMath::Max(0, FCString::Atoi(*CountOption));
-			}
+           const FString ModelOption = World->URL.GetOption(TEXT("BenchmarkModel="), TEXT(""));
+			const FString CountOption = World->URL.GetOption(TEXT("BenchmarkCount="), TEXT("0"));
+			const int32 TotalAgentCount = FMath::Max(0, FCString::Atoi(*CountOption));
+			SpawnCount = TotalAgentCount / 2;
 
 			bShouldSpawn = ModelOption.Equals(TEXT("OOP"), ESearchCase::IgnoreCase);
+           UE_LOG(LogTemp, Log, TEXT("OOP Spawner '%s': batch=1 model='%s' total=%d perTeam=%d spawn=%d"), *GetName(), *ModelOption, TotalAgentCount, SpawnCount, bShouldSpawn ? 1 : 0);
 		}
 	}
 

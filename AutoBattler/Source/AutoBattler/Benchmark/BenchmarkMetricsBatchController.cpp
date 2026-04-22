@@ -137,6 +137,15 @@ void ABenchmarkMetricsBatchController::RecordCompletedRunAndAdvance(const FBattl
 		UE_LOG(LogTemp, Warning, TEXT("BenchmarkBatch: Failed to append raw CSV record."));
 	}
 
+	UE_LOG(
+		LogTemp,
+		Log,
+		TEXT("BenchmarkBatch: Recorded model=%s count=%d run=%d/%d"),
+		*ModelToString(Model),
+		Record.AgentCount,
+		CurrentRunIndex,
+		RunsPerAgentCount);
+
 	int32 NextModelIndex = CurrentModelIndex;
 	int32 NextCountIndex = CurrentCountIndex;
 	int32 NextRunIndex = CurrentRunIndex + 1;
@@ -160,6 +169,14 @@ void ABenchmarkMetricsBatchController::RecordCompletedRunAndAdvance(const FBattl
 		return;
 	}
 
+	UE_LOG(
+		LogTemp,
+		Log,
+		TEXT("BenchmarkBatch: Advancing to modelIndex=%d countIndex=%d run=%d"),
+		NextModelIndex,
+		NextCountIndex,
+		NextRunIndex);
+
 	OpenLevelForRun(NextModelIndex, NextCountIndex, NextRunIndex);
 }
 
@@ -171,8 +188,17 @@ void ABenchmarkMetricsBatchController::OpenLevelForRun(const int32 InModelIndex,
 		return;
 	}
 
- SaveRunState(InModelIndex, InCountIndex, InRunIndex, true);
-	UGameplayStatics::OpenLevel(this, FName(*UGameplayStatics::GetCurrentLevelName(this, true)), true);
+    const EBenchmarkBatchModel Model = GetModelForIndex(InModelIndex);
+	const int32 TotalAgentCount = AgentCounts[InCountIndex];
+	const FString Options = FString::Printf(
+		TEXT("BenchmarkBatch=1?BenchmarkModel=%s?BenchmarkCount=%d?BenchmarkModelIndex=%d?BenchmarkCountIndex=%d?BenchmarkRunIndex=%d"),
+		*ModelToString(Model),
+		TotalAgentCount,
+		InModelIndex,
+		InCountIndex,
+		InRunIndex);
+
+	UGameplayStatics::OpenLevel(this, FName(*UGameplayStatics::GetCurrentLevelName(this, true)), true, Options);
 }
 
 void ABenchmarkMetricsBatchController::FinalizeAndWriteAggregateCsvs()
@@ -304,43 +330,21 @@ UBattlePerformanceMetricsWidget* ABenchmarkMetricsBatchController::FindMetricsWi
 
 bool ABenchmarkMetricsBatchController::ParseRunOptions(int32& OutModelIndex, int32& OutCountIndex, int32& OutRunIndex) const
 {
-   FString StateText;
-	if (!FFileHelper::LoadFileToString(StateText, *GetRunStatePath()))
+ const UWorld* World = GetWorld();
+	if (!World)
 	{
 		return false;
 	}
 
- bool bEnabled = false;
-	OutModelIndex = 0;
-	OutCountIndex = 0;
-	OutRunIndex = 1;
-
-	TArray<FString> Lines;
-	StateText.ParseIntoArrayLines(Lines, true);
-	for (const FString& Line : Lines)
-	{
-		if (Line.StartsWith(TEXT("Enabled=")))
-		{
-			bEnabled = FCString::Atoi(*Line.RightChop(8)) != 0;
-		}
-		else if (Line.StartsWith(TEXT("ModelIndex=")))
-		{
-			OutModelIndex = FCString::Atoi(*Line.RightChop(11));
-		}
-		else if (Line.StartsWith(TEXT("CountIndex=")))
-		{
-			OutCountIndex = FCString::Atoi(*Line.RightChop(11));
-		}
-		else if (Line.StartsWith(TEXT("RunIndex=")))
-		{
-			OutRunIndex = FCString::Atoi(*Line.RightChop(9));
-		}
-	}
-
-	if (!bEnabled)
+  const FString BatchFlag = World->URL.GetOption(TEXT("BenchmarkBatch="), TEXT(""));
+	if (BatchFlag != TEXT("1"))
 	{
 		return false;
 	}
+
+  OutModelIndex = FCString::Atoi(World->URL.GetOption(TEXT("BenchmarkModelIndex="), TEXT("0")));
+	OutCountIndex = FCString::Atoi(World->URL.GetOption(TEXT("BenchmarkCountIndex="), TEXT("0")));
+	OutRunIndex = FCString::Atoi(World->URL.GetOption(TEXT("BenchmarkRunIndex="), TEXT("1")));
 
 	if (OutRunIndex <= 0)
 	{
@@ -362,24 +366,11 @@ bool ABenchmarkMetricsBatchController::ParseRunOptions(int32& OutModelIndex, int
 
 bool ABenchmarkMetricsBatchController::SaveRunState(const int32 InModelIndex, const int32 InCountIndex, const int32 InRunIndex, const bool bEnabled) const
 {
-	IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
-	const FString BenchmarkDir = GetBenchmarkDir();
-	if (!PlatformFile.DirectoryExists(*BenchmarkDir))
-	{
-		PlatformFile.CreateDirectoryTree(*BenchmarkDir);
-	}
-
-    const EBenchmarkBatchModel Model = GetModelForIndex(InModelIndex);
-	const FString Content = FString::Printf(
-     TEXT("Enabled=%d\nBenchmarkModel=%s\nModelIndex=%d\nCountIndex=%d\nRunIndex=%d\nBenchmarkCount=%d\n"),
-		bEnabled ? 1 : 0,
-       *ModelToString(Model),
-		InModelIndex,
-		InCountIndex,
-        InRunIndex,
-		AgentCounts.IsValidIndex(InCountIndex) ? AgentCounts[InCountIndex] : 0);
-
-	return FFileHelper::SaveStringToFile(Content, *GetRunStatePath());
+  (void)InModelIndex;
+	(void)InCountIndex;
+	(void)InRunIndex;
+	(void)bEnabled;
+	return true;
 }
 
 FString ABenchmarkMetricsBatchController::GetBenchmarkDir() const
