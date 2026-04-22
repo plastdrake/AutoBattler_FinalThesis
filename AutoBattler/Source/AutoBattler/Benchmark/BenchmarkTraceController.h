@@ -44,10 +44,10 @@ private:
 
     // Console commands used to control tracing
     UPROPERTY(EditAnywhere, Category = "Benchmark")
-    FString TraceStartCommand = TEXT("Trace.File Start");
+    FString TraceStartCommand = TEXT("Trace.File");
 
     UPROPERTY(EditAnywhere, Category = "Benchmark")
-    FString TraceStopCommand = TEXT("Trace.File Stop");
+    FString TraceStopCommand = TEXT("Trace.Stop");
 
     /** Generated trace output path (set when starting) */
     FString GeneratedTraceFilePath;

@@ -90,7 +90,7 @@ void ABenchmarkTraceController::StartTraceCapture()
     }
 
     // create a timestamped filename under Saved/Profiling
-    const FString Timestamp = FDateTime::Now().ToString(TEXT("yyyy-MM-dd_HH-mm-ss"));
+    const FString Timestamp = FDateTime::Now().ToString(TEXT("%Y-%m-%d_%H-%M-%S"));
     const FString ProfilingDir = FPaths::ProjectSavedDir() / TEXT("Profiling");
     IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
     if (!PlatformFile.DirectoryExists(*ProfilingDir))
@@ -132,11 +132,8 @@ void ABenchmarkTraceController::StartTraceCapture()
         }
     }
 
-    // issue Trace.File Start with file parameter
-    // Ask the tracer to write to the temp start file we've chosen so we avoid collisions with an existing Start.utrace
-    FString Command = TraceStartCommand;
-    Command += TEXT(" file=");
-    Command += TempTraceStartFilePath;
+    // issue Trace.File with explicit output path
+    const FString Command = FString::Printf(TEXT("%s %s"), *TraceStartCommand, *TempTraceStartFilePath);
 
     if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
     {
