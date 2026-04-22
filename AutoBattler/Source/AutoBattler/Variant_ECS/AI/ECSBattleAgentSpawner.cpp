@@ -8,6 +8,8 @@
 #include "Steering/MassSteeringFragments.h"
 #include "MassEntityManager.h"
 #include "MassEntitySubsystem.h"
+#include "Misc/FileHelper.h"
+#include "Misc/Paths.h"
 #include "StructUtils/StructView.h"
 
 AECSBattleAgentSpawner::AECSBattleAgentSpawner()
@@ -25,7 +27,69 @@ void AECSBattleAgentSpawner::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (bSpawnOnBeginPlay)
+  bool bShouldSpawn = bSpawnOnBeginPlay;
+ const FString RunStatePath = FPaths::ProjectSavedDir() / TEXT("Benchmark/BattleBenchmark_RunState.ini");
+	FString RunStateText;
+	if (FFileHelper::LoadFileToString(RunStateText, *RunStatePath))
+	{
+      bool bBatchEnabled = false;
+		FString ModelOption;
+		FString CountOption;
+
+		TArray<FString> Lines;
+		RunStateText.ParseIntoArrayLines(Lines, true);
+		for (const FString& Line : Lines)
+		{
+           if (Line.StartsWith(TEXT("Enabled=")))
+			{
+				bBatchEnabled = FCString::Atoi(*Line.RightChop(8)) != 0;
+			}
+          else if (Line.StartsWith(TEXT("BenchmarkModel=")))
+			{
+				ModelOption = Line.RightChop(15);
+			}
+			else if (Line.StartsWith(TEXT("ModelIndex=")))
+			{
+               if (ModelOption.IsEmpty())
+				{
+					const int32 ModelIndex = FCString::Atoi(*Line.RightChop(11));
+					ModelOption = (ModelIndex == 1) ? TEXT("ECS") : TEXT("OOP");
+				}
+			}
+			else if (Line.StartsWith(TEXT("BenchmarkCount=")))
+			{
+				CountOption = Line.RightChop(15);
+			}
+		}
+
+		if (bBatchEnabled)
+		{
+			if (CountOption.IsEmpty())
+			{
+               for (const FString& Line : Lines)
+				{
+					if (Line.StartsWith(TEXT("CountIndex=")))
+					{
+						const int32 CountIndex = FCString::Atoi(*Line.RightChop(11));
+						static const int32 BatchCounts[] = { 10, 20, 40, 80, 160, 320, 640 };
+						if (CountIndex >= 0 && CountIndex < UE_ARRAY_COUNT(BatchCounts))
+						{
+							SpawnCount = BatchCounts[CountIndex];
+						}
+						break;
+					}
+				}
+			}
+			else
+			{
+				SpawnCount = FMath::Max(0, FCString::Atoi(*CountOption));
+			}
+
+			bShouldSpawn = ModelOption.Equals(TEXT("ECS"), ESearchCase::IgnoreCase);
+		}
+	}
+
+	if (bShouldSpawn)
 	{
 		SpawnAgents();
 	}

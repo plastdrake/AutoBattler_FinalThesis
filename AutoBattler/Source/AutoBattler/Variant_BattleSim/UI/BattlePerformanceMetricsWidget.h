@@ -6,6 +6,42 @@
 
 class UTextBlock;
 
+USTRUCT(BlueprintType)
+struct FBattlePerformanceMetricsSnapshot
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadOnly, Category = "Battle Metrics")
+	float CapturedSeconds = 0.0f;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Battle Metrics")
+	int32 Samples = 0;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Battle Metrics")
+	float AvgFPS = 0.0f;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Battle Metrics")
+	float MinFPS = 0.0f;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Battle Metrics")
+	float AvgFrameMs = 0.0f;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Battle Metrics")
+	float P95Ms = 0.0f;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Battle Metrics")
+	float P99Ms = 0.0f;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Battle Metrics")
+	float WorstFrameMs = 0.0f;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Battle Metrics")
+	int32 HitchesOver16_6Ms = 0;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Battle Metrics")
+	int32 HitchesOver33_3Ms = 0;
+};
+
 UENUM(BlueprintType)
 enum class EBattleMetricsCountSourceMode : uint8
 {
@@ -25,6 +61,12 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Battle Metrics")
 	void StopCaptureAndFinalize();
+
+	UFUNCTION(BlueprintPure, Category = "Battle Metrics")
+	bool IsCaptureFinalized() const { return bCaptureFinalized; }
+
+	UFUNCTION(BlueprintPure, Category = "Battle Metrics")
+	bool GetFinalizedMetrics(FBattlePerformanceMetricsSnapshot& OutSnapshot) const;
 
 protected:
 	virtual void NativeConstruct() override;

@@ -58,6 +58,27 @@ void UBattlePerformanceMetricsWidget::StopCaptureAndFinalize()
 	RefreshSummaryText();
 }
 
+bool UBattlePerformanceMetricsWidget::GetFinalizedMetrics(FBattlePerformanceMetricsSnapshot& OutSnapshot) const
+{
+	if (!bCaptureFinalized)
+	{
+		return false;
+	}
+
+	OutSnapshot.CapturedSeconds = CapturedElapsedSeconds;
+	OutSnapshot.Samples = SampleCount;
+	OutSnapshot.AvgFPS = FinalAvgFPS;
+	OutSnapshot.MinFPS = FinalMinFPS;
+	OutSnapshot.AvgFrameMs = FinalAvgFrameTimeMs;
+	OutSnapshot.P95Ms = FinalP95FrameTimeMs;
+	OutSnapshot.P99Ms = FinalP99FrameTimeMs;
+	OutSnapshot.WorstFrameMs = FinalMaxFrameTimeMs;
+	OutSnapshot.HitchesOver16_6Ms = HitchCountOver16_6;
+	OutSnapshot.HitchesOver33_3Ms = HitchCountOver33_3;
+
+	return true;
+}
+
 void UBattlePerformanceMetricsWidget::UpdateRoundStateFromWorld()
 {
 	int32 RedCount = 0;
