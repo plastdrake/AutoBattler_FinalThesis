@@ -12,6 +12,12 @@ class AUTOBATTLER_API ABenchmarkTraceController : public AActor
 public:
     ABenchmarkTraceController();
 
+    UFUNCTION(BlueprintCallable, Category = "Benchmark")
+    void SetBenchmarkTracingEnabled(bool bEnabled);
+
+    UFUNCTION(BlueprintPure, Category = "Benchmark")
+    bool IsBenchmarkTracingEnabled() const { return bBenchmarkTracingEnabled; }
+
 protected:
     virtual void BeginPlay() override;
     virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
@@ -41,6 +47,9 @@ private:
 
     UPROPERTY(EditAnywhere, Category = "Benchmark")
     float EndTraceDelaySeconds = 1.0f;
+
+    UPROPERTY(EditAnywhere, Category = "Benchmark")
+    bool bBenchmarkTracingEnabled = true;
 
     // Console commands used to control tracing
     UPROPERTY(EditAnywhere, Category = "Benchmark")

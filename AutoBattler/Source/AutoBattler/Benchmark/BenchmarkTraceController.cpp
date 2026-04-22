@@ -20,6 +20,12 @@ void ABenchmarkTraceController::BeginPlay()
 {
     Super::BeginPlay();
 
+    if (!bBenchmarkTracingEnabled)
+    {
+        UE_LOG(LogTemp, Log, TEXT("BenchmarkTrace: Controller is disabled."));
+        return;
+    }
+
     // Start polling to detect when spawning is complete
     GetWorld()->GetTimerManager().SetTimer(PollSpawnTimerHandle, this, &ABenchmarkTraceController::PollForSpawnCompletion, SpawnPollInterval, true);
 }
@@ -29,6 +35,7 @@ void ABenchmarkTraceController::EndPlay(const EEndPlayReason::Type EndPlayReason
     GetWorld()->GetTimerManager().ClearTimer(PollSpawnTimerHandle);
     GetWorld()->GetTimerManager().ClearTimer(PollFightTimerHandle);
     GetWorld()->GetTimerManager().ClearTimer(StopTraceDelayHandle);
+    GetWorld()->GetTimerManager().ClearTimer(FinalizeTraceTimerHandle);
 
     if (bTraceRunning)
     {
@@ -38,8 +45,60 @@ void ABenchmarkTraceController::EndPlay(const EEndPlayReason::Type EndPlayReason
     Super::EndPlay(EndPlayReason);
 }
 
+void ABenchmarkTraceController::SetBenchmarkTracingEnabled(const bool bEnabled)
+{
+    if (bBenchmarkTracingEnabled == bEnabled)
+    {
+        return;
+    }
+
+    bBenchmarkTracingEnabled = bEnabled;
+
+    UWorld* World = GetWorld();
+    if (!World)
+    {
+        return;
+    }
+
+    FTimerManager& TimerManager = World->GetTimerManager();
+    if (!bBenchmarkTracingEnabled)
+    {
+        TimerManager.ClearTimer(PollSpawnTimerHandle);
+        TimerManager.ClearTimer(PollFightTimerHandle);
+        TimerManager.ClearTimer(StopTraceDelayHandle);
+        TimerManager.ClearTimer(FinalizeTraceTimerHandle);
+
+        if (bTraceRunning)
+        {
+            StopTraceCapture();
+        }
+
+        UE_LOG(LogTemp, Log, TEXT("BenchmarkTrace: Controller disabled."));
+        return;
+    }
+
+    LastSpawnCount = -1;
+    StableSpawnTicks = 0;
+
+    if (!bTraceRunning)
+    {
+        TimerManager.SetTimer(PollSpawnTimerHandle, this, &ABenchmarkTraceController::PollForSpawnCompletion, SpawnPollInterval, true);
+    }
+
+    UE_LOG(LogTemp, Log, TEXT("BenchmarkTrace: Controller enabled."));
+}
+
 void ABenchmarkTraceController::PollForSpawnCompletion()
 {
+    if (!bBenchmarkTracingEnabled)
+    {
+        if (UWorld* World = GetWorld())
+        {
+            World->GetTimerManager().ClearTimer(PollSpawnTimerHandle);
+        }
+        return;
+    }
+
     UWorld* World = GetWorld();
     if (!World)
     {
@@ -84,7 +143,7 @@ void ABenchmarkTraceController::PollForSpawnCompletion()
 
 void ABenchmarkTraceController::StartTraceCapture()
 {
-    if (bTraceRunning)
+    if (!bBenchmarkTracingEnabled || bTraceRunning)
     {
         return;
     }
@@ -146,6 +205,15 @@ void ABenchmarkTraceController::StartTraceCapture()
 
 void ABenchmarkTraceController::PollForFightEnd()
 {
+    if (!bBenchmarkTracingEnabled)
+    {
+        if (UWorld* World = GetWorld())
+        {
+            World->GetTimerManager().ClearTimer(PollFightTimerHandle);
+        }
+        return;
+    }
+
     UWorld* World = GetWorld();
     if (!World)
     {
