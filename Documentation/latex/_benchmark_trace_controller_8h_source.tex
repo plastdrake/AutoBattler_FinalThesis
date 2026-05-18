@@ -1,0 +1,77 @@
+\doxysection{Benchmark\+Trace\+Controller.\+h}
+\hypertarget{_benchmark_trace_controller_8h_source}{}\label{_benchmark_trace_controller_8h_source}\index{D:/School/AutoBattler\_FinalThesis/AutoBattler/Source/AutoBattler/Benchmark/BenchmarkTraceController.h@{D:/School/AutoBattler\_FinalThesis/AutoBattler/Source/AutoBattler/Benchmark/BenchmarkTraceController.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}GameFramework/Actor.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}BenchmarkTraceController.generated.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00008\ UCLASS()}
+\DoxyCodeLine{00009\ class\ AUTOBATTLER\_API\ \doxymbox{\hyperlink{class_a_benchmark_trace_controller_ae51a47294cb8c0940e799606f2a5cb25}{ABenchmarkTraceController}}\ :\ public\ AActor}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \doxymbox{\hyperlink{class_a_benchmark_trace_controller_ae51a47294cb8c0940e799606f2a5cb25}{ABenchmarkTraceController}}();}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00021\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Benchmark"{}})}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_a_benchmark_trace_controller_a67865aa3180efcd2f04ccfb6b3e5072f}{SetBenchmarkTracingEnabled}}(\textcolor{keywordtype}{bool}\ bEnabled);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00028\ \ \ \ \ UFUNCTION(BlueprintPure,\ Category\ =\ \textcolor{stringliteral}{"{}Benchmark"{}})}
+\DoxyCodeLine{00029\ \ \ \ \ bool\ \doxymbox{\hyperlink{class_a_benchmark_trace_controller_a8a42131667b2283ea0c1b7e4e7c7bdb0}{IsBenchmarkTracingEnabled}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ bBenchmarkTracingEnabled;\ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ BeginPlay()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ EndPlay(\textcolor{keyword}{const}\ EEndPlayReason::Type\ EndPlayReason)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ PollForSpawnCompletion();}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ StartTraceCapture();}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ PollForFightEnd();}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ StopTraceCapture();}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ FinalizeTraceAttempt();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00053\ \ \ \ \ FTimerHandle\ PollSpawnTimerHandle;}
+\DoxyCodeLine{00055\ \ \ \ \ FTimerHandle\ PollFightTimerHandle;}
+\DoxyCodeLine{00057\ \ \ \ \ FTimerHandle\ StopTraceDelayHandle;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{bool}\ bTraceRunning\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{double}\ TraceStartTime\ =\ 0.0;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00065\ \ \ \ \ int32\ LastSpawnCount\ =\ -\/1;}
+\DoxyCodeLine{00067\ \ \ \ \ int32\ StableSpawnTicks\ =\ 0;}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00070\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Benchmark"{}})}
+\DoxyCodeLine{00071\ \ \ \ \ float\ SpawnPollInterval\ =\ 0.25f;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00074\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Benchmark"{}})}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{float}\ FightPollInterval\ =\ 0.1f;}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00078\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Benchmark"{}})}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{float}\ EndTraceDelaySeconds\ =\ 1.0f;}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00082\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Benchmark"{}})}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{bool}\ bBenchmarkTracingEnabled\ =\ true;}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00086\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Benchmark"{}})}
+\DoxyCodeLine{00087\ \ \ \ \ FString\ TraceStartCommand\ =\ TEXT(\textcolor{stringliteral}{"{}Trace.File"{}});}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00090\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Benchmark"{}})}
+\DoxyCodeLine{00091\ \ \ \ \ FString\ TraceStopCommand\ =\ TEXT(\textcolor{stringliteral}{"{}Trace.Stop"{}});}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00094\ \ \ \ \ FString\ GeneratedTraceFilePath;}
+\DoxyCodeLine{00096\ \ \ \ \ FString\ TempTraceStartFilePath;}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00099\ \ \ \ \ FTimerHandle\ FinalizeTraceTimerHandle;}
+\DoxyCodeLine{00101\ \ \ \ \ int32\ FinalizeAttemptsLeft\ =\ 0;}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00104\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Benchmark"{}})}
+\DoxyCodeLine{00105\ \ \ \ \ int32\ FinalizeMaxAttempts\ =\ 20;}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00108\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Benchmark"{}})}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{float}\ FinalizeRetryInterval\ =\ 0.25f;}
+\DoxyCodeLine{00110\ \};}
+
+\end{DoxyCode}

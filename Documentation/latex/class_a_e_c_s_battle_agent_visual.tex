@@ -1,0 +1,253 @@
+\doxysection{AECSBattle\+Agent\+Visual Class Reference}
+\hypertarget{class_a_e_c_s_battle_agent_visual}{}\label{class_a_e_c_s_battle_agent_visual}\index{AECSBattleAgentVisual@{AECSBattleAgentVisual}}
+
+
+Visual character used to represent an ECS battle agent.  
+
+
+
+
+{\ttfamily \+\#include $<$ECSBattle\+Agent\+Visual.\+h$>$}
+
+
+
+Inheritance diagram for AECSBattle\+Agent\+Visual:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_a_e_c_s_battle_agent_visual__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for AECSBattle\+Agent\+Visual:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_a_e_c_s_battle_agent_visual__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_e_c_s_battle_agent_visual_ac82d4c80e5fe5319a4471e18bbae4a5e}\label{class_a_e_c_s_battle_agent_visual_ac82d4c80e5fe5319a4471e18bbae4a5e} 
+{\bfseries AECSBattle\+Agent\+Visual} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+virtual FVector \doxymbox{\hyperlink{class_a_e_c_s_battle_agent_visual_a5b284ee984fed07aaa4c0dee5072c5fb}{Get\+Velocity}} () const override
+\begin{DoxyCompactList}\small\item\em Returns the cached velocity for the visual. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_a_e_c_s_battle_agent_visual_a8837a9da954462aa31833bb8fc3606b3}{On\+Team\+Assigned}} (EECSBattle\+Agent\+Team Team)
+\begin{DoxyCompactList}\small\item\em Blueprint event fired when the team assignment changes. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_a_e_c_s_battle_agent_visual_a05e2ced24d34dcd61ca4aa8a0f893b9f}{Set\+Assigned\+Team}} (EECSBattle\+Agent\+Team Team)
+\begin{DoxyCompactList}\small\item\em Assigns this visual to a team. \end{DoxyCompactList}\item 
+EECSBattle\+Agent\+Team \doxymbox{\hyperlink{class_a_e_c_s_battle_agent_visual_ad3ba47d6108b2fb7f98a7bfa82be5b9f}{Get\+Assigned\+Team}} () const
+\begin{DoxyCompactList}\small\item\em Returns the assigned team for this visual. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_a_e_c_s_battle_agent_visual_a11ad711745f2b235c1ef7ea016105a6a}{Has\+Assigned\+Team}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if a team has been assigned. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_visual_a4e909187be10f0622edf2b25e3331bd7}\label{class_a_e_c_s_battle_agent_visual_a4e909187be10f0622edf2b25e3331bd7} 
+void {\bfseries Play\+Attack\+Montage} ()
+\begin{DoxyCompactList}\small\item\em Plays the attack montage if one is assigned. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_a_e_c_s_battle_agent_visual_a9f933640cef0aa99d627430968fa2fe5}{Sync\+From\+Mass\+Transform}} (const FTransform \&World\+Transform, float Delta\+Time\+Seconds)
+\begin{DoxyCompactList}\small\item\em Syncs this visual with the Mass transform state. \end{DoxyCompactList}\item 
+const FVector \& \doxymbox{\hyperlink{class_a_e_c_s_battle_agent_visual_a0cd10aa9205b676f272131ff23edd584}{Get\+Cached\+Velocity}} () const
+\begin{DoxyCompactList}\small\item\em Returns the cached velocity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_e_c_s_battle_agent_visual_a31a2eb73d500ba62ccc576369fb8c87c}\label{class_a_e_c_s_battle_agent_visual_a31a2eb73d500ba62ccc576369fb8c87c} 
+TObject\+Ptr$<$ UAnim\+Montage $>$ {\bfseries Attack\+Montage}
+\begin{DoxyCompactList}\small\item\em Attack montage to play when this visual performs an attack. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Visual character used to represent an ECS battle agent. 
+
+\label{class_a_e_c_s_battle_agent_visual_doc-func-members}
+\Hypertarget{class_a_e_c_s_battle_agent_visual_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_a_e_c_s_battle_agent_visual_ad3ba47d6108b2fb7f98a7bfa82be5b9f}\index{AECSBattleAgentVisual@{AECSBattleAgentVisual}!GetAssignedTeam@{GetAssignedTeam}}
+\index{GetAssignedTeam@{GetAssignedTeam}!AECSBattleAgentVisual@{AECSBattleAgentVisual}}
+\doxysubsubsection{\texorpdfstring{GetAssignedTeam()}{GetAssignedTeam()}}
+{\footnotesize\ttfamily \label{class_a_e_c_s_battle_agent_visual_ad3ba47d6108b2fb7f98a7bfa82be5b9f} 
+EECSBattle\+Agent\+Team AECSBattle\+Agent\+Visual::\+\+Get\+Assigned\+Team (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the assigned team for this visual. 
+
+\begin{DoxyReturn}{Returns}
+Assigned team. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_a_e_c_s_battle_agent_visual_ad3ba47d6108b2fb7f98a7bfa82be5b9f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_a_e_c_s_battle_agent_visual_ad3ba47d6108b2fb7f98a7bfa82be5b9f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_e_c_s_battle_agent_visual_a0cd10aa9205b676f272131ff23edd584}\index{AECSBattleAgentVisual@{AECSBattleAgentVisual}!GetCachedVelocity@{GetCachedVelocity}}
+\index{GetCachedVelocity@{GetCachedVelocity}!AECSBattleAgentVisual@{AECSBattleAgentVisual}}
+\doxysubsubsection{\texorpdfstring{GetCachedVelocity()}{GetCachedVelocity()}}
+{\footnotesize\ttfamily \label{class_a_e_c_s_battle_agent_visual_a0cd10aa9205b676f272131ff23edd584} 
+const FVector \& AECSBattle\+Agent\+Visual::\+\+Get\+Cached\+Velocity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the cached velocity. 
+
+\begin{DoxyReturn}{Returns}
+Cached velocity reference. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_a_e_c_s_battle_agent_visual_a0cd10aa9205b676f272131ff23edd584_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_a_e_c_s_battle_agent_visual_a0cd10aa9205b676f272131ff23edd584_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_e_c_s_battle_agent_visual_a5b284ee984fed07aaa4c0dee5072c5fb}\index{AECSBattleAgentVisual@{AECSBattleAgentVisual}!GetVelocity@{GetVelocity}}
+\index{GetVelocity@{GetVelocity}!AECSBattleAgentVisual@{AECSBattleAgentVisual}}
+\doxysubsubsection{\texorpdfstring{GetVelocity()}{GetVelocity()}}
+{\footnotesize\ttfamily \label{class_a_e_c_s_battle_agent_visual_a5b284ee984fed07aaa4c0dee5072c5fb} 
+FVector AECSBattle\+Agent\+Visual::\+\+Get\+Velocity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns the cached velocity for the visual. 
+
+\begin{DoxyReturn}{Returns}
+Cached velocity. 
+\end{DoxyReturn}
+\Hypertarget{class_a_e_c_s_battle_agent_visual_a11ad711745f2b235c1ef7ea016105a6a}\index{AECSBattleAgentVisual@{AECSBattleAgentVisual}!HasAssignedTeam@{HasAssignedTeam}}
+\index{HasAssignedTeam@{HasAssignedTeam}!AECSBattleAgentVisual@{AECSBattleAgentVisual}}
+\doxysubsubsection{\texorpdfstring{HasAssignedTeam()}{HasAssignedTeam()}}
+{\footnotesize\ttfamily \label{class_a_e_c_s_battle_agent_visual_a11ad711745f2b235c1ef7ea016105a6a} 
+bool AECSBattle\+Agent\+Visual::\+\+Has\+Assigned\+Team (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns true if a team has been assigned. 
+
+\begin{DoxyReturn}{Returns}
+True when a team assignment is valid. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_a_e_c_s_battle_agent_visual_a11ad711745f2b235c1ef7ea016105a6a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_a_e_c_s_battle_agent_visual_a11ad711745f2b235c1ef7ea016105a6a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_e_c_s_battle_agent_visual_a8837a9da954462aa31833bb8fc3606b3}\index{AECSBattleAgentVisual@{AECSBattleAgentVisual}!OnTeamAssigned@{OnTeamAssigned}}
+\index{OnTeamAssigned@{OnTeamAssigned}!AECSBattleAgentVisual@{AECSBattleAgentVisual}}
+\doxysubsubsection{\texorpdfstring{OnTeamAssigned()}{OnTeamAssigned()}}
+{\footnotesize\ttfamily \label{class_a_e_c_s_battle_agent_visual_a8837a9da954462aa31833bb8fc3606b3} 
+void AECSBattle\+Agent\+Visual::\+\+On\+Team\+Assigned (\begin{DoxyParamCaption}\item[{EECSBattle\+Agent\+Team}]{Team}{}\end{DoxyParamCaption})}
+
+
+
+Blueprint event fired when the team assignment changes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Team} & Newly assigned team. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_e_c_s_battle_agent_visual_a8837a9da954462aa31833bb8fc3606b3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_e_c_s_battle_agent_visual_a8837a9da954462aa31833bb8fc3606b3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_e_c_s_battle_agent_visual_a05e2ced24d34dcd61ca4aa8a0f893b9f}\index{AECSBattleAgentVisual@{AECSBattleAgentVisual}!SetAssignedTeam@{SetAssignedTeam}}
+\index{SetAssignedTeam@{SetAssignedTeam}!AECSBattleAgentVisual@{AECSBattleAgentVisual}}
+\doxysubsubsection{\texorpdfstring{SetAssignedTeam()}{SetAssignedTeam()}}
+{\footnotesize\ttfamily \label{class_a_e_c_s_battle_agent_visual_a05e2ced24d34dcd61ca4aa8a0f893b9f} 
+void AECSBattle\+Agent\+Visual::\+\+Set\+Assigned\+Team (\begin{DoxyParamCaption}\item[{EECSBattle\+Agent\+Team}]{Team}{}\end{DoxyParamCaption})}
+
+
+
+Assigns this visual to a team. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Team} & Team to assign. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_e_c_s_battle_agent_visual_a05e2ced24d34dcd61ca4aa8a0f893b9f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_e_c_s_battle_agent_visual_a05e2ced24d34dcd61ca4aa8a0f893b9f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_e_c_s_battle_agent_visual_a9f933640cef0aa99d627430968fa2fe5}\index{AECSBattleAgentVisual@{AECSBattleAgentVisual}!SyncFromMassTransform@{SyncFromMassTransform}}
+\index{SyncFromMassTransform@{SyncFromMassTransform}!AECSBattleAgentVisual@{AECSBattleAgentVisual}}
+\doxysubsubsection{\texorpdfstring{SyncFromMassTransform()}{SyncFromMassTransform()}}
+{\footnotesize\ttfamily \label{class_a_e_c_s_battle_agent_visual_a9f933640cef0aa99d627430968fa2fe5} 
+void AECSBattle\+Agent\+Visual::\+\+Sync\+From\+Mass\+Transform (\begin{DoxyParamCaption}\item[{const FTransform \&}]{World\+Transform}{, }\item[{float}]{Delta\+Time\+Seconds}{}\end{DoxyParamCaption})}
+
+
+
+Syncs this visual with the Mass transform state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em World\+Transform} & Source transform from Mass. \\
+\hline
+{\em Delta\+Time\+Seconds} & Time step used to compute velocity. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+ECS/\+\+AI/\+ECSBattle\+Agent\+Visual.\+h\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+ECS/\+\+AI/\+ECSBattle\+Agent\+Visual.\+cpp\end{DoxyCompactItemize}

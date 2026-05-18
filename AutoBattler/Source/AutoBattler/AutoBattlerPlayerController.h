@@ -9,10 +9,7 @@
 class UInputMappingContext;
 class UUserWidget;
 
-/**
- *  Basic PlayerController class for a third person game
- *  Manages input mappings
- */
+/** @brief Basic player controller for the third-person template. */
 UCLASS(abstract)
 class AAutoBattlerPlayerController : public APlayerController
 {
@@ -20,33 +17,36 @@ class AAutoBattlerPlayerController : public APlayerController
 	
 protected:
 
-	/** Input Mapping Contexts */
+	/** @brief Default input mapping contexts. */
 	UPROPERTY(EditAnywhere, Category ="Input|Input Mappings")
 	TArray<UInputMappingContext*> DefaultMappingContexts;
 
-	/** Input Mapping Contexts */
+	/** @brief Input mapping contexts excluded when touch controls are active. */
 	UPROPERTY(EditAnywhere, Category="Input|Input Mappings")
 	TArray<UInputMappingContext*> MobileExcludedMappingContexts;
 
-	/** Mobile controls widget to spawn */
+	/** @brief Mobile controls widget to spawn. */
 	UPROPERTY(EditAnywhere, Category="Input|Touch Controls")
 	TSubclassOf<UUserWidget> MobileControlsWidgetClass;
 
-	/** Pointer to the mobile controls widget */
+	/** @brief Pointer to the mobile controls widget. */
 	UPROPERTY()
 	TObjectPtr<UUserWidget> MobileControlsWidget;
 
-	/** If true, the player will use UMG touch controls even if not playing on mobile platforms */
+	/** @brief If true, the player uses UMG touch controls even outside mobile platforms. */
 	UPROPERTY(EditAnywhere, Config, Category = "Input|Touch Controls")
 	bool bForceTouchControls = false;
 
-	/** Gameplay initialization */
+	/** @brief Gameplay initialization. */
 	virtual void BeginPlay() override;
 
-	/** Input mapping context setup */
+	/** @brief Input mapping context setup. */
 	virtual void SetupInputComponent() override;
 
-	/** Returns true if the player should use UMG touch controls */
+	/**
+	 * @brief Returns true if the player should use UMG touch controls.
+	 * @return True when touch controls should be active.
+	 */
 	bool ShouldUseTouchControls() const;
 
 };

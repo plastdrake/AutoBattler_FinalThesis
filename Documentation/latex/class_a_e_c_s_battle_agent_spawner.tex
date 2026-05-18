@@ -1,0 +1,131 @@
+\doxysection{AECSBattle\+Agent\+Spawner Class Reference}
+\hypertarget{class_a_e_c_s_battle_agent_spawner}{}\label{class_a_e_c_s_battle_agent_spawner}\index{AECSBattleAgentSpawner@{AECSBattleAgentSpawner}}
+
+
+Spawns ECS battle agents and initializes their Mass fragments.  
+
+
+
+
+{\ttfamily \+\#include $<$ECSBattle\+Agent\+Spawner.\+h$>$}
+
+
+
+Inheritance diagram for AECSBattle\+Agent\+Spawner:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{class_a_e_c_s_battle_agent_spawner__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for AECSBattle\+Agent\+Spawner:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{class_a_e_c_s_battle_agent_spawner__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_a7a8925b2b0b2f10f987380924470f011}\label{class_a_e_c_s_battle_agent_spawner_a7a8925b2b0b2f10f987380924470f011} 
+{\bfseries AECSBattle\+Agent\+Spawner} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_a_e_c_s_battle_agent_spawner_ad009ec466ddca20a71ff32a922328a5d}{Spawn\+Agents}} ()
+\begin{DoxyCompactList}\small\item\em Spawns agents based on the current spawner settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_a98479d31459ec085a3418838c7b4239d}\label{class_a_e_c_s_battle_agent_spawner_a98479d31459ec085a3418838c7b4239d} 
+virtual void {\bfseries Begin\+Play} () override
+\begin{DoxyCompactList}\small\item\em Handles spawn-\/on-\/begin-\/play behavior. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_ab7cf01da613be39028113a37949f2d3d}\label{class_a_e_c_s_battle_agent_spawner_ab7cf01da613be39028113a37949f2d3d} 
+TObject\+Ptr$<$ UArrow\+Component $>$ {\bfseries Spawn\+Direction}
+\begin{DoxyCompactList}\small\item\em Direction indicator used to place agent rows. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_a2a2c1ae7d560f59bf0b944534c3b458e}\label{class_a_e_c_s_battle_agent_spawner_a2a2c1ae7d560f59bf0b944534c3b458e} 
+int32 {\bfseries Spawn\+Count} = 10
+\begin{DoxyCompactList}\small\item\em Number of agents to spawn for this team. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_a857104f6c4ad4b59c25d953c63d01548}\label{class_a_e_c_s_battle_agent_spawner_a857104f6c4ad4b59c25d953c63d01548} 
+float {\bfseries Spawn\+Spacing} = 120.\+0f
+\begin{DoxyCompactList}\small\item\em Spacing between agents in a row. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_a556c2fa5da8e2bb9de3106e812620266}\label{class_a_e_c_s_battle_agent_spawner_a556c2fa5da8e2bb9de3106e812620266} 
+int32 {\bfseries Spawn\+Rows} = 1
+\begin{DoxyCompactList}\small\item\em Number of rows to distribute agents across. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_aa98857eb5ddd9c080ccdcdd84ee59979}\label{class_a_e_c_s_battle_agent_spawner_aa98857eb5ddd9c080ccdcdd84ee59979} 
+float {\bfseries Row\+Spacing} = 120.\+0f
+\begin{DoxyCompactList}\small\item\em Spacing between rows. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_a6d9cab659b9bbe36f88a29acfcaadd8b}\label{class_a_e_c_s_battle_agent_spawner_a6d9cab659b9bbe36f88a29acfcaadd8b} 
+EECSBattle\+Agent\+Team {\bfseries Team} = EECSBattle\+Agent\+Team::\+\+Red
+\begin{DoxyCompactList}\small\item\em Team assignment for spawned agents. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_a8a990c2facd90dbaa83f6688a7b02c62}\label{class_a_e_c_s_battle_agent_spawner_a8a990c2facd90dbaa83f6688a7b02c62} 
+bool {\bfseries b\+Spawn\+On\+Begin\+Play} = true
+\begin{DoxyCompactList}\small\item\em If true, spawns agents on Begin\+Play. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_a9608089d8173a5335b6e1d1821c637f7}\label{class_a_e_c_s_battle_agent_spawner_a9608089d8173a5335b6e1d1821c637f7} 
+float {\bfseries Max\+Health} = 100.\+0f
+\begin{DoxyCompactList}\small\item\em Maximum health value assigned to spawned agents. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_a0574d3f58775a3a7554d98734165baa5}\label{class_a_e_c_s_battle_agent_spawner_a0574d3f58775a3a7554d98734165baa5} 
+float {\bfseries Move\+Speed} = 300.\+0f
+\begin{DoxyCompactList}\small\item\em Movement speed assigned to spawned agents. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_a2561b743341ee26861def285ee62905a}\label{class_a_e_c_s_battle_agent_spawner_a2561b743341ee26861def285ee62905a} 
+float {\bfseries Agent\+Radius} = 42.\+0f
+\begin{DoxyCompactList}\small\item\em Agent radius used for avoidance and spacing. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_ae023ca7161462fd7229a4d5f4a91bfd4}\label{class_a_e_c_s_battle_agent_spawner_ae023ca7161462fd7229a4d5f4a91bfd4} 
+float {\bfseries Attack\+Range} = 140.\+0f
+\begin{DoxyCompactList}\small\item\em Attack range assigned to spawned agents. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_aeac2dbcf0b1b3eb7caa74263c13385a1}\label{class_a_e_c_s_battle_agent_spawner_aeac2dbcf0b1b3eb7caa74263c13385a1} 
+float {\bfseries Attack\+Damage} = 10.\+0f
+\begin{DoxyCompactList}\small\item\em Attack damage assigned to spawned agents. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_a72ac381c1dabdacb03a4f6a911ba4c12}\label{class_a_e_c_s_battle_agent_spawner_a72ac381c1dabdacb03a4f6a911ba4c12} 
+float {\bfseries Attack\+Interval} = 0.\+6f
+\begin{DoxyCompactList}\small\item\em Attack interval assigned to spawned agents. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_a4455fa77c825688fc0a667d7aced70e5}\label{class_a_e_c_s_battle_agent_spawner_a4455fa77c825688fc0a667d7aced70e5} 
+float {\bfseries Target\+Search\+Radius} = 100000.\+0f
+\begin{DoxyCompactList}\small\item\em Target search radius assigned to spawned agents. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_a9b49eb7777d029daed88ac134db0175a}\label{class_a_e_c_s_battle_agent_spawner_a9b49eb7777d029daed88ac134db0175a} 
+float {\bfseries Target\+Refresh\+Interval} = 0.\+25f
+\begin{DoxyCompactList}\small\item\em Target refresh interval assigned to spawned agents. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_a657f22806029a399026751aaa499e1ef}\label{class_a_e_c_s_battle_agent_spawner_a657f22806029a399026751aaa499e1ef} 
+float {\bfseries Destroy\+Delay} = 2.\+0f
+\begin{DoxyCompactList}\small\item\em Destroy delay assigned to spawned agents. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_aae6d2b581f50840b0b0bbe772c3081fd}\label{class_a_e_c_s_battle_agent_spawner_aae6d2b581f50840b0b0bbe772c3081fd} 
+TSubclass\+Of$<$ ACharacter $>$ {\bfseries Visual\+Character\+Class}
+\begin{DoxyCompactList}\small\item\em Visual character class used to represent spawned agents. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Spawns ECS battle agents and initializes their Mass fragments. 
+
+\label{class_a_e_c_s_battle_agent_spawner_doc-func-members}
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_a_e_c_s_battle_agent_spawner_ad009ec466ddca20a71ff32a922328a5d}\index{AECSBattleAgentSpawner@{AECSBattleAgentSpawner}!SpawnAgents@{SpawnAgents}}
+\index{SpawnAgents@{SpawnAgents}!AECSBattleAgentSpawner@{AECSBattleAgentSpawner}}
+\doxysubsubsection{\texorpdfstring{SpawnAgents()}{SpawnAgents()}}
+{\footnotesize\ttfamily \label{class_a_e_c_s_battle_agent_spawner_ad009ec466ddca20a71ff32a922328a5d} 
+void AECSBattle\+Agent\+Spawner::\+\+Spawn\+Agents (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Spawns agents based on the current spawner settings. 
+
+Assign a stable slot angle so formation remains consistent around the target.Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_e_c_s_battle_agent_spawner_ad009ec466ddca20a71ff32a922328a5d_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+ECS/\+\+AI/\+ECSBattle\+Agent\+Spawner.\+h\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+ECS/\+\+AI/\+ECSBattle\+Agent\+Spawner.\+cpp\end{DoxyCompactItemize}

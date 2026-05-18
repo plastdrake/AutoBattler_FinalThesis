@@ -1,0 +1,5 @@
+<map id="AAutoBattlerCharacter::Look" name="AAutoBattlerCharacter::Look">
+<area shape="rect" id="Node000001" title="Handles raw look input." alt="" coords="5,5,158,48"/>
+<area shape="rect" id="Node000002" href="$class_a_auto_battler_character.html#acc005ffe581d36ac524e77477081c52c" title="Handles look input from either controls or UI interfaces." alt="" coords="206,5,358,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,24,193,26,188,27,158,29"/>
+</map>

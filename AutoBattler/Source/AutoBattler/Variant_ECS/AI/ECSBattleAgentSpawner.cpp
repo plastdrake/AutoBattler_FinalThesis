@@ -140,7 +140,7 @@ void AECSBattleAgentSpawner::SpawnAgents()
 		AgentData.bDying = false;
 		AgentData.bPendingEntityDestroy = false;
 
-		// Assign a stable slot angle so formation remains consistent (spread around target)
+		/** Assign a stable slot angle so formation remains consistent around the target. */
 		const float SlotHash = FMath::Frac(static_cast<float>(Index) * 0.61803398875f);
 		AgentData.SlotAngleDegrees = (SlotHash * 2.0f - 1.0f) * 70.0f;
 		AgentData.bTriggerAttackMontage = false;

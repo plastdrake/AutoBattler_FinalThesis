@@ -7,26 +7,43 @@
 struct FECSBattleAgentFragment;
 struct FTransformFragment;
 
+/** @brief Mass processor that drives ECS battle agent behavior. */
 UCLASS()
 class AUTOBATTLER_API UECSBattleAgentProcessor : public UMassProcessor
 {
 	GENERATED_BODY()
 
 public:
-	UECSBattleAgentProcessor();
+    /** @brief Default constructor. */
+    UECSBattleAgentProcessor();
 
 protected:
-	virtual void ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager) override;
-	virtual void Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context) override;
+    /**
+     * @brief Configures entity queries for this processor.
+     * @param EntityManager Entity manager used to build queries.
+     */
+    virtual void ConfigureQueries(const TSharedRef<FMassEntityManager>& EntityManager) override;
+    /**
+     * @brief Executes the processor for each tick.
+     * @param EntityManager Entity manager used to access entities.
+     * @param Context Mass execution context for this tick.
+     */
+    virtual void Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context) override;
 
 private:
+    /** @brief Query that selects agent entities for behavior updates. */
 	FMassEntityQuery AgentQuery;
 
-    // Simple aggregated performance metrics
-    int64 TotalSeparationChecks = 0; // Resetting to zero
-    int64 TotalAttacks = 0; // Resetting to zero
-    int64 TotalDeaths = 0; // Resetting to zero
-    int64 FramesProcessed = 0; // Resetting to zero
-    double TotalProcessorTimeSeconds = 0.0; // Resetting to zero
-    bool bFinalSummaryLogged = false; // Resetting to false
+    /** @brief Aggregated performance metrics for logging and benchmarking. */
+    int64 TotalSeparationChecks = 0;
+    /** @brief Total attacks processed. */
+    int64 TotalAttacks = 0;
+    /** @brief Total deaths processed. */
+    int64 TotalDeaths = 0;
+    /** @brief Total frames processed. */
+    int64 FramesProcessed = 0;
+    /** @brief Total processor time in seconds. */
+    double TotalProcessorTimeSeconds = 0.0;
+    /** @brief True once the final summary has been logged. */
+    bool bFinalSummaryLogged = false;
 };

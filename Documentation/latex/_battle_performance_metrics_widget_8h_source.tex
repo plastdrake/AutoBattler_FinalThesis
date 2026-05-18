@@ -1,0 +1,143 @@
+\doxysection{Battle\+Performance\+Metrics\+Widget.\+h}
+\hypertarget{_battle_performance_metrics_widget_8h_source}{}\label{_battle_performance_metrics_widget_8h_source}\index{D:/School/AutoBattler\_FinalThesis/AutoBattler/Source/AutoBattler/Variant\_BattleSim/UI/BattlePerformanceMetricsWidget.h@{D:/School/AutoBattler\_FinalThesis/AutoBattler/Source/AutoBattler/Variant\_BattleSim/UI/BattlePerformanceMetricsWidget.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Blueprint/UserWidget.h"{}}}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keywordtype}{bool}\ bCaptureActive\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{bool}\ bCaptureFinalized\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{double}\ CaptureStartRealSeconds\ =\ 0.0;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{double}\ LastSampleRealSeconds\ =\ 0.0;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{float}\ RoundElapsedSeconds\ =\ 0.0f;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{float}\ CapturedElapsedSeconds\ =\ 0.0f;}
+\DoxyCodeLine{00019\ \ \ \ \ int32\ SampleCount\ =\ 0;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{double}\ SumFPS\ =\ 0.0;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{double}\ SumFrameTimeMs\ =\ 0.0f;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ MinFPS\ =\ FLT\_MAX;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{float}\ MaxFrameTimeMs\ =\ 0.0f;}
+\DoxyCodeLine{00029\ \ \ \ \ int32\ HitchCountOver16\_6\ =\ 0;}
+\DoxyCodeLine{00031\ \ \ \ \ int32\ HitchCountOver33\_3\ =\ 0;}
+\DoxyCodeLine{00033\ \ \ \ \ int32\ PeakAliveAgents\ =\ 0;}
+\DoxyCodeLine{00035\ \ \ \ \ int32\ LastRedCount\ =\ 0;}
+\DoxyCodeLine{00037\ \ \ \ \ int32\ LastBlueCount\ =\ 0;}
+\DoxyCodeLine{00039\ \ \ \ \ TArray<float>\ CapturedFrameTimesMs;}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{float}\ FinalAvgFPS\ =\ 0.0f;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{float}\ FinalAvgFrameTimeMs\ =\ 0.0f;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{float}\ FinalP95FrameTimeMs\ =\ 0.0f;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{float}\ FinalP99FrameTimeMs\ =\ 0.0f;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{float}\ FinalMinFPS\ =\ 0.0f;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{float}\ FinalMaxFrameTimeMs\ =\ 0.0f;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00055\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Metrics"{}})}
+\DoxyCodeLine{00056\ \ \ \ \ float\ AvgFrameMs\ =\ 0.0f;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00059\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Metrics"{}})}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{float}\ P95Ms\ =\ 0.0f;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00063\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Metrics"{}})}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{float}\ P99Ms\ =\ 0.0f;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00067\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Metrics"{}})}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{float}\ WorstFrameMs\ =\ 0.0f;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00071\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Metrics"{}})}
+\DoxyCodeLine{00072\ \ \ \ \ int32\ HitchesOver16\_6Ms\ =\ 0;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00075\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Metrics"{}})}
+\DoxyCodeLine{00076\ \ \ \ \ int32\ HitchesOver33\_3Ms\ =\ 0;}
+\DoxyCodeLine{00077\ \};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00080\ UENUM(BlueprintType)}
+\DoxyCodeLine{00081\ enum\ class\ EBattleMetricsCountSourceMode\ :\ uint8}
+\DoxyCodeLine{00082\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ AutoDetect\ UMETA(DisplayName\ =\ \textcolor{stringliteral}{"{}Auto\ Detect"{}}),}
+\DoxyCodeLine{00084\ \ \ \ \ OOPAgents\ UMETA(DisplayName\ =\ \textcolor{stringliteral}{"{}OOP\ Agents"{}}),}
+\DoxyCodeLine{00085\ \ \ \ \ ECSVisuals\ UMETA(DisplayName\ =\ \textcolor{stringliteral}{"{}ECS\ Visuals"{}})}
+\DoxyCodeLine{00086\ \};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00089\ UCLASS(Abstract)}
+\DoxyCodeLine{00090\ class\ AUTOBATTLER\_API\ \doxymbox{\hyperlink{class_u_battle_performance_metrics_widget}{UBattlePerformanceMetricsWidget}}\ :\ public\ UUserWidget}
+\DoxyCodeLine{00091\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00096\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Metrics"{}})}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_u_battle_performance_metrics_widget_aac4fe77ac24a671a71d06059a9cdebee}{ResetAndStartCapture}}();}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00100\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Metrics"{}})}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_u_battle_performance_metrics_widget_a838b2ab85581ad7d568af7583f6d44b5}{StopCaptureAndFinalize}}();}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00107\ \ \ \ \ UFUNCTION(BlueprintPure,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Metrics"{}})}
+\DoxyCodeLine{00108\ \ \ \ \ bool\ \doxymbox{\hyperlink{class_u_battle_performance_metrics_widget_a9a46ac026a46e74ae7d8bc1c142d9aac}{IsCaptureFinalized}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ bCaptureFinalized;\ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00115\ \ \ \ \ UFUNCTION(BlueprintPure,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Metrics"{}})}
+\DoxyCodeLine{00116\ \ \ \ \ bool\ GetFinalizedMetrics(FBattlePerformanceMetricsSnapshot\&\ OutSnapshot)\ const;}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ protected:}
+\DoxyCodeLine{00120\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ NativeConstruct()\ override;}
+\DoxyCodeLine{00122\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ NativeDestruct()\ override;}
+\DoxyCodeLine{00128\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ NativeTick(const\ FGeometry\&\ MyGeometry,\ \textcolor{keywordtype}{float}\ InDeltaTime)\ override;}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00131\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Metrics"{}})}
+\DoxyCodeLine{00132\ \ \ \ \ EBattleMetricsCountSourceMode\ \doxymbox{\hyperlink{class_u_battle_performance_metrics_widget_a5863115d42d5b2f1615e46f18fd7ac84}{CountSourceMode}}\ =\ EBattleMetricsCountSourceMode::AutoDetect;}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00135\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Metrics"{}},\ meta\ =\ (ClampMin\ =\ 0.0,\ Units\ =\ \textcolor{stringliteral}{"{}s"{}}))}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_u_battle_performance_metrics_widget_a618c6102fa5c82b1f98926651913b019}{WarmupDurationSeconds}}\ =\ 3.0f;}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00139\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Metrics"{}},\ meta\ =\ (ClampMin\ =\ 0.05,\ Units\ =\ \textcolor{stringliteral}{"{}s"{}}))}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_u_battle_performance_metrics_widget_a5d6cc7b7860f80da3775b9bda985be9c}{AutoRefreshInterval}}\ =\ 0.2f;}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00143\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Metrics"{}})}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_u_battle_performance_metrics_widget_a0a1822d59368782d8ce0463107cb3adf}{bAutoStartWhenRoundDetected}}\ =\ true;}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00147\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Metrics"{}})}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_u_battle_performance_metrics_widget_a88b25e92c09019e5f4ca24c00e6ab5d4}{bAutoFinalizeWhenRoundEnds}}\ =\ true;}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00151\ \ \ \ \ UPROPERTY(meta\ =\ (BindWidgetOptional),\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Metrics"{}})}
+\DoxyCodeLine{00152\ \ \ \ \ TObjectPtr<UTextBlock>\ \doxymbox{\hyperlink{class_u_battle_performance_metrics_widget_af7299907781a00e7ef06dcd7259b1845}{metricssummarytext}};}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ private:}
+\DoxyCodeLine{00156\ \ \ \ \ FTimerHandle\ AutoRefreshTimerHandle;}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{bool}\ bCaptureActive\ =\ false;}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{bool}\ bCaptureFinalized\ =\ false;}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{double}\ CaptureStartRealSeconds\ =\ 0.0;}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{double}\ LastSampleRealSeconds\ =\ 0.0;}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{float}\ RoundElapsedSeconds\ =\ 0.0f;}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{float}\ CapturedElapsedSeconds\ =\ 0.0f;}
+\DoxyCodeLine{00165\ \ \ \ \ int32\ SampleCount\ =\ 0;}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{double}\ SumFPS\ =\ 0.0;}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{double}\ SumFrameTimeMs\ =\ 0.0;}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{float}\ MinFPS\ =\ FLT\_MAX;}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordtype}{float}\ MaxFrameTimeMs\ =\ 0.0f;}
+\DoxyCodeLine{00170\ \ \ \ \ int32\ HitchCountOver16\_6\ =\ 0;}
+\DoxyCodeLine{00171\ \ \ \ \ int32\ HitchCountOver33\_3\ =\ 0;}
+\DoxyCodeLine{00172\ \ \ \ \ int32\ PeakAliveAgents\ =\ 0;}
+\DoxyCodeLine{00173\ \ \ \ \ int32\ LastRedCount\ =\ 0;}
+\DoxyCodeLine{00174\ \ \ \ \ int32\ LastBlueCount\ =\ 0;}
+\DoxyCodeLine{00175\ \ \ \ \ TArray<\textcolor{keywordtype}{float}>\ CapturedFrameTimesMs;}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordtype}{float}\ FinalAvgFPS\ =\ 0.0f;}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{float}\ FinalAvgFrameTimeMs\ =\ 0.0f;}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{float}\ FinalP95FrameTimeMs\ =\ 0.0f;}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordtype}{float}\ FinalP99FrameTimeMs\ =\ 0.0f;}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordtype}{float}\ FinalMinFPS\ =\ 0.0f;}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{float}\ FinalMaxFrameTimeMs\ =\ 0.0f;}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateRoundStateFromWorld();}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordtype}{void}\ StartCapture();}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordtype}{void}\ FinalizeCapture();}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordtype}{void}\ SampleFrame(\textcolor{keywordtype}{float}\ InDeltaTime);}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordtype}{void}\ RefreshSummaryText();}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{void}\ ResetRuntimeStats();}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordtype}{void}\ GetCountsFromWorld(int32\&\ OutRedCount,\ int32\&\ OutBlueCount)\ const;}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keywordtype}{void}\ GetOOPCounts(int32\&\ OutRedCount,\ int32\&\ OutBlueCount)\ const;}
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetECSCounts(int32\&\ OutRedCount,\ int32\&\ OutBlueCount)\ const;}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00226\ \ \ \ \ static\ \textcolor{keywordtype}{float}\ ComputePercentile(TArray<\textcolor{keywordtype}{float}>\ Values,\ \textcolor{keywordtype}{float}\ Percentile);}
+\DoxyCodeLine{00227\ \};}
+
+\end{DoxyCode}

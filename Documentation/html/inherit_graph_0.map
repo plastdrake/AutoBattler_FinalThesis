@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,81,67,108"/>
+<area shape="rect" id="Node000001" href="$class_a_benchmark_metrics_batch_controller.html" title="Controller that runs a batch of benchmark captures and writes CSV output." alt="" coords="115,5,344,32"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="65,70,114,42,151,31,147,34,116,46,68,74"/>
+<area shape="rect" id="Node000002" href="$class_a_benchmark_trace_controller.html" title="Controller that drives trace&#45;based benchmark captures." alt="" coords="137,56,322,83"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="81,86,138,80,134,83,83,91"/>
+<area shape="rect" id="Node000003" href="$class_a_e_c_s_battle_agent_spawner.html" title="Spawns ECS battle agents and initializes their Mass fragments." alt="" coords="141,107,318,133"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="82,98,143,107,138,110,82,103"/>
+<area shape="rect" id="Node000004" href="$class_a_o_o_p_battle_agent_spawner.html" title="Spawns OOP battle agents for a battle simulation team." alt="" coords="140,157,318,184"/>
+<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="67,115,116,143,151,156,146,157,114,148,66,120"/>
+</map>

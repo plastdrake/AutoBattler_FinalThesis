@@ -1,0 +1,50 @@
+\doxysection{Battlefield\+Camera\+Pawn.\+h}
+\hypertarget{_battlefield_camera_pawn_8h_source}{}\label{_battlefield_camera_pawn_8h_source}\index{D:/School/AutoBattler\_FinalThesis/AutoBattler/Source/AutoBattler/Variant\_ECS/Camera/BattlefieldCameraPawn.h@{D:/School/AutoBattler\_FinalThesis/AutoBattler/Source/AutoBattler/Variant\_ECS/Camera/BattlefieldCameraPawn.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ Epic\ Games,\ Inc.\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}GameFramework/Pawn.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}BattlefieldCameraPawn.generated.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }USceneComponent;}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }USpringArmComponent;}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }UCameraComponent;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00013\ UCLASS()}
+\DoxyCodeLine{00014\ class\ AUTOBATTLER\_API\ \doxymbox{\hyperlink{class_a_battlefield_camera_pawn_a769d4af269f2fb5d4d41b2490570bbfc}{ABattlefieldCameraPawn}}\ :\ public\ APawn}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \doxymbox{\hyperlink{class_a_battlefield_camera_pawn_a769d4af269f2fb5d4d41b2490570bbfc}{ABattlefieldCameraPawn}}();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_a_battlefield_camera_pawn_aae9d935ccaf2deab85890baefa96fbe6}{BeginPlay}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Components"{}})}
+\DoxyCodeLine{00029\ \ \ \ \ USceneComponent*\ \doxymbox{\hyperlink{class_a_battlefield_camera_pawn_acbfc8a9c455ddbbe6ff18cdad9889fde}{RootScene}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Components"{}})}
+\DoxyCodeLine{00033\ \ \ \ \ USpringArmComponent*\ \doxymbox{\hyperlink{class_a_battlefield_camera_pawn_ad80a8e87e639110ab017f7d6bce102bd}{CameraBoom}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00036\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Components"{}})}
+\DoxyCodeLine{00037\ \ \ \ \ UCameraComponent*\ \doxymbox{\hyperlink{class_a_battlefield_camera_pawn_a9847f0a78564b8b99139da30319214d7}{Camera}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00040\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Camera"{}},\ meta\ =\ (Units\ =\ \textcolor{stringliteral}{"{}cm"{}}))}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_a_battlefield_camera_pawn_a011a0be2dfe846a6d8352b5f7d3da207}{Height}}\ =\ 1500.0f;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00044\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Camera"{}},\ meta\ =\ (Units\ =\ \textcolor{stringliteral}{"{}degrees"{}}))}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_a_battlefield_camera_pawn_aa059e7fd3261ef16b7c1da835635554e}{PitchAngle}}\ =\ -\/60.0f;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00048\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Camera"{}})}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_a_battlefield_camera_pawn_a1ce2cfa6b45a7288a9d97e78bb926e41}{bAutoSetViewTarget}}\ =\ true;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Camera"{}})}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_a_battlefield_camera_pawn_a99ee84208d1576d09683eb928b3a983d}{SnapTo}}(const\ FVector\&\ WorldLocation);}
+\DoxyCodeLine{00057\ \};}
+
+\end{DoxyCode}

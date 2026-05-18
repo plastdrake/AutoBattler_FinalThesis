@@ -1,0 +1,11 @@
+<map id="AAutoBattlerCharacter::SetupPlayerInputComponent" name="AAutoBattlerCharacter::SetupPlayerInputComponent">
+<area shape="rect" id="Node000001" title="Initializes input action bindings." alt="" coords="5,39,202,81"/>
+<area shape="rect" id="Node000002" href="$class_a_auto_battler_character.html#a1dd47971e59273f35f6d88f1d9c4c66f" title="Handles raw look input." alt="" coords="250,5,402,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,43,237,40,232,41,202,48"/>
+<area shape="rect" id="Node000004" href="$class_a_auto_battler_character.html#a8a7d2f1de50773974a53bbdc5224d7bb" title="Handles raw movement input." alt="" coords="250,72,402,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="202,72,237,79,232,80,202,77"/>
+<area shape="rect" id="Node000003" href="$class_a_auto_battler_character.html#acc005ffe581d36ac524e77477081c52c" title="Handles look input from either controls or UI interfaces." alt="" coords="450,5,602,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="402,24,437,26,432,27,403,29"/>
+<area shape="rect" id="Node000005" href="$class_a_auto_battler_character.html#a17ffb66f93bdec026df75cb09a05124c" title="Handles move input from either controls or UI interfaces." alt="" coords="450,72,602,115"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="402,91,437,93,432,93,403,96"/>
+</map>

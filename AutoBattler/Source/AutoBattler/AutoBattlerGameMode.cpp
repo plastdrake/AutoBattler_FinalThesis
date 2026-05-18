@@ -4,5 +4,5 @@
 
 AAutoBattlerGameMode::AAutoBattlerGameMode()
 {
-	// stub
+	/** Intentionally left empty. */
 }

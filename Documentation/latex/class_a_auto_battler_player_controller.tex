@@ -1,0 +1,137 @@
+\doxysection{AAuto\+Battler\+Player\+Controller Class Reference}
+\hypertarget{class_a_auto_battler_player_controller}{}\label{class_a_auto_battler_player_controller}\index{AAutoBattlerPlayerController@{AAutoBattlerPlayerController}}
+
+
+Basic player controller for the third-\/person template.  
+
+
+
+
+{\ttfamily \+\#include $<$Auto\+Battler\+Player\+Controller.\+h$>$}
+
+
+
+Inheritance diagram for AAuto\+Battler\+Player\+Controller:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{class_a_auto_battler_player_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for AAuto\+Battler\+Player\+Controller:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{class_a_auto_battler_player_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{class_a_auto_battler_player_controller_a3253ccfb9dda23dbbfc95adb960c8d1b}{Begin\+Play}} () override
+\begin{DoxyCompactList}\small\item\em Gameplay initialization. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_a_auto_battler_player_controller_a0300e096c8e6c7484ba45952ecc887b3}{Setup\+Input\+Component}} () override
+\begin{DoxyCompactList}\small\item\em Input mapping context setup. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_a_auto_battler_player_controller_aaaa34e6a5fee8ba996705c85e1ab5638}{Should\+Use\+Touch\+Controls}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if the player should use UMG touch controls. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_auto_battler_player_controller_ab75cc61d90a55bc42c9f73519b13df09}\label{class_a_auto_battler_player_controller_ab75cc61d90a55bc42c9f73519b13df09} 
+TArray$<$ UInput\+Mapping\+Context \texorpdfstring{$\ast$}{*} $>$ {\bfseries Default\+Mapping\+Contexts}
+\begin{DoxyCompactList}\small\item\em Default input mapping contexts. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_auto_battler_player_controller_afdd7148ff001696d3d15dcbdc8753935}\label{class_a_auto_battler_player_controller_afdd7148ff001696d3d15dcbdc8753935} 
+TArray$<$ UInput\+Mapping\+Context \texorpdfstring{$\ast$}{*} $>$ {\bfseries Mobile\+Excluded\+Mapping\+Contexts}
+\begin{DoxyCompactList}\small\item\em Input mapping contexts excluded when touch controls are active. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_auto_battler_player_controller_a0ddd8c7dcada070aa57e4ca9c2db4831}\label{class_a_auto_battler_player_controller_a0ddd8c7dcada070aa57e4ca9c2db4831} 
+TSubclass\+Of$<$ UUser\+Widget $>$ {\bfseries Mobile\+Controls\+Widget\+Class}
+\begin{DoxyCompactList}\small\item\em Mobile controls widget to spawn. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_auto_battler_player_controller_a8748c8c6504454771551e3da108b1b7b}\label{class_a_auto_battler_player_controller_a8748c8c6504454771551e3da108b1b7b} 
+TObject\+Ptr$<$ UUser\+Widget $>$ {\bfseries Mobile\+Controls\+Widget}
+\begin{DoxyCompactList}\small\item\em Pointer to the mobile controls widget. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_auto_battler_player_controller_a3fdf56d2c4634f0f88d40444f8c589de}\label{class_a_auto_battler_player_controller_a3fdf56d2c4634f0f88d40444f8c589de} 
+bool {\bfseries b\+Force\+Touch\+Controls} = false
+\begin{DoxyCompactList}\small\item\em If true, the player uses UMG touch controls even outside mobile platforms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Basic player controller for the third-\/person template. 
+
+\label{class_a_auto_battler_player_controller_doc-func-members}
+\Hypertarget{class_a_auto_battler_player_controller_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_a_auto_battler_player_controller_a3253ccfb9dda23dbbfc95adb960c8d1b}\index{AAutoBattlerPlayerController@{AAutoBattlerPlayerController}!BeginPlay@{BeginPlay}}
+\index{BeginPlay@{BeginPlay}!AAutoBattlerPlayerController@{AAutoBattlerPlayerController}}
+\doxysubsubsection{\texorpdfstring{BeginPlay()}{BeginPlay()}}
+{\footnotesize\ttfamily \label{class_a_auto_battler_player_controller_a3253ccfb9dda23dbbfc95adb960c8d1b} 
+void AAuto\+Battler\+Player\+Controller::\+\+Begin\+Play (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Gameplay initialization. 
+
+Only spawn touch controls on local player controllers.
+
+Spawn the mobile controls widget.
+
+Add the controls to the player screen.Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_auto_battler_player_controller_a3253ccfb9dda23dbbfc95adb960c8d1b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_auto_battler_player_controller_a0300e096c8e6c7484ba45952ecc887b3}\index{AAutoBattlerPlayerController@{AAutoBattlerPlayerController}!SetupInputComponent@{SetupInputComponent}}
+\index{SetupInputComponent@{SetupInputComponent}!AAutoBattlerPlayerController@{AAutoBattlerPlayerController}}
+\doxysubsubsection{\texorpdfstring{SetupInputComponent()}{SetupInputComponent()}}
+{\footnotesize\ttfamily \label{class_a_auto_battler_player_controller_a0300e096c8e6c7484ba45952ecc887b3} 
+void AAuto\+Battler\+Player\+Controller::\+\+Setup\+Input\+Component (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Input mapping context setup. 
+
+Only add input mapping contexts for local player controllers.
+
+Add input mapping contexts.
+
+Only add these input mapping contexts when touch input is disabled.Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_auto_battler_player_controller_a0300e096c8e6c7484ba45952ecc887b3_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_auto_battler_player_controller_aaaa34e6a5fee8ba996705c85e1ab5638}\index{AAutoBattlerPlayerController@{AAutoBattlerPlayerController}!ShouldUseTouchControls@{ShouldUseTouchControls}}
+\index{ShouldUseTouchControls@{ShouldUseTouchControls}!AAutoBattlerPlayerController@{AAutoBattlerPlayerController}}
+\doxysubsubsection{\texorpdfstring{ShouldUseTouchControls()}{ShouldUseTouchControls()}}
+{\footnotesize\ttfamily \label{class_a_auto_battler_player_controller_aaaa34e6a5fee8ba996705c85e1ab5638} 
+bool AAuto\+Battler\+Player\+Controller::\+\+Should\+Use\+Touch\+Controls (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Returns true if the player should use UMG touch controls. 
+
+\begin{DoxyReturn}{Returns}
+True when touch controls should be active. 
+\end{DoxyReturn}
+Use touch controls on mobile platforms or when forced by config.Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_auto_battler_player_controller_aaaa34e6a5fee8ba996705c85e1ab5638_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+Auto\+Battler\+Player\+Controller.\+h\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+Auto\+Battler\+Player\+Controller.\+cpp\end{DoxyCompactItemize}

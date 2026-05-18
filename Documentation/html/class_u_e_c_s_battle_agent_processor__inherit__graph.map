@@ -1,0 +1,5 @@
+<map id="UECSBattleAgentProcessor" name="UECSBattleAgentProcessor">
+<area shape="rect" id="Node000001" title="Mass processor that drives ECS battle agent behavior." alt="" coords="5,80,192,107"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="37,5,160,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,46,101,81,96,79,97,50"/>
+</map>

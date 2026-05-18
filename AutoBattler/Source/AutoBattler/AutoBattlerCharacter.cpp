@@ -14,20 +14,19 @@
 
 AAutoBattlerCharacter::AAutoBattlerCharacter()
 {
-	// Set size for collision capsule
+	/** Set the collision capsule size. */
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 		
-	// Don't rotate when the controller rotates. Let that just affect the camera.
+	/** Keep controller rotation from affecting the character directly. */
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
 	bUseControllerRotationRoll = false;
 
-	// Configure character movement
+	/** Configure character movement defaults. */
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
 
-	// Note: For faster iteration times these variables, and many more, can be tweaked in the Character Blueprint
-	// instead of recompiling to adjust them
+	/** These movement values can be tuned in the Blueprint without recompiling. */
 	GetCharacterMovement()->JumpZVelocity = 500.f;
 	GetCharacterMovement()->AirControl = 0.35f;
 	GetCharacterMovement()->MaxWalkSpeed = 500.f;
@@ -35,35 +34,34 @@ AAutoBattlerCharacter::AAutoBattlerCharacter()
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 
-	// Create a camera boom (pulls in towards the player if there is a collision)
+	/** Create a camera boom that pulls in toward the player on collision. */
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
 	CameraBoom->TargetArmLength = 400.0f;
 	CameraBoom->bUsePawnControlRotation = true;
 
-	// Create a follow camera
+	/** Create a follow camera. */
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false;
 
-	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
-	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+	/** The mesh and animation blueprint are assigned in the derived Blueprint asset. */
 }
 
 void AAutoBattlerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
-	// Set up action bindings
+	/** Set up action bindings. */
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent)) {
 		
-		// Jumping
+		/** Jumping. */
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
-		// Moving
+		/** Moving. */
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AAutoBattlerCharacter::Move);
 		EnhancedInputComponent->BindAction(MouseLookAction, ETriggerEvent::Triggered, this, &AAutoBattlerCharacter::Look);
 
-		// Looking
+		/** Looking. */
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AAutoBattlerCharacter::Look);
 	}
 	else
@@ -74,19 +72,19 @@ void AAutoBattlerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 
 void AAutoBattlerCharacter::Move(const FInputActionValue& Value)
 {
-	// input is a Vector2D
+	/** Input is a Vector2D. */
 	FVector2D MovementVector = Value.Get<FVector2D>();
 
-	// route the input
+	/** Route the input. */
 	DoMove(MovementVector.X, MovementVector.Y);
 }
 
 void AAutoBattlerCharacter::Look(const FInputActionValue& Value)
 {
-	// input is a Vector2D
+	/** Input is a Vector2D. */
 	FVector2D LookAxisVector = Value.Get<FVector2D>();
 
-	// route the input
+	/** Route the input. */
 	DoLook(LookAxisVector.X, LookAxisVector.Y);
 }
 
@@ -94,17 +92,17 @@ void AAutoBattlerCharacter::DoMove(float Right, float Forward)
 {
 	if (GetController() != nullptr)
 	{
-		// find out which way is forward
+		/** Find out which way is forward. */
 		const FRotator Rotation = GetController()->GetControlRotation();
 		const FRotator YawRotation(0, Rotation.Yaw, 0);
 
-		// get forward vector
+		/** Get the forward vector. */
 		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 
-		// get right vector 
+		/** Get the right vector. */
 		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 
-		// add movement 
+		/** Add movement input. */
 		AddMovementInput(ForwardDirection, Forward);
 		AddMovementInput(RightDirection, Right);
 	}
@@ -114,7 +112,7 @@ void AAutoBattlerCharacter::DoLook(float Yaw, float Pitch)
 {
 	if (GetController() != nullptr)
 	{
-		// add yaw and pitch input to controller
+		/** Add yaw and pitch input to the controller. */
 		AddControllerYawInput(Yaw);
 		AddControllerPitchInput(Pitch);
 	}
@@ -122,12 +120,12 @@ void AAutoBattlerCharacter::DoLook(float Yaw, float Pitch)
 
 void AAutoBattlerCharacter::DoJumpStart()
 {
-	// signal the character to jump
+	/** Signal the character to jump. */
 	Jump();
 }
 
 void AAutoBattlerCharacter::DoJumpEnd()
 {
-	// signal the character to stop jumping
+	/** Signal the character to stop jumping. */
 	StopJumping();
 }

@@ -1,0 +1,125 @@
+\doxysection{UBattle\+Team\+Count\+Widget Class Reference}
+\hypertarget{class_u_battle_team_count_widget}{}\label{class_u_battle_team_count_widget}\index{UBattleTeamCountWidget@{UBattleTeamCountWidget}}
+
+
+UI widget that displays live team counts for the battle simulation.  
+
+
+
+
+{\ttfamily \+\#include $<$Battle\+Team\+Count\+Widget.\+h$>$}
+
+
+
+Inheritance diagram for UBattle\+Team\+Count\+Widget:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{class_u_battle_team_count_widget__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for UBattle\+Team\+Count\+Widget:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{class_u_battle_team_count_widget__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_u_battle_team_count_widget_a2fe3a70b170d8bddff46b2647e73290b}{Set\+Team\+Counts}} (int32 Red\+Count, int32 Blue\+Count)
+\begin{DoxyCompactList}\small\item\em Sets both team counts at once. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_u_battle_team_count_widget_a4e37ca116512c941c2795ec37359ff9a}{Set\+Red\+Team\+Count}} (int32 Red\+Count)
+\begin{DoxyCompactList}\small\item\em Sets the red team count. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_u_battle_team_count_widget_af53586c1cb0984ab235a3f5cdcf98a0b}{Set\+Blue\+Team\+Count}} (int32 Blue\+Count)
+\begin{DoxyCompactList}\small\item\em Sets the blue team count. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_u_battle_team_count_widget_a198886e39aa3a4c4ee9ff87f2ddddf96}\label{class_u_battle_team_count_widget_a198886e39aa3a4c4ee9ff87f2ddddf96} 
+virtual void {\bfseries Native\+Construct} () override
+\begin{DoxyCompactList}\small\item\em Initializes the widget and starts auto-\/refresh. \end{DoxyCompactList}\item 
+\Hypertarget{class_u_battle_team_count_widget_aabf994ab71d2411550c829df7bf2bfbd}\label{class_u_battle_team_count_widget_aabf994ab71d2411550c829df7bf2bfbd} 
+virtual void {\bfseries Native\+Destruct} () override
+\begin{DoxyCompactList}\small\item\em Clears timers before the widget is destroyed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_u_battle_team_count_widget_a00678239389719da9058d21434ac50f5}\label{class_u_battle_team_count_widget_a00678239389719da9058d21434ac50f5} 
+EBattle\+Team\+Count\+Source\+Mode {\bfseries Count\+Source\+Mode} = EBattle\+Team\+Count\+Source\+Mode::\+\+Auto\+Detect
+\begin{DoxyCompactList}\small\item\em Source mode used when auto-\/refreshing team counts. \end{DoxyCompactList}\item 
+\Hypertarget{class_u_battle_team_count_widget_a7d48d2d3860e60a021bce32dc22d2060}\label{class_u_battle_team_count_widget_a7d48d2d3860e60a021bce32dc22d2060} 
+float {\bfseries Auto\+Refresh\+Interval} = 0.\+2f
+\begin{DoxyCompactList}\small\item\em Auto-\/refresh interval in seconds. \end{DoxyCompactList}\item 
+\Hypertarget{class_u_battle_team_count_widget_a1986eb562bbd7c98dce656723d4b96f5}\label{class_u_battle_team_count_widget_a1986eb562bbd7c98dce656723d4b96f5} 
+TObject\+Ptr$<$ UText\+Block $>$ {\bfseries redteamcounttext}
+\begin{DoxyCompactList}\small\item\em Text block that displays the red team count. \end{DoxyCompactList}\item 
+\Hypertarget{class_u_battle_team_count_widget_a9616cd09cdf404865cbe44fefc6d2f42}\label{class_u_battle_team_count_widget_a9616cd09cdf404865cbe44fefc6d2f42} 
+TObject\+Ptr$<$ UText\+Block $>$ {\bfseries blueteamcounttext}
+\begin{DoxyCompactList}\small\item\em Text block that displays the blue team count. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+UI widget that displays live team counts for the battle simulation. 
+
+\label{class_u_battle_team_count_widget_doc-func-members}
+\Hypertarget{class_u_battle_team_count_widget_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_battle_team_count_widget_af53586c1cb0984ab235a3f5cdcf98a0b}\index{UBattleTeamCountWidget@{UBattleTeamCountWidget}!SetBlueTeamCount@{SetBlueTeamCount}}
+\index{SetBlueTeamCount@{SetBlueTeamCount}!UBattleTeamCountWidget@{UBattleTeamCountWidget}}
+\doxysubsubsection{\texorpdfstring{SetBlueTeamCount()}{SetBlueTeamCount()}}
+{\footnotesize\ttfamily \label{class_u_battle_team_count_widget_af53586c1cb0984ab235a3f5cdcf98a0b} 
+void UBattle\+Team\+Count\+Widget::\+\+Set\+Blue\+Team\+Count (\begin{DoxyParamCaption}\item[{int32}]{Blue\+Count}{}\end{DoxyParamCaption})}
+
+
+
+Sets the blue team count. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Blue\+Count} & Blue team count. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_u_battle_team_count_widget_a4e37ca116512c941c2795ec37359ff9a}\index{UBattleTeamCountWidget@{UBattleTeamCountWidget}!SetRedTeamCount@{SetRedTeamCount}}
+\index{SetRedTeamCount@{SetRedTeamCount}!UBattleTeamCountWidget@{UBattleTeamCountWidget}}
+\doxysubsubsection{\texorpdfstring{SetRedTeamCount()}{SetRedTeamCount()}}
+{\footnotesize\ttfamily \label{class_u_battle_team_count_widget_a4e37ca116512c941c2795ec37359ff9a} 
+void UBattle\+Team\+Count\+Widget::\+\+Set\+Red\+Team\+Count (\begin{DoxyParamCaption}\item[{int32}]{Red\+Count}{}\end{DoxyParamCaption})}
+
+
+
+Sets the red team count. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Red\+Count} & Red team count. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_u_battle_team_count_widget_a2fe3a70b170d8bddff46b2647e73290b}\index{UBattleTeamCountWidget@{UBattleTeamCountWidget}!SetTeamCounts@{SetTeamCounts}}
+\index{SetTeamCounts@{SetTeamCounts}!UBattleTeamCountWidget@{UBattleTeamCountWidget}}
+\doxysubsubsection{\texorpdfstring{SetTeamCounts()}{SetTeamCounts()}}
+{\footnotesize\ttfamily \label{class_u_battle_team_count_widget_a2fe3a70b170d8bddff46b2647e73290b} 
+void UBattle\+Team\+Count\+Widget::\+\+Set\+Team\+Counts (\begin{DoxyParamCaption}\item[{int32}]{Red\+Count}{, }\item[{int32}]{Blue\+Count}{}\end{DoxyParamCaption})}
+
+
+
+Sets both team counts at once. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Red\+Count} & Red team count. \\
+\hline
+{\em Blue\+Count} & Blue team count. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+Battle\+Sim/\+\+UI/\+Battle\+Team\+Count\+Widget.\+h\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+Battle\+Sim/\+\+UI/\+Battle\+Team\+Count\+Widget.\+cpp\end{DoxyCompactItemize}

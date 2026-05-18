@@ -1,0 +1,5 @@
+<map id="AAutoBattlerPlayerController::SetupInputComponent" name="AAutoBattlerPlayerController::SetupInputComponent">
+<area shape="rect" id="Node000001" title="Input mapping context setup." alt="" coords="5,5,194,48"/>
+<area shape="rect" id="Node000002" href="$class_a_auto_battler_player_controller.html#aaaa34e6a5fee8ba996705c85e1ab5638" title="Returns true if the player should use UMG touch controls." alt="" coords="242,5,430,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,24,229,26,224,27,194,29"/>
+</map>

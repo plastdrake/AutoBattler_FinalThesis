@@ -1,0 +1,8 @@
+<map id="AOOPBattleAgent::ReceiveDamage" name="AOOPBattleAgent::ReceiveDamage">
+<area shape="rect" id="Node000001" title="Applies damage to this agent." alt="" coords="5,47,189,89"/>
+<area shape="rect" id="Node000002" href="$class_a_o_o_p_battle_agent.html#a551616c970c335f1c0dab3f5edd8be56" title="Default constructor." alt="" coords="237,5,444,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,50,224,46,219,48,190,55"/>
+<area shape="rect" id="Node000003" href="$class_a_o_o_p_battle_agent.html#af85f99e578fc81733de2e55710791c72" title="Returns true if the agent is alive." alt="" coords="253,96,428,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="189,81,246,93,240,93,189,86"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="299,95,292,87,297,77,314,71,340,69,370,72,386,82,381,81,368,77,340,75,315,77,301,81,297,87,304,97"/>
+</map>

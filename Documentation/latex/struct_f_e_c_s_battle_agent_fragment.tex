@@ -1,0 +1,96 @@
+\doxysection{FECSBattle\+Agent\+Fragment Struct Reference}
+\hypertarget{struct_f_e_c_s_battle_agent_fragment}{}\label{struct_f_e_c_s_battle_agent_fragment}\index{FECSBattleAgentFragment@{FECSBattleAgentFragment}}
+
+
+Mass fragment that stores combat, targeting, and lifetime state for an ECS battle agent.  
+
+
+
+
+{\ttfamily \+\#include $<$ECSBattle\+Agent\+Fragments.\+h$>$}
+
+
+
+Inheritance diagram for FECSBattle\+Agent\+Fragment:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{struct_f_e_c_s_battle_agent_fragment__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for FECSBattle\+Agent\+Fragment:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{struct_f_e_c_s_battle_agent_fragment__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_aa78c20cbdf8bf29ab93ec7c7d0763882}\label{struct_f_e_c_s_battle_agent_fragment_aa78c20cbdf8bf29ab93ec7c7d0763882} 
+EECSBattle\+Agent\+Team {\bfseries Team} = EECSBattle\+Agent\+Team::\+\+Red
+\begin{DoxyCompactList}\small\item\em Current team assignment for this agent. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_a79b0fefaf9cb9fa2d6e15cd1309b9ef4}\label{struct_f_e_c_s_battle_agent_fragment_a79b0fefaf9cb9fa2d6e15cd1309b9ef4} 
+float {\bfseries Max\+Health} = 100.\+0f
+\begin{DoxyCompactList}\small\item\em Maximum health the agent can have. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_ae2e4b8d05e8562b0ff158ed31c2d0600}\label{struct_f_e_c_s_battle_agent_fragment_ae2e4b8d05e8562b0ff158ed31c2d0600} 
+float {\bfseries Current\+Health} = 100.\+0f
+\begin{DoxyCompactList}\small\item\em Current health remaining for the agent. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_a796a465af05ca05d223f57a18a1f10b0}\label{struct_f_e_c_s_battle_agent_fragment_a796a465af05ca05d223f57a18a1f10b0} 
+float {\bfseries Move\+Speed} = 300.\+0f
+\begin{DoxyCompactList}\small\item\em Movement speed used by Mass movement systems. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_abfb798fdf8e95682b624b1888a571924}\label{struct_f_e_c_s_battle_agent_fragment_abfb798fdf8e95682b624b1888a571924} 
+float {\bfseries Attack\+Range} = 140.\+0f
+\begin{DoxyCompactList}\small\item\em Attack range in world units. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_a18e46165ff40f10518589b4dfca3249c}\label{struct_f_e_c_s_battle_agent_fragment_a18e46165ff40f10518589b4dfca3249c} 
+float {\bfseries Attack\+Damage} = 10.\+0f
+\begin{DoxyCompactList}\small\item\em Damage dealt per attack. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_a8322709c5049bb444dfc0a34c75e2635}\label{struct_f_e_c_s_battle_agent_fragment_a8322709c5049bb444dfc0a34c75e2635} 
+float {\bfseries Attack\+Interval} = 0.\+6f
+\begin{DoxyCompactList}\small\item\em Time between attacks in seconds. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_a798b1c0b505168aadd2a824f9e9111d4}\label{struct_f_e_c_s_battle_agent_fragment_a798b1c0b505168aadd2a824f9e9111d4} 
+float {\bfseries Target\+Search\+Radius} = 100000.\+0f
+\begin{DoxyCompactList}\small\item\em Radius used when searching for enemy targets. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_a1fc65e185fab2f1d65d4374a1cf5eeb7}\label{struct_f_e_c_s_battle_agent_fragment_a1fc65e185fab2f1d65d4374a1cf5eeb7} 
+float {\bfseries Target\+Refresh\+Interval} = 0.\+25f
+\begin{DoxyCompactList}\small\item\em Time between target refresh attempts in seconds. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_a757106680f69b5650643f4875bbcaf4b}\label{struct_f_e_c_s_battle_agent_fragment_a757106680f69b5650643f4875bbcaf4b} 
+float {\bfseries Destroy\+Delay} = 2.\+0f
+\begin{DoxyCompactList}\small\item\em Delay before the entity is destroyed after death. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_abeaafd5aa59338ec761375da21639a75}\label{struct_f_e_c_s_battle_agent_fragment_abeaafd5aa59338ec761375da21639a75} 
+FMass\+Entity\+Handle {\bfseries Current\+Target} = FMass\+Entity\+Handle()
+\begin{DoxyCompactList}\small\item\em Entity currently targeted by this agent. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_aacad993e61f18a5993225cc1e03807b2}\label{struct_f_e_c_s_battle_agent_fragment_aacad993e61f18a5993225cc1e03807b2} 
+float {\bfseries Time\+Until\+Next\+Attack} = 0.\+0f
+\begin{DoxyCompactList}\small\item\em Time remaining before the next attack can occur. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_a4634d45f4c15a5ae80da537517932c28}\label{struct_f_e_c_s_battle_agent_fragment_a4634d45f4c15a5ae80da537517932c28} 
+float {\bfseries Time\+Until\+Target\+Refresh} = 0.\+0f
+\begin{DoxyCompactList}\small\item\em Time remaining before the target is refreshed. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_a63459e460bf42c20c88b43bcd29e8b92}\label{struct_f_e_c_s_battle_agent_fragment_a63459e460bf42c20c88b43bcd29e8b92} 
+float {\bfseries Life\+Time\+Remaining} = 0.\+0f
+\begin{DoxyCompactList}\small\item\em Remaining lifetime while the agent is dying. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_a86c32b832298c234fed84652b4bbb48a}\label{struct_f_e_c_s_battle_agent_fragment_a86c32b832298c234fed84652b4bbb48a} 
+bool {\bfseries b\+Dying} = false
+\begin{DoxyCompactList}\small\item\em True when the agent is in its death state. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_a436d66b85c7596978ce7be7b475025d4}\label{struct_f_e_c_s_battle_agent_fragment_a436d66b85c7596978ce7be7b475025d4} 
+bool {\bfseries b\+Pending\+Entity\+Destroy} = false
+\begin{DoxyCompactList}\small\item\em True when the entity should be removed by the system. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_a6d3fbf8bc9d39c3a392b5ce67f78569b}\label{struct_f_e_c_s_battle_agent_fragment_a6d3fbf8bc9d39c3a392b5ce67f78569b} 
+bool {\bfseries b\+Trigger\+Attack\+Montage} = false
+\begin{DoxyCompactList}\small\item\em True when an attack montage should be triggered. \end{DoxyCompactList}\item 
+\Hypertarget{struct_f_e_c_s_battle_agent_fragment_af916c9cb8e232f363c0e3bd5b9584479}\label{struct_f_e_c_s_battle_agent_fragment_af916c9cb8e232f363c0e3bd5b9584479} 
+float {\bfseries Slot\+Angle\+Degrees} = 0.\+0f
+\begin{DoxyCompactList}\small\item\em Persistent slot angle (degrees) used for stable formation positioning. Set by the spawner. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Mass fragment that stores combat, targeting, and lifetime state for an ECS battle agent. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+ECS/\+\+AI/\+ECSBattle\+Agent\+Fragments.\+h\end{DoxyCompactItemize}

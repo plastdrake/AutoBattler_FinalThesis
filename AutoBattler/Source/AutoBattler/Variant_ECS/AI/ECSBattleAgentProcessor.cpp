@@ -216,10 +216,10 @@ void UECSBattleAgentProcessor::Execute(FMassEntityManager& EntityManager, FMassE
     TArray<FMassEntityHandle> LastDamageCauserBySnapshot;
     LastDamageCauserBySnapshot.Init(FMassEntityHandle(), Snapshots.Num());
 
-    // Instrumentation counters (per-frame)
-    int64 SeparationChecks = 0;
-    int64 FrameAttacks = 0;
-    int64 FrameDeaths = 0;
+	/** Instrumentation counters for the current frame. */
+	int64 SeparationChecks = 0;
+	int64 FrameAttacks = 0;
+	int64 FrameDeaths = 0;
 
     AgentQuery.ForEachEntityChunk(Context, [&Snapshots, &SnapshotIndexByEntityIndex, &SpatialHash, &PendingDamageBySnapshot, &LastDamageCauserBySnapshot, &EntityManager, &SeparationChecks, &FrameAttacks, &FrameDeaths, DeltaTime](FMassExecutionContext& QueryContext)
 	{
@@ -325,15 +325,15 @@ void UECSBattleAgentProcessor::Execute(FMassEntityManager& EntityManager, FMassE
 			const float AgentRadius = RadiusFragments[EntityIndex].Radius;
 			const float StandoffDistance = FMath::Max(AgentRadius, Agent.AttackRange - AgentRadius);
 
-            // Use persistent slot angle assigned at spawn to keep formation stable
-            const float SlotAngleDegrees = Agent.SlotAngleDegrees;
-            FVector SlotDirection = MoveDirection.IsNearlyZero() ? Transform.GetRotation().GetForwardVector().GetSafeNormal2D() : MoveDirection;
-            SlotDirection = SlotDirection.RotateAngleAxis(SlotAngleDegrees, FVector::UpVector).GetSafeNormal2D();
+			/** Keep formations stable by reusing the slot angle assigned at spawn. */
+			const float SlotAngleDegrees = Agent.SlotAngleDegrees;
+			FVector SlotDirection = MoveDirection.IsNearlyZero() ? Transform.GetRotation().GetForwardVector().GetSafeNormal2D() : MoveDirection;
+			SlotDirection = SlotDirection.RotateAngleAxis(SlotAngleDegrees, FVector::UpVector).GetSafeNormal2D();
 			const FVector StandoffCenter = TargetSnapshot.Location - (SlotDirection * StandoffDistance);
 			const FVector ToStandoff = StandoffCenter - SelfLocation;
-            const float DistanceToStandoff = ToStandoff.Size2D();
-            // Small hysteresis tolerance to avoid rapid Move/Stand toggles when near goal
-            const float GoalTolerance = 30.0f;
+			const float DistanceToStandoff = ToStandoff.Size2D();
+			/** Hysteresis tolerance to avoid rapid Move/Stand toggles near the goal. */
+			const float GoalTolerance = 30.0f;
 
             MoveTarget.Center = MoveDirection.IsNearlyZero() ? TargetSnapshot.Location : StandoffCenter;
 			MoveTarget.Forward = SlotDirection.IsNearlyZero() ? Transform.GetRotation().Vector() : SlotDirection;
@@ -354,7 +354,7 @@ void UECSBattleAgentProcessor::Execute(FMassEntityManager& EntityManager, FMassE
 
                 if (Agent.TimeUntilNextAttack <= 0.0f)
                 {
-                    // Apply damage immediately to match OOP behavior
+					/** Apply damage immediately to match the OOP variant. */
                     FECSBattleAgentFragment* TargetAgent = EntityManager.GetFragmentDataPtr<FECSBattleAgentFragment>(TargetSnapshot.Entity);
                     if (TargetAgent && !TargetAgent->bDying && TargetAgent->CurrentHealth > 0.0f)
                     {
@@ -425,12 +425,12 @@ void UECSBattleAgentProcessor::Execute(FMassEntityManager& EntityManager, FMassE
 
                 DesiredMovement.DesiredVelocity = DesiredDirection * Agent.MoveSpeed;
                 const FQuat TargetFacing = DesiredDirection.ToOrientationQuat();
-                // Smooth facing changes to avoid 180-degree twitch when path is blocked or vectors flip
+				/** Smooth facing changes to avoid abrupt 180-degree flips. */
                 const FQuat CurrentFacing = Transform.GetRotation();
                 const float LerpAlpha = FMath::Clamp(DeltaTime * 8.0f, 0.05f, 1.0f);
                 const FQuat SmoothedFacing = FQuat::Slerp(CurrentFacing, TargetFacing, LerpAlpha).GetNormalized();
                 DesiredMovement.DesiredFacing = SmoothedFacing;
-                // Only update the transform rotation when we have meaningful movement
+				/** Only update the transform rotation when movement is meaningful. */
                 if (!DesiredMovement.DesiredVelocity.IsNearlyZero())
                 {
                     Transform.SetRotation(DesiredMovement.DesiredFacing);

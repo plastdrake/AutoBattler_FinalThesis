@@ -1,0 +1,5 @@
+<map id="ABattlefieldCameraPawn" name="ABattlefieldCameraPawn">
+<area shape="rect" id="Node000001" title="Static overhead camera pawn for the ECS battlefield." alt="" coords="5,80,173,107"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="57,5,121,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,46,91,81,87,79,87,50"/>
+</map>

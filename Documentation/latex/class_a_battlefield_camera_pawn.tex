@@ -1,0 +1,95 @@
+\doxysection{ABattlefield\+Camera\+Pawn Class Reference}
+\hypertarget{class_a_battlefield_camera_pawn}{}\label{class_a_battlefield_camera_pawn}\index{ABattlefieldCameraPawn@{ABattlefieldCameraPawn}}
+
+
+Static overhead camera pawn for the ECS battlefield.  
+
+
+
+
+{\ttfamily \+\#include $<$Battlefield\+Camera\+Pawn.\+h$>$}
+
+
+
+Inheritance diagram for ABattlefield\+Camera\+Pawn:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{class_a_battlefield_camera_pawn__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ABattlefield\+Camera\+Pawn:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{class_a_battlefield_camera_pawn__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_battlefield_camera_pawn_a769d4af269f2fb5d4d41b2490570bbfc}\label{class_a_battlefield_camera_pawn_a769d4af269f2fb5d4d41b2490570bbfc} 
+{\bfseries ABattlefield\+Camera\+Pawn} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_a_battlefield_camera_pawn_a99ee84208d1576d09683eb928b3a983d}{Snap\+To}} (const FVector \&World\+Location)
+\begin{DoxyCompactList}\small\item\em Move the camera pawn to a new world location (keeps overhead orientation). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_battlefield_camera_pawn_acbfc8a9c455ddbbe6ff18cdad9889fde}\label{class_a_battlefield_camera_pawn_acbfc8a9c455ddbbe6ff18cdad9889fde} 
+UScene\+Component \texorpdfstring{$\ast$}{*} {\bfseries Root\+Scene}
+\begin{DoxyCompactList}\small\item\em Root component. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_battlefield_camera_pawn_ad80a8e87e639110ab017f7d6bce102bd}\label{class_a_battlefield_camera_pawn_ad80a8e87e639110ab017f7d6bce102bd} 
+USpring\+Arm\+Component \texorpdfstring{$\ast$}{*} {\bfseries Camera\+Boom}
+\begin{DoxyCompactList}\small\item\em Boom that positions camera above the battlefield. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_battlefield_camera_pawn_a9847f0a78564b8b99139da30319214d7}\label{class_a_battlefield_camera_pawn_a9847f0a78564b8b99139da30319214d7} 
+UCamera\+Component \texorpdfstring{$\ast$}{*} {\bfseries Camera}
+\begin{DoxyCompactList}\small\item\em Camera used for the static overhead view. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_battlefield_camera_pawn_a011a0be2dfe846a6d8352b5f7d3da207}\label{class_a_battlefield_camera_pawn_a011a0be2dfe846a6d8352b5f7d3da207} 
+float {\bfseries Height} = 1500.\+0f
+\begin{DoxyCompactList}\small\item\em Height of the camera above the pivot (cm). \end{DoxyCompactList}\item 
+\Hypertarget{class_a_battlefield_camera_pawn_aa059e7fd3261ef16b7c1da835635554e}\label{class_a_battlefield_camera_pawn_aa059e7fd3261ef16b7c1da835635554e} 
+float {\bfseries Pitch\+Angle} = -\/60.\+0f
+\begin{DoxyCompactList}\small\item\em Pitch angle of the camera (degrees, negative looks down). \end{DoxyCompactList}\item 
+\Hypertarget{class_a_battlefield_camera_pawn_a1ce2cfa6b45a7288a9d97e78bb926e41}\label{class_a_battlefield_camera_pawn_a1ce2cfa6b45a7288a9d97e78bb926e41} 
+bool {\bfseries b\+Auto\+Set\+View\+Target} = true
+\begin{DoxyCompactList}\small\item\em If true, the first player controller will be set to view this camera on Begin\+Play. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_battlefield_camera_pawn_aae9d935ccaf2deab85890baefa96fbe6}\label{class_a_battlefield_camera_pawn_aae9d935ccaf2deab85890baefa96fbe6} 
+virtual void {\bfseries Begin\+Play} () override
+\begin{DoxyCompactList}\small\item\em Initializes the camera view target if configured. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Static overhead camera pawn for the ECS battlefield. 
+
+\label{class_a_battlefield_camera_pawn_doc-func-members}
+\Hypertarget{class_a_battlefield_camera_pawn_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_a_battlefield_camera_pawn_a99ee84208d1576d09683eb928b3a983d}\index{ABattlefieldCameraPawn@{ABattlefieldCameraPawn}!SnapTo@{SnapTo}}
+\index{SnapTo@{SnapTo}!ABattlefieldCameraPawn@{ABattlefieldCameraPawn}}
+\doxysubsubsection{\texorpdfstring{SnapTo()}{SnapTo()}}
+{\footnotesize\ttfamily \label{class_a_battlefield_camera_pawn_a99ee84208d1576d09683eb928b3a983d} 
+void ABattlefield\+Camera\+Pawn::\+\+Snap\+To (\begin{DoxyParamCaption}\item[{const FVector \&}]{World\+Location}{}\end{DoxyParamCaption})}
+
+
+
+Move the camera pawn to a new world location (keeps overhead orientation). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em World\+Location} & Target world location. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+ECS/\+\+Camera/\+Battlefield\+Camera\+Pawn.\+h\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+ECS/\+\+Camera/\+Battlefield\+Camera\+Pawn.\+cpp\end{DoxyCompactItemize}

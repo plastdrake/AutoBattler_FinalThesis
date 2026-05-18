@@ -6,9 +6,7 @@
 #include "GameFramework/GameModeBase.h"
 #include "AutoBattlerGameMode.generated.h"
 
-/**
- *  Simple GameMode for a third person game
- */
+/** @brief Simple game mode for the third-person template. */
 UCLASS(abstract)
 class AAutoBattlerGameMode : public AGameModeBase
 {
@@ -16,7 +14,7 @@ class AAutoBattlerGameMode : public AGameModeBase
 
 public:
 	
-	/** Constructor */
+	/** @brief Default constructor. */
 	AAutoBattlerGameMode();
 };
 

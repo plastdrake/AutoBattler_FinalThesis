@@ -14,83 +14,103 @@ struct FInputActionValue;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
-/**
- *  A simple player-controllable third person character
- *  Implements a controllable orbiting camera
- */
+/** @brief Player-controllable third-person character with an orbit camera. */
 UCLASS(abstract)
 class AAutoBattlerCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
-	/** Camera boom positioning the camera behind the character */
+	/** @brief Camera boom positioning the camera behind the character. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* CameraBoom;
 
-	/** Follow camera */
+	/** @brief Follow camera. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FollowCamera;
 	
 protected:
 
-	/** Jump Input Action */
+	/** @brief Jump input action. */
 	UPROPERTY(EditAnywhere, Category="Input")
 	UInputAction* JumpAction;
 
-	/** Move Input Action */
+	/** @brief Move input action. */
 	UPROPERTY(EditAnywhere, Category="Input")
 	UInputAction* MoveAction;
 
-	/** Look Input Action */
+	/** @brief Look input action. */
 	UPROPERTY(EditAnywhere, Category="Input")
 	UInputAction* LookAction;
 
-	/** Mouse Look Input Action */
+	/** @brief Mouse look input action. */
 	UPROPERTY(EditAnywhere, Category="Input")
 	UInputAction* MouseLookAction;
 
 public:
 
-	/** Constructor */
+	/** @brief Default constructor. */
 	AAutoBattlerCharacter();	
 
 protected:
 
-	/** Initialize input action bindings */
+	/**
+	 * @brief Initializes input action bindings.
+	 * @param PlayerInputComponent Input component to bind actions on.
+	 */
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 protected:
 
-	/** Called for movement input */
+	/**
+	 * @brief Handles raw movement input.
+	 * @param Value Input action value carrying a movement vector.
+	 */
 	void Move(const FInputActionValue& Value);
 
-	/** Called for looking input */
+	/**
+	 * @brief Handles raw look input.
+	 * @param Value Input action value carrying a look vector.
+	 */
 	void Look(const FInputActionValue& Value);
 
 public:
 
-	/** Handles move inputs from either controls or UI interfaces */
+	/**
+	 * @brief Handles move input from either controls or UI interfaces.
+	 * @param Right Right-axis input value.
+	 * @param Forward Forward-axis input value.
+	 */
 	UFUNCTION(BlueprintCallable, Category="Input")
 	virtual void DoMove(float Right, float Forward);
 
-	/** Handles look inputs from either controls or UI interfaces */
+	/**
+	 * @brief Handles look input from either controls or UI interfaces.
+	 * @param Yaw Yaw delta to apply.
+	 * @param Pitch Pitch delta to apply.
+	 */
 	UFUNCTION(BlueprintCallable, Category="Input")
 	virtual void DoLook(float Yaw, float Pitch);
 
-	/** Handles jump pressed inputs from either controls or UI interfaces */
+	/** @brief Handles jump-start input from either controls or UI interfaces. */
 	UFUNCTION(BlueprintCallable, Category="Input")
 	virtual void DoJumpStart();
 
-	/** Handles jump pressed inputs from either controls or UI interfaces */
+	/** @brief Handles jump-end input from either controls or UI interfaces. */
 	UFUNCTION(BlueprintCallable, Category="Input")
 	virtual void DoJumpEnd();
 
 public:
 
-	/** Returns CameraBoom subobject **/
+	/**
+	 * @brief Returns the CameraBoom subobject.
+	 * @return Camera boom component.
+	 */
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 
-	/** Returns FollowCamera subobject **/
+	/**
+	 * @brief Returns the FollowCamera subobject.
+	 * @return Follow camera component.
+	 */
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 };
 

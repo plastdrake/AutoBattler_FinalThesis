@@ -1,0 +1,122 @@
+\doxysection{ABenchmark\+Trace\+Controller Class Reference}
+\hypertarget{class_a_benchmark_trace_controller}{}\label{class_a_benchmark_trace_controller}\index{ABenchmarkTraceController@{ABenchmarkTraceController}}
+
+
+Controller that drives trace-\/based benchmark captures.  
+
+
+
+
+{\ttfamily \+\#include $<$Benchmark\+Trace\+Controller.\+h$>$}
+
+
+
+Inheritance diagram for ABenchmark\+Trace\+Controller:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{class_a_benchmark_trace_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ABenchmark\+Trace\+Controller:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{class_a_benchmark_trace_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_benchmark_trace_controller_ae51a47294cb8c0940e799606f2a5cb25}\label{class_a_benchmark_trace_controller_ae51a47294cb8c0940e799606f2a5cb25} 
+{\bfseries ABenchmark\+Trace\+Controller} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_a_benchmark_trace_controller_a67865aa3180efcd2f04ccfb6b3e5072f}{Set\+Benchmark\+Tracing\+Enabled}} (bool b\+Enabled)
+\begin{DoxyCompactList}\small\item\em Enables or disables benchmark tracing. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_a_benchmark_trace_controller_a8a42131667b2283ea0c1b7e4e7c7bdb0}{Is\+Benchmark\+Tracing\+Enabled}} () const
+\begin{DoxyCompactList}\small\item\em Returns whether benchmark tracing is enabled. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_benchmark_trace_controller_a70aebcdd7c85d2256ba9244499402816}\label{class_a_benchmark_trace_controller_a70aebcdd7c85d2256ba9244499402816} 
+virtual void {\bfseries Begin\+Play} () override
+\begin{DoxyCompactList}\small\item\em Initializes trace polling. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_a_benchmark_trace_controller_aa883c284b1bd10d117380461866a01d5}{End\+Play}} (const EEnd\+Play\+Reason::\+\+Type End\+Play\+Reason) override
+\begin{DoxyCompactList}\small\item\em Cleanup on end play. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controller that drives trace-\/based benchmark captures. 
+
+\label{class_a_benchmark_trace_controller_doc-func-members}
+\Hypertarget{class_a_benchmark_trace_controller_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_a_benchmark_trace_controller_aa883c284b1bd10d117380461866a01d5}\index{ABenchmarkTraceController@{ABenchmarkTraceController}!EndPlay@{EndPlay}}
+\index{EndPlay@{EndPlay}!ABenchmarkTraceController@{ABenchmarkTraceController}}
+\doxysubsubsection{\texorpdfstring{EndPlay()}{EndPlay()}}
+{\footnotesize\ttfamily \label{class_a_benchmark_trace_controller_aa883c284b1bd10d117380461866a01d5} 
+void ABenchmark\+Trace\+Controller::\+\+End\+Play (\begin{DoxyParamCaption}\item[{const EEnd\+Play\+Reason::\+\+Type}]{End\+Play\+Reason}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Cleanup on end play. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em End\+Play\+Reason} & Reason for ending play. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_a_benchmark_trace_controller_a8a42131667b2283ea0c1b7e4e7c7bdb0}\index{ABenchmarkTraceController@{ABenchmarkTraceController}!IsBenchmarkTracingEnabled@{IsBenchmarkTracingEnabled}}
+\index{IsBenchmarkTracingEnabled@{IsBenchmarkTracingEnabled}!ABenchmarkTraceController@{ABenchmarkTraceController}}
+\doxysubsubsection{\texorpdfstring{IsBenchmarkTracingEnabled()}{IsBenchmarkTracingEnabled()}}
+{\footnotesize\ttfamily \label{class_a_benchmark_trace_controller_a8a42131667b2283ea0c1b7e4e7c7bdb0} 
+bool ABenchmark\+Trace\+Controller::\+\+Is\+Benchmark\+Tracing\+Enabled (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns whether benchmark tracing is enabled. 
+
+\begin{DoxyReturn}{Returns}
+True if tracing is enabled. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{class_a_benchmark_trace_controller_a8a42131667b2283ea0c1b7e4e7c7bdb0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{class_a_benchmark_trace_controller_a8a42131667b2283ea0c1b7e4e7c7bdb0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_benchmark_trace_controller_a67865aa3180efcd2f04ccfb6b3e5072f}\index{ABenchmarkTraceController@{ABenchmarkTraceController}!SetBenchmarkTracingEnabled@{SetBenchmarkTracingEnabled}}
+\index{SetBenchmarkTracingEnabled@{SetBenchmarkTracingEnabled}!ABenchmarkTraceController@{ABenchmarkTraceController}}
+\doxysubsubsection{\texorpdfstring{SetBenchmarkTracingEnabled()}{SetBenchmarkTracingEnabled()}}
+{\footnotesize\ttfamily \label{class_a_benchmark_trace_controller_a67865aa3180efcd2f04ccfb6b3e5072f} 
+void ABenchmark\+Trace\+Controller::\+\+Set\+Benchmark\+Tracing\+Enabled (\begin{DoxyParamCaption}\item[{bool}]{b\+Enabled}{}\end{DoxyParamCaption})}
+
+
+
+Enables or disables benchmark tracing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b\+Enabled} & True to enable tracing. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Benchmark/\+Benchmark\+Trace\+Controller.\+h\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Benchmark/\+Benchmark\+Trace\+Controller.\+cpp\end{DoxyCompactItemize}

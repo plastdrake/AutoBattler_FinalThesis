@@ -1,0 +1,90 @@
+\doxysection{UECSBattle\+Agent\+Visualization\+Processor Class Reference}
+\hypertarget{class_u_e_c_s_battle_agent_visualization_processor}{}\label{class_u_e_c_s_battle_agent_visualization_processor}\index{UECSBattleAgentVisualizationProcessor@{UECSBattleAgentVisualizationProcessor}}
+
+
+Mass processor that updates ECS battle agent visuals.  
+
+
+
+
+{\ttfamily \+\#include $<$ECSBattle\+Agent\+Visualization\+Processor.\+h$>$}
+
+
+
+Inheritance diagram for UECSBattle\+Agent\+Visualization\+Processor:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{class_u_e_c_s_battle_agent_visualization_processor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for UECSBattle\+Agent\+Visualization\+Processor:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{class_u_e_c_s_battle_agent_visualization_processor__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_u_e_c_s_battle_agent_visualization_processor_a43da9c42a385222d0fbdb24795ac0e2e}\label{class_u_e_c_s_battle_agent_visualization_processor_a43da9c42a385222d0fbdb24795ac0e2e} 
+{\bfseries UECSBattle\+Agent\+Visualization\+Processor} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{class_u_e_c_s_battle_agent_visualization_processor_ab8f6133fee69af8f800841299dab0d65}{Configure\+Queries}} (const TShared\+Ref$<$ FMass\+Entity\+Manager $>$ \&Entity\+Manager) override
+\begin{DoxyCompactList}\small\item\em Configures entity queries for this processor. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_u_e_c_s_battle_agent_visualization_processor_ab472d6a620adf50e5df54676fdfba28d}{Execute}} (FMass\+Entity\+Manager \&Entity\+Manager, FMass\+Execution\+Context \&Context) override
+\begin{DoxyCompactList}\small\item\em Executes the processor for each tick. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Mass processor that updates ECS battle agent visuals. 
+
+\label{class_u_e_c_s_battle_agent_visualization_processor_doc-func-members}
+\Hypertarget{class_u_e_c_s_battle_agent_visualization_processor_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_e_c_s_battle_agent_visualization_processor_ab8f6133fee69af8f800841299dab0d65}\index{UECSBattleAgentVisualizationProcessor@{UECSBattleAgentVisualizationProcessor}!ConfigureQueries@{ConfigureQueries}}
+\index{ConfigureQueries@{ConfigureQueries}!UECSBattleAgentVisualizationProcessor@{UECSBattleAgentVisualizationProcessor}}
+\doxysubsubsection{\texorpdfstring{ConfigureQueries()}{ConfigureQueries()}}
+{\footnotesize\ttfamily \label{class_u_e_c_s_battle_agent_visualization_processor_ab8f6133fee69af8f800841299dab0d65} 
+void UECSBattle\+Agent\+Visualization\+Processor::\+\+Configure\+Queries (\begin{DoxyParamCaption}\item[{const TShared\+Ref$<$ FMass\+Entity\+Manager $>$ \&}]{Entity\+Manager}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Configures entity queries for this processor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Entity\+Manager} & Entity manager used to build queries. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_u_e_c_s_battle_agent_visualization_processor_ab472d6a620adf50e5df54676fdfba28d}\index{UECSBattleAgentVisualizationProcessor@{UECSBattleAgentVisualizationProcessor}!Execute@{Execute}}
+\index{Execute@{Execute}!UECSBattleAgentVisualizationProcessor@{UECSBattleAgentVisualizationProcessor}}
+\doxysubsubsection{\texorpdfstring{Execute()}{Execute()}}
+{\footnotesize\ttfamily \label{class_u_e_c_s_battle_agent_visualization_processor_ab472d6a620adf50e5df54676fdfba28d} 
+void UECSBattle\+Agent\+Visualization\+Processor::\+\+Execute (\begin{DoxyParamCaption}\item[{FMass\+Entity\+Manager \&}]{Entity\+Manager}{, }\item[{FMass\+Execution\+Context \&}]{Context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Executes the processor for each tick. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Entity\+Manager} & Entity manager used to access entities. \\
+\hline
+{\em Context} & Mass execution context for this tick. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+ECS/\+\+AI/\+ECSBattle\+Agent\+Visualization\+Processor.\+h\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+ECS/\+\+AI/\+ECSBattle\+Agent\+Visualization\+Processor.\+cpp\end{DoxyCompactItemize}

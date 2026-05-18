@@ -1,0 +1,5 @@
+<map id="ABenchmarkMetricsBatchController" name="ABenchmarkMetricsBatchController">
+<area shape="rect" id="Node000001" title="Controller that runs a batch of benchmark captures and writes CSV output." alt="" coords="5,80,235,107"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="89,5,151,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,46,122,81,118,78,118,50"/>
+</map>

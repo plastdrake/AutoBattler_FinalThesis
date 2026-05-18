@@ -1,0 +1,7 @@
+<map id="AECSBattleAgentVisual::SetAssignedTeam" name="AECSBattleAgentVisual::SetAssignedTeam">
+<area shape="rect" id="Node000001" title="Assigns this visual to a team." alt="" coords="5,29,168,72"/>
+<area shape="rect" id="Node000002" href="$class_a_e_c_s_battle_agent_visual.html#a8837a9da954462aa31833bb8fc3606b3" title="Blueprint event fired when the team assignment changes." alt="" coords="216,29,378,72"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,57,203,60,197,60,168,62"/>
+<area shape="poly" id="edge3_Node000002_Node000001" title=" " alt="" coords="212,42,183,44,183,39,218,42"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="257,27,255,19,262,10,276,5,297,3,319,5,335,14,329,13,318,10,297,8,277,10,265,15,260,21,262,30"/>
+</map>

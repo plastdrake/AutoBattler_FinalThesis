@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,35,128,61"/>
+<area shape="rect" id="Node000001" href="$class_u_e_c_s_battle_agent_processor.html" title="Mass processor that drives ECS battle agent behavior." alt="" coords="183,5,370,32"/>
+<area shape="poly" id="edge15_Node000000_Node000001" title=" " alt="" coords="143,35,185,31,180,33,144,40"/>
+<area shape="rect" id="Node000002" href="$class_u_e_c_s_battle_agent_visualization_processor.html" title="Mass processor that updates ECS battle agent visuals." alt="" coords="176,56,377,99"/>
+<area shape="poly" id="edge16_Node000000_Node000002" title=" " alt="" coords="143,56,178,63,172,64,143,61"/>
+</map>

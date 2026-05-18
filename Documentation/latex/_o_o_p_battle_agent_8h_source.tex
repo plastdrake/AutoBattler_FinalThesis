@@ -1,0 +1,98 @@
+\doxysection{OOPBattle\+Agent.\+h}
+\hypertarget{_o_o_p_battle_agent_8h_source}{}\label{_o_o_p_battle_agent_8h_source}\index{D:/School/AutoBattler\_FinalThesis/AutoBattler/Source/AutoBattler/Variant\_BattleSim/AI/OOPBattleAgent.h@{D:/School/AutoBattler\_FinalThesis/AutoBattler/Source/AutoBattler/Variant\_BattleSim/AI/OOPBattleAgent.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}GameFramework/Character.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}OOPBattleAgent.generated.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00008\ UENUM(BlueprintType)}
+\DoxyCodeLine{00009\ \textcolor{keyword}{enum\ class}\ EBattleAgentTeam\ :\ uint8}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ Red\ UMETA(DisplayName\ =\ \textcolor{stringliteral}{"{}Red\ Team"{}}),}
+\DoxyCodeLine{00012\ \ \ \ \ Blue\ UMETA(DisplayName\ =\ \textcolor{stringliteral}{"{}Blue\ Team"{}})}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }UAnimMontage;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00018\ UCLASS()}
+\DoxyCodeLine{00019\ class\ AUTOBATTLER\_API\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a551616c970c335f1c0dab3f5edd8be56}{AOOPBattleAgent}}\ :\ public\ ACharacter}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a551616c970c335f1c0dab3f5edd8be56}{AOOPBattleAgent}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a43a4c1d0e02e506fba2a84dfef379df8}{Tick}}(\textcolor{keywordtype}{float}\ DeltaSeconds)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a958889117b997d08b52e9cb5331653d1}{EndPlay}}(\textcolor{keyword}{const}\ EEndPlayReason::Type\ EndPlayReason)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent"{}})}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_aaa4b1998f5ebb69ba96c1461276c8f55}{SetTeam}}(EBattleAgentTeam\ NewTeam);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00049\ \ \ \ \ UFUNCTION(BlueprintPure,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent"{}})}
+\DoxyCodeLine{00050\ \ \ \ \ bool\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_af85f99e578fc81733de2e55710791c72}{IsAlive}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a141483ee00de930be050f2fac8c8f5a3}{CurrentHealth}}\ >\ 0.0f;\ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00056\ \ \ \ \ UFUNCTION(BlueprintPure,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent"{}})}
+\DoxyCodeLine{00057\ \ \ \ \ float\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a52a4ef003734da811cce94c168f5d195}{GetCurrentHealth}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a141483ee00de930be050f2fac8c8f5a3}{CurrentHealth}};\ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00063\ \ \ \ \ UFUNCTION(BlueprintPure,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent"{}})}
+\DoxyCodeLine{00064\ \ \ \ \ EBattleAgentTeam\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_aa87f505e402ee30893288bc015de33a5}{GetTeam}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_abaa4410759bc3095926f47f3397168ca}{Team}};\ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00071\ \ \ \ \ UFUNCTION(BlueprintPure,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent"{}})}
+\DoxyCodeLine{00072\ \ \ \ \ static\ int32\ GetAliveTeamCount(EBattleAgentTeam\ InTeam);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ ReceiveDamage(\textcolor{keywordtype}{float}\ DamageAmount,\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent}{AOOPBattleAgent}}*\ DamageCauser);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ protected:}
+\DoxyCodeLine{00083\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ BeginPlay()\ override;}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00086\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent"{}})}
+\DoxyCodeLine{00087\ \ \ \ \ EBattleAgentTeam\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_abaa4410759bc3095926f47f3397168ca}{Team}}\ =\ EBattleAgentTeam::Red;}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00090\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Stats"{}},\ meta\ =\ (ClampMin\ =\ 1.0))}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a67ca66ed17d0b9f455e5a3545aeb1695}{MaxHealth}}\ =\ 100.0f;}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00094\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Stats"{}},\ meta\ =\ (ClampMin\ =\ 0.0))}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a141483ee00de930be050f2fac8c8f5a3}{CurrentHealth}}\ =\ 100.0f;}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00098\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Stats"{}},\ meta\ =\ (ClampMin\ =\ 0.0))}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_ae2ed3c404e3bfa0c14373a23884962d3}{MoveSpeed}}\ =\ 300.0f;}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00102\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Combat"{}},\ meta\ =\ (ClampMin\ =\ 0.0,\ Units\ =\ \textcolor{stringliteral}{"{}cm"{}}))}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_af6e83f8c703fede8a35474538cbb6ee6}{AttackRange}}\ =\ 140.0f;}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00106\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Combat"{}},\ meta\ =\ (ClampMin\ =\ 0.0))}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a93f4dd9e738119a266976c944df2f553}{AttackDamage}}\ =\ 10.0f;}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00110\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Combat"{}},\ meta\ =\ (ClampMin\ =\ 0.05,\ Units\ =\ \textcolor{stringliteral}{"{}s"{}}))}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a802ee2752f9e8ec8ab51288232063fa1}{AttackInterval}}\ =\ 0.6f;}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00114\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Combat|Animation"{}})}
+\DoxyCodeLine{00115\ \ \ \ \ TObjectPtr<UAnimMontage>\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_aeaaf9179e025e94ca114a6c9936ccd27}{AttackMontage}};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00118\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Targeting"{}},\ meta\ =\ (ClampMin\ =\ 100.0,\ Units\ =\ \textcolor{stringliteral}{"{}cm"{}}))}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a16cd6ab8d4647e5aba864c1c14ff790b}{TargetSearchRadius}}\ =\ 100000.0f;}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00122\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Targeting"{}},\ meta\ =\ (ClampMin\ =\ 0.05,\ Units\ =\ \textcolor{stringliteral}{"{}s"{}}))}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a29e78ac465a8f44200d50188cfab4497}{TargetRefreshInterval}}\ =\ 0.25f;}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00126\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Death"{}},\ meta\ =\ (ClampMin\ =\ 0.0,\ Units\ =\ \textcolor{stringliteral}{"{}s"{}}))}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_ac234e8a4b00aff0bb8f54a96cc598379}{DestroyDelay}}\ =\ 2.0f;}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ private:}
+\DoxyCodeLine{00131\ \ \ \ \ UPROPERTY(Transient)}
+\DoxyCodeLine{00132\ \ \ \ \ TObjectPtr<\doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a551616c970c335f1c0dab3f5edd8be56}{AOOPBattleAgent}}>\ CurrentTarget;}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{float}\ TimeUntilNextAttack\ =\ 0.0f;}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{float}\ TimeUntilTargetRefresh\ =\ 0.0f;}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00140\ \ \ \ \ static\ TArray<TWeakObjectPtr<\doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a551616c970c335f1c0dab3f5edd8be56}{AOOPBattleAgent}}>>\ AgentRegistry;}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{void}\ RefreshTarget();}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{void}\ MoveOrAttackTarget();}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordtype}{void}\ Die();}
+\DoxyCodeLine{00148\ \};}
+
+\end{DoxyCode}

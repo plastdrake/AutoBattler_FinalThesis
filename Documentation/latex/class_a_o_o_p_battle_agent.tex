@@ -1,0 +1,311 @@
+\doxysection{AOOPBattle\+Agent Class Reference}
+\hypertarget{class_a_o_o_p_battle_agent}{}\label{class_a_o_o_p_battle_agent}\index{AOOPBattleAgent@{AOOPBattleAgent}}
+
+
+OOP battle agent character with combat and targeting logic.  
+
+
+
+
+{\ttfamily \+\#include $<$OOPBattle\+Agent.\+h$>$}
+
+
+
+Inheritance diagram for AOOPBattle\+Agent:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{class_a_o_o_p_battle_agent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for AOOPBattle\+Agent:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{class_a_o_o_p_battle_agent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_o_o_p_battle_agent_a551616c970c335f1c0dab3f5edd8be56}\label{class_a_o_o_p_battle_agent_a551616c970c335f1c0dab3f5edd8be56} 
+{\bfseries AOOPBattle\+Agent} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a43a4c1d0e02e506fba2a84dfef379df8}{Tick}} (float Delta\+Seconds) override
+\begin{DoxyCompactList}\small\item\em Per-\/frame update. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a958889117b997d08b52e9cb5331653d1}{End\+Play}} (const EEnd\+Play\+Reason::\+\+Type End\+Play\+Reason) override
+\begin{DoxyCompactList}\small\item\em Cleanup when the actor is ending play. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_aaa4b1998f5ebb69ba96c1461276c8f55}{Set\+Team}} (EBattle\+Agent\+Team New\+Team)
+\begin{DoxyCompactList}\small\item\em Assigns a new team to the agent. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_af85f99e578fc81733de2e55710791c72}{Is\+Alive}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if the agent is alive. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_a52a4ef003734da811cce94c168f5d195}{Get\+Current\+Health}} () const
+\begin{DoxyCompactList}\small\item\em Returns current health. \end{DoxyCompactList}\item 
+EBattle\+Agent\+Team \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_aa87f505e402ee30893288bc015de33a5}{Get\+Team}} () const
+\begin{DoxyCompactList}\small\item\em Returns the assigned team. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_ad290db65470e3361bf69f635a8dc4908}{Receive\+Damage}} (float Damage\+Amount, \doxymbox{\hyperlink{class_a_o_o_p_battle_agent}{AOOPBattle\+Agent}} \texorpdfstring{$\ast$}{*}Damage\+Causer)
+\begin{DoxyCompactList}\small\item\em Applies damage to this agent. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int32 \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_acbe5fcffa9fe649f92823481049ec8b6}{Get\+Alive\+Team\+Count}} (EBattle\+Agent\+Team In\+Team)
+\begin{DoxyCompactList}\small\item\em Returns the number of alive agents on the specified team. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_o_o_p_battle_agent_abb2dacfbcee27def674591ae0cacf70a}\label{class_a_o_o_p_battle_agent_abb2dacfbcee27def674591ae0cacf70a} 
+virtual void {\bfseries Begin\+Play} () override
+\begin{DoxyCompactList}\small\item\em Actor initialization. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_o_o_p_battle_agent_abaa4410759bc3095926f47f3397168ca}\label{class_a_o_o_p_battle_agent_abaa4410759bc3095926f47f3397168ca} 
+EBattle\+Agent\+Team {\bfseries Team} = EBattle\+Agent\+Team::\+\+Red
+\begin{DoxyCompactList}\small\item\em Current team assignment. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_a67ca66ed17d0b9f455e5a3545aeb1695}\label{class_a_o_o_p_battle_agent_a67ca66ed17d0b9f455e5a3545aeb1695} 
+float {\bfseries Max\+Health} = 100.\+0f
+\begin{DoxyCompactList}\small\item\em Maximum health value. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_a141483ee00de930be050f2fac8c8f5a3}\label{class_a_o_o_p_battle_agent_a141483ee00de930be050f2fac8c8f5a3} 
+float {\bfseries Current\+Health} = 100.\+0f
+\begin{DoxyCompactList}\small\item\em Current health value. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_ae2ed3c404e3bfa0c14373a23884962d3}\label{class_a_o_o_p_battle_agent_ae2ed3c404e3bfa0c14373a23884962d3} 
+float {\bfseries Move\+Speed} = 300.\+0f
+\begin{DoxyCompactList}\small\item\em Movement speed. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_af6e83f8c703fede8a35474538cbb6ee6}\label{class_a_o_o_p_battle_agent_af6e83f8c703fede8a35474538cbb6ee6} 
+float {\bfseries Attack\+Range} = 140.\+0f
+\begin{DoxyCompactList}\small\item\em Attack range in world units. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_a93f4dd9e738119a266976c944df2f553}\label{class_a_o_o_p_battle_agent_a93f4dd9e738119a266976c944df2f553} 
+float {\bfseries Attack\+Damage} = 10.\+0f
+\begin{DoxyCompactList}\small\item\em Damage dealt per attack. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_a802ee2752f9e8ec8ab51288232063fa1}\label{class_a_o_o_p_battle_agent_a802ee2752f9e8ec8ab51288232063fa1} 
+float {\bfseries Attack\+Interval} = 0.\+6f
+\begin{DoxyCompactList}\small\item\em Time between attacks in seconds. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_aeaaf9179e025e94ca114a6c9936ccd27}\label{class_a_o_o_p_battle_agent_aeaaf9179e025e94ca114a6c9936ccd27} 
+TObject\+Ptr$<$ UAnim\+Montage $>$ {\bfseries Attack\+Montage}
+\begin{DoxyCompactList}\small\item\em Attack montage to play when attacking. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_a16cd6ab8d4647e5aba864c1c14ff790b}\label{class_a_o_o_p_battle_agent_a16cd6ab8d4647e5aba864c1c14ff790b} 
+float {\bfseries Target\+Search\+Radius} = 100000.\+0f
+\begin{DoxyCompactList}\small\item\em Target search radius in world units. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_a29e78ac465a8f44200d50188cfab4497}\label{class_a_o_o_p_battle_agent_a29e78ac465a8f44200d50188cfab4497} 
+float {\bfseries Target\+Refresh\+Interval} = 0.\+25f
+\begin{DoxyCompactList}\small\item\em Time between target refresh checks in seconds. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_ac234e8a4b00aff0bb8f54a96cc598379}\label{class_a_o_o_p_battle_agent_ac234e8a4b00aff0bb8f54a96cc598379} 
+float {\bfseries Destroy\+Delay} = 2.\+0f
+\begin{DoxyCompactList}\small\item\em Delay before the agent is removed after death. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+OOP battle agent character with combat and targeting logic. 
+
+\label{class_a_o_o_p_battle_agent_doc-func-members}
+\Hypertarget{class_a_o_o_p_battle_agent_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_a_o_o_p_battle_agent_a958889117b997d08b52e9cb5331653d1}\index{AOOPBattleAgent@{AOOPBattleAgent}!EndPlay@{EndPlay}}
+\index{EndPlay@{EndPlay}!AOOPBattleAgent@{AOOPBattleAgent}}
+\doxysubsubsection{\texorpdfstring{EndPlay()}{EndPlay()}}
+{\footnotesize\ttfamily \label{class_a_o_o_p_battle_agent_a958889117b997d08b52e9cb5331653d1} 
+void AOOPBattle\+Agent::\+\+End\+Play (\begin{DoxyParamCaption}\item[{const EEnd\+Play\+Reason::\+\+Type}]{End\+Play\+Reason}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Cleanup when the actor is ending play. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em End\+Play\+Reason} & Reason for ending play. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_a_o_o_p_battle_agent_acbe5fcffa9fe649f92823481049ec8b6}\index{AOOPBattleAgent@{AOOPBattleAgent}!GetAliveTeamCount@{GetAliveTeamCount}}
+\index{GetAliveTeamCount@{GetAliveTeamCount}!AOOPBattleAgent@{AOOPBattleAgent}}
+\doxysubsubsection{\texorpdfstring{GetAliveTeamCount()}{GetAliveTeamCount()}}
+{\footnotesize\ttfamily \label{class_a_o_o_p_battle_agent_acbe5fcffa9fe649f92823481049ec8b6} 
+int32 AOOPBattle\+Agent::\+\+Get\+Alive\+Team\+Count (\begin{DoxyParamCaption}\item[{EBattle\+Agent\+Team}]{In\+Team}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns the number of alive agents on the specified team. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em In\+Team} & Team to query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Alive agent count. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_o_o_p_battle_agent_acbe5fcffa9fe649f92823481049ec8b6_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_o_o_p_battle_agent_a52a4ef003734da811cce94c168f5d195}\index{AOOPBattleAgent@{AOOPBattleAgent}!GetCurrentHealth@{GetCurrentHealth}}
+\index{GetCurrentHealth@{GetCurrentHealth}!AOOPBattleAgent@{AOOPBattleAgent}}
+\doxysubsubsection{\texorpdfstring{GetCurrentHealth()}{GetCurrentHealth()}}
+{\footnotesize\ttfamily \label{class_a_o_o_p_battle_agent_a52a4ef003734da811cce94c168f5d195} 
+float AOOPBattle\+Agent::\+\+Get\+Current\+Health (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns current health. 
+
+\begin{DoxyReturn}{Returns}
+Current health value. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{class_a_o_o_p_battle_agent_a52a4ef003734da811cce94c168f5d195_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{class_a_o_o_p_battle_agent_a52a4ef003734da811cce94c168f5d195_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_o_o_p_battle_agent_aa87f505e402ee30893288bc015de33a5}\index{AOOPBattleAgent@{AOOPBattleAgent}!GetTeam@{GetTeam}}
+\index{GetTeam@{GetTeam}!AOOPBattleAgent@{AOOPBattleAgent}}
+\doxysubsubsection{\texorpdfstring{GetTeam()}{GetTeam()}}
+{\footnotesize\ttfamily \label{class_a_o_o_p_battle_agent_aa87f505e402ee30893288bc015de33a5} 
+EBattle\+Agent\+Team AOOPBattle\+Agent::\+\+Get\+Team (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the assigned team. 
+
+\begin{DoxyReturn}{Returns}
+Team assignment. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{class_a_o_o_p_battle_agent_aa87f505e402ee30893288bc015de33a5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_o_o_p_battle_agent_aa87f505e402ee30893288bc015de33a5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_o_o_p_battle_agent_af85f99e578fc81733de2e55710791c72}\index{AOOPBattleAgent@{AOOPBattleAgent}!IsAlive@{IsAlive}}
+\index{IsAlive@{IsAlive}!AOOPBattleAgent@{AOOPBattleAgent}}
+\doxysubsubsection{\texorpdfstring{IsAlive()}{IsAlive()}}
+{\footnotesize\ttfamily \label{class_a_o_o_p_battle_agent_af85f99e578fc81733de2e55710791c72} 
+bool AOOPBattle\+Agent::\+\+Is\+Alive (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns true if the agent is alive. 
+
+\begin{DoxyReturn}{Returns}
+True when current health is above zero. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{class_a_o_o_p_battle_agent_af85f99e578fc81733de2e55710791c72_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_o_o_p_battle_agent_af85f99e578fc81733de2e55710791c72_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_o_o_p_battle_agent_ad290db65470e3361bf69f635a8dc4908}\index{AOOPBattleAgent@{AOOPBattleAgent}!ReceiveDamage@{ReceiveDamage}}
+\index{ReceiveDamage@{ReceiveDamage}!AOOPBattleAgent@{AOOPBattleAgent}}
+\doxysubsubsection{\texorpdfstring{ReceiveDamage()}{ReceiveDamage()}}
+{\footnotesize\ttfamily \label{class_a_o_o_p_battle_agent_ad290db65470e3361bf69f635a8dc4908} 
+void AOOPBattle\+Agent::\+\+Receive\+Damage (\begin{DoxyParamCaption}\item[{float}]{Damage\+Amount}{, }\item[{\doxymbox{\hyperlink{class_a_o_o_p_battle_agent}{AOOPBattle\+Agent}} \texorpdfstring{$\ast$}{*}}]{Damage\+Causer}{}\end{DoxyParamCaption})}
+
+
+
+Applies damage to this agent. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Damage\+Amount} & Amount of damage to apply. \\
+\hline
+{\em Damage\+Causer} & Agent that caused the damage. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_o_o_p_battle_agent_ad290db65470e3361bf69f635a8dc4908_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_o_o_p_battle_agent_aaa4b1998f5ebb69ba96c1461276c8f55}\index{AOOPBattleAgent@{AOOPBattleAgent}!SetTeam@{SetTeam}}
+\index{SetTeam@{SetTeam}!AOOPBattleAgent@{AOOPBattleAgent}}
+\doxysubsubsection{\texorpdfstring{SetTeam()}{SetTeam()}}
+{\footnotesize\ttfamily \label{class_a_o_o_p_battle_agent_aaa4b1998f5ebb69ba96c1461276c8f55} 
+void AOOPBattle\+Agent::\+\+Set\+Team (\begin{DoxyParamCaption}\item[{EBattle\+Agent\+Team}]{New\+Team}{}\end{DoxyParamCaption})}
+
+
+
+Assigns a new team to the agent. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em New\+Team} & Team to assign. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_o_o_p_battle_agent_aaa4b1998f5ebb69ba96c1461276c8f55_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_o_o_p_battle_agent_a43a4c1d0e02e506fba2a84dfef379df8}\index{AOOPBattleAgent@{AOOPBattleAgent}!Tick@{Tick}}
+\index{Tick@{Tick}!AOOPBattleAgent@{AOOPBattleAgent}}
+\doxysubsubsection{\texorpdfstring{Tick()}{Tick()}}
+{\footnotesize\ttfamily \label{class_a_o_o_p_battle_agent_a43a4c1d0e02e506fba2a84dfef379df8} 
+void AOOPBattle\+Agent::\+\+Tick (\begin{DoxyParamCaption}\item[{float}]{Delta\+Seconds}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Per-\/frame update. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Delta\+Seconds} & Time since the last tick. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_o_o_p_battle_agent_a43a4c1d0e02e506fba2a84dfef379df8_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+Battle\+Sim/\+\+AI/\+OOPBattle\+Agent.\+h\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+Battle\+Sim/\+\+AI/\+OOPBattle\+Agent.\+cpp\end{DoxyCompactItemize}

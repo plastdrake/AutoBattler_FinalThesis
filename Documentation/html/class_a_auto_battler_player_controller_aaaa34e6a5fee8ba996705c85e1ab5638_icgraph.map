@@ -1,0 +1,7 @@
+<map id="AAutoBattlerPlayerController::ShouldUseTouchControls" name="AAutoBattlerPlayerController::ShouldUseTouchControls">
+<area shape="rect" id="Node000001" title="Returns true if the player should use UMG touch controls." alt="" coords="242,39,430,81"/>
+<area shape="rect" id="Node000002" href="$class_a_auto_battler_player_controller.html#a3253ccfb9dda23dbbfc95adb960c8d1b" title="Gameplay initialization." alt="" coords="5,5,194,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,45,194,43,194,37,229,44"/>
+<area shape="rect" id="Node000003" href="$class_a_auto_battler_player_controller.html#a0300e096c8e6c7484ba45952ecc887b3" title="Input mapping context setup." alt="" coords="5,72,194,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="223,76,194,83,194,77,229,75"/>
+</map>

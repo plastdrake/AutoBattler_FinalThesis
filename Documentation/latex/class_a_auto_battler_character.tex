@@ -1,0 +1,326 @@
+\doxysection{AAuto\+Battler\+Character Class Reference}
+\hypertarget{class_a_auto_battler_character}{}\label{class_a_auto_battler_character}\index{AAutoBattlerCharacter@{AAutoBattlerCharacter}}
+
+
+Player-\/controllable third-\/person character with an orbit camera.  
+
+
+
+
+{\ttfamily \+\#include $<$Auto\+Battler\+Character.\+h$>$}
+
+
+
+Inheritance diagram for AAuto\+Battler\+Character:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{class_a_auto_battler_character__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for AAuto\+Battler\+Character:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{class_a_auto_battler_character__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_a_auto_battler_character_a20a4d1cbf242d101cd7b1e1d3a0aedec}{AAuto\+Battler\+Character}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_a_auto_battler_character_a17ffb66f93bdec026df75cb09a05124c}{Do\+Move}} (float Right, float Forward)
+\begin{DoxyCompactList}\small\item\em Handles move input from either controls or UI interfaces. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_a_auto_battler_character_acc005ffe581d36ac524e77477081c52c}{Do\+Look}} (float Yaw, float Pitch)
+\begin{DoxyCompactList}\small\item\em Handles look input from either controls or UI interfaces. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_a_auto_battler_character_add13fb76ce30519014de7b595e75eee0}{Do\+Jump\+Start}} ()
+\begin{DoxyCompactList}\small\item\em Handles jump-\/start input from either controls or UI interfaces. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_a_auto_battler_character_abce4a8a2cdf12a8a04ecb6de57a3b1d7}{Do\+Jump\+End}} ()
+\begin{DoxyCompactList}\small\item\em Handles jump-\/end input from either controls or UI interfaces. \end{DoxyCompactList}\item 
+FORCEINLINE class USpring\+Arm\+Component \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_a_auto_battler_character_a212bf616a6f1bd1fd8044dc7dace420f}{Get\+Camera\+Boom}} () const
+\begin{DoxyCompactList}\small\item\em Returns the Camera\+Boom subobject. \end{DoxyCompactList}\item 
+FORCEINLINE class UCamera\+Component \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_a_auto_battler_character_af4208bc4768e813ad5969eae384adde6}{Get\+Follow\+Camera}} () const
+\begin{DoxyCompactList}\small\item\em Returns the Follow\+Camera subobject. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{class_a_auto_battler_character_a557ded62e8f0f6b9a8238f3decb9eb25}{Setup\+Player\+Input\+Component}} (class UInput\+Component \texorpdfstring{$\ast$}{*}Player\+Input\+Component) override
+\begin{DoxyCompactList}\small\item\em Initializes input action bindings. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_a_auto_battler_character_a8a7d2f1de50773974a53bbdc5224d7bb}{Move}} (const FInput\+Action\+Value \&Value)
+\begin{DoxyCompactList}\small\item\em Handles raw movement input. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_a_auto_battler_character_a1dd47971e59273f35f6d88f1d9c4c66f}{Look}} (const FInput\+Action\+Value \&Value)
+\begin{DoxyCompactList}\small\item\em Handles raw look input. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_auto_battler_character_ad80e95a09911dbd42ccd754995e1f417}\label{class_a_auto_battler_character_ad80e95a09911dbd42ccd754995e1f417} 
+UInput\+Action \texorpdfstring{$\ast$}{*} {\bfseries Jump\+Action}
+\begin{DoxyCompactList}\small\item\em Jump input action. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_auto_battler_character_ab4719067a84f317aec5e8320269c8d43}\label{class_a_auto_battler_character_ab4719067a84f317aec5e8320269c8d43} 
+UInput\+Action \texorpdfstring{$\ast$}{*} {\bfseries Move\+Action}
+\begin{DoxyCompactList}\small\item\em Move input action. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_auto_battler_character_ab71b536b36ebda18bce528ca80c75aca}\label{class_a_auto_battler_character_ab71b536b36ebda18bce528ca80c75aca} 
+UInput\+Action \texorpdfstring{$\ast$}{*} {\bfseries Look\+Action}
+\begin{DoxyCompactList}\small\item\em Look input action. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_auto_battler_character_a22d03d7705e135ba96305617e01a8ccd}\label{class_a_auto_battler_character_a22d03d7705e135ba96305617e01a8ccd} 
+UInput\+Action \texorpdfstring{$\ast$}{*} {\bfseries Mouse\+Look\+Action}
+\begin{DoxyCompactList}\small\item\em Mouse look input action. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Player-\/controllable third-\/person character with an orbit camera. 
+
+\label{class_a_auto_battler_character_doc-constructors}
+\Hypertarget{class_a_auto_battler_character_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_a_auto_battler_character_a20a4d1cbf242d101cd7b1e1d3a0aedec}\index{AAutoBattlerCharacter@{AAutoBattlerCharacter}!AAutoBattlerCharacter@{AAutoBattlerCharacter}}
+\index{AAutoBattlerCharacter@{AAutoBattlerCharacter}!AAutoBattlerCharacter@{AAutoBattlerCharacter}}
+\doxysubsubsection{\texorpdfstring{AAutoBattlerCharacter()}{AAutoBattlerCharacter()}}
+{\footnotesize\ttfamily \label{class_a_auto_battler_character_a20a4d1cbf242d101cd7b1e1d3a0aedec} 
+AAuto\+Battler\+Character::\+\+AAuto\+Battler\+Character (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+Set the collision capsule size.
+
+Keep controller rotation from affecting the character directly.
+
+Configure character movement defaults.
+
+These movement values can be tuned in the Blueprint without recompiling.
+
+Create a camera boom that pulls in toward the player on collision.
+
+Create a follow camera.
+
+The mesh and animation blueprint are assigned in the derived Blueprint asset.
+
+\label{class_a_auto_battler_character_doc-func-members}
+\Hypertarget{class_a_auto_battler_character_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_a_auto_battler_character_abce4a8a2cdf12a8a04ecb6de57a3b1d7}\index{AAutoBattlerCharacter@{AAutoBattlerCharacter}!DoJumpEnd@{DoJumpEnd}}
+\index{DoJumpEnd@{DoJumpEnd}!AAutoBattlerCharacter@{AAutoBattlerCharacter}}
+\doxysubsubsection{\texorpdfstring{DoJumpEnd()}{DoJumpEnd()}}
+{\footnotesize\ttfamily \label{class_a_auto_battler_character_abce4a8a2cdf12a8a04ecb6de57a3b1d7} 
+void AAuto\+Battler\+Character::\+\+Do\+Jump\+End (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Handles jump-\/end input from either controls or UI interfaces. 
+
+Signal the character to stop jumping.\Hypertarget{class_a_auto_battler_character_add13fb76ce30519014de7b595e75eee0}\index{AAutoBattlerCharacter@{AAutoBattlerCharacter}!DoJumpStart@{DoJumpStart}}
+\index{DoJumpStart@{DoJumpStart}!AAutoBattlerCharacter@{AAutoBattlerCharacter}}
+\doxysubsubsection{\texorpdfstring{DoJumpStart()}{DoJumpStart()}}
+{\footnotesize\ttfamily \label{class_a_auto_battler_character_add13fb76ce30519014de7b595e75eee0} 
+void AAuto\+Battler\+Character::\+\+Do\+Jump\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Handles jump-\/start input from either controls or UI interfaces. 
+
+Signal the character to jump.\Hypertarget{class_a_auto_battler_character_acc005ffe581d36ac524e77477081c52c}\index{AAutoBattlerCharacter@{AAutoBattlerCharacter}!DoLook@{DoLook}}
+\index{DoLook@{DoLook}!AAutoBattlerCharacter@{AAutoBattlerCharacter}}
+\doxysubsubsection{\texorpdfstring{DoLook()}{DoLook()}}
+{\footnotesize\ttfamily \label{class_a_auto_battler_character_acc005ffe581d36ac524e77477081c52c} 
+void AAuto\+Battler\+Character::\+\+Do\+Look (\begin{DoxyParamCaption}\item[{float}]{Yaw}{, }\item[{float}]{Pitch}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Handles look input from either controls or UI interfaces. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Yaw} & Yaw delta to apply. \\
+\hline
+{\em Pitch} & Pitch delta to apply. \\
+\hline
+\end{DoxyParams}
+Add yaw and pitch input to the controller.Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_auto_battler_character_acc005ffe581d36ac524e77477081c52c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_auto_battler_character_a17ffb66f93bdec026df75cb09a05124c}\index{AAutoBattlerCharacter@{AAutoBattlerCharacter}!DoMove@{DoMove}}
+\index{DoMove@{DoMove}!AAutoBattlerCharacter@{AAutoBattlerCharacter}}
+\doxysubsubsection{\texorpdfstring{DoMove()}{DoMove()}}
+{\footnotesize\ttfamily \label{class_a_auto_battler_character_a17ffb66f93bdec026df75cb09a05124c} 
+void AAuto\+Battler\+Character::\+\+Do\+Move (\begin{DoxyParamCaption}\item[{float}]{Right}{, }\item[{float}]{Forward}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Handles move input from either controls or UI interfaces. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Right} & Right-\/axis input value. \\
+\hline
+{\em Forward} & Forward-\/axis input value. \\
+\hline
+\end{DoxyParams}
+Find out which way is forward.
+
+Get the forward vector.
+
+Get the right vector.
+
+Add movement input.Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_auto_battler_character_a17ffb66f93bdec026df75cb09a05124c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_auto_battler_character_a212bf616a6f1bd1fd8044dc7dace420f}\index{AAutoBattlerCharacter@{AAutoBattlerCharacter}!GetCameraBoom@{GetCameraBoom}}
+\index{GetCameraBoom@{GetCameraBoom}!AAutoBattlerCharacter@{AAutoBattlerCharacter}}
+\doxysubsubsection{\texorpdfstring{GetCameraBoom()}{GetCameraBoom()}}
+{\footnotesize\ttfamily \label{class_a_auto_battler_character_a212bf616a6f1bd1fd8044dc7dace420f} 
+FORCEINLINE class USpring\+Arm\+Component \texorpdfstring{$\ast$}{*} AAuto\+Battler\+Character::\+\+Get\+Camera\+Boom (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the Camera\+Boom subobject. 
+
+\begin{DoxyReturn}{Returns}
+Camera boom component. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{class_a_auto_battler_character_a212bf616a6f1bd1fd8044dc7dace420f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{class_a_auto_battler_character_a212bf616a6f1bd1fd8044dc7dace420f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_auto_battler_character_af4208bc4768e813ad5969eae384adde6}\index{AAutoBattlerCharacter@{AAutoBattlerCharacter}!GetFollowCamera@{GetFollowCamera}}
+\index{GetFollowCamera@{GetFollowCamera}!AAutoBattlerCharacter@{AAutoBattlerCharacter}}
+\doxysubsubsection{\texorpdfstring{GetFollowCamera()}{GetFollowCamera()}}
+{\footnotesize\ttfamily \label{class_a_auto_battler_character_af4208bc4768e813ad5969eae384adde6} 
+FORCEINLINE class UCamera\+Component \texorpdfstring{$\ast$}{*} AAuto\+Battler\+Character::\+\+Get\+Follow\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the Follow\+Camera subobject. 
+
+\begin{DoxyReturn}{Returns}
+Follow camera component. 
+\end{DoxyReturn}
+\Hypertarget{class_a_auto_battler_character_a1dd47971e59273f35f6d88f1d9c4c66f}\index{AAutoBattlerCharacter@{AAutoBattlerCharacter}!Look@{Look}}
+\index{Look@{Look}!AAutoBattlerCharacter@{AAutoBattlerCharacter}}
+\doxysubsubsection{\texorpdfstring{Look()}{Look()}}
+{\footnotesize\ttfamily \label{class_a_auto_battler_character_a1dd47971e59273f35f6d88f1d9c4c66f} 
+void AAuto\+Battler\+Character::\+\+Look (\begin{DoxyParamCaption}\item[{const FInput\+Action\+Value \&}]{Value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Handles raw look input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Value} & Input action value carrying a look vector. \\
+\hline
+\end{DoxyParams}
+Input is a Vector2D.
+
+Route the input.Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{class_a_auto_battler_character_a1dd47971e59273f35f6d88f1d9c4c66f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_auto_battler_character_a1dd47971e59273f35f6d88f1d9c4c66f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_auto_battler_character_a8a7d2f1de50773974a53bbdc5224d7bb}\index{AAutoBattlerCharacter@{AAutoBattlerCharacter}!Move@{Move}}
+\index{Move@{Move}!AAutoBattlerCharacter@{AAutoBattlerCharacter}}
+\doxysubsubsection{\texorpdfstring{Move()}{Move()}}
+{\footnotesize\ttfamily \label{class_a_auto_battler_character_a8a7d2f1de50773974a53bbdc5224d7bb} 
+void AAuto\+Battler\+Character::\+\+Move (\begin{DoxyParamCaption}\item[{const FInput\+Action\+Value \&}]{Value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Handles raw movement input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Value} & Input action value carrying a movement vector. \\
+\hline
+\end{DoxyParams}
+Input is a Vector2D.
+
+Route the input.Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{class_a_auto_battler_character_a8a7d2f1de50773974a53bbdc5224d7bb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_auto_battler_character_a8a7d2f1de50773974a53bbdc5224d7bb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_a_auto_battler_character_a557ded62e8f0f6b9a8238f3decb9eb25}\index{AAutoBattlerCharacter@{AAutoBattlerCharacter}!SetupPlayerInputComponent@{SetupPlayerInputComponent}}
+\index{SetupPlayerInputComponent@{SetupPlayerInputComponent}!AAutoBattlerCharacter@{AAutoBattlerCharacter}}
+\doxysubsubsection{\texorpdfstring{SetupPlayerInputComponent()}{SetupPlayerInputComponent()}}
+{\footnotesize\ttfamily \label{class_a_auto_battler_character_a557ded62e8f0f6b9a8238f3decb9eb25} 
+void AAuto\+Battler\+Character::\+\+Setup\+Player\+Input\+Component (\begin{DoxyParamCaption}\item[{class UInput\+Component \texorpdfstring{$\ast$}{*}}]{Player\+Input\+Component}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Initializes input action bindings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Player\+Input\+Component} & Input component to bind actions on. \\
+\hline
+\end{DoxyParams}
+Set up action bindings.
+
+Jumping.
+
+Moving.
+
+Looking.Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_auto_battler_character_a557ded62e8f0f6b9a8238f3decb9eb25_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+Auto\+Battler\+Character.\+h\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+Auto\+Battler\+Character.\+cpp\end{DoxyCompactItemize}

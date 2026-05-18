@@ -1,0 +1,154 @@
+\doxysection{UBattle\+Performance\+Metrics\+Widget Class Reference}
+\hypertarget{class_u_battle_performance_metrics_widget}{}\label{class_u_battle_performance_metrics_widget}\index{UBattlePerformanceMetricsWidget@{UBattlePerformanceMetricsWidget}}
+
+
+UI widget that captures and displays performance metrics.  
+
+
+
+
+{\ttfamily \+\#include $<$Battle\+Performance\+Metrics\+Widget.\+h$>$}
+
+
+
+Inheritance diagram for UBattle\+Performance\+Metrics\+Widget:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{class_u_battle_performance_metrics_widget__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for UBattle\+Performance\+Metrics\+Widget:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{class_u_battle_performance_metrics_widget__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_u_battle_performance_metrics_widget_aac4fe77ac24a671a71d06059a9cdebee}\label{class_u_battle_performance_metrics_widget_aac4fe77ac24a671a71d06059a9cdebee} 
+void {\bfseries Reset\+And\+Start\+Capture} ()
+\begin{DoxyCompactList}\small\item\em Resets internal state and starts capturing metrics. \end{DoxyCompactList}\item 
+\Hypertarget{class_u_battle_performance_metrics_widget_a838b2ab85581ad7d568af7583f6d44b5}\label{class_u_battle_performance_metrics_widget_a838b2ab85581ad7d568af7583f6d44b5} 
+void {\bfseries Stop\+Capture\+And\+Finalize} ()
+\begin{DoxyCompactList}\small\item\em Stops capturing metrics and finalizes results. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_u_battle_performance_metrics_widget_a9a46ac026a46e74ae7d8bc1c142d9aac}{Is\+Capture\+Finalized}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if capture is finalized. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_u_battle_performance_metrics_widget_a8d3425d109fc2b67047468ed68a28c0f}{Get\+Finalized\+Metrics}} (FBattle\+Performance\+Metrics\+Snapshot \&Out\+Snapshot) const
+\begin{DoxyCompactList}\small\item\em Retrieves finalized metrics if available. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_u_battle_performance_metrics_widget_aebeab1f8c0d638658a6eba238ee52518}\label{class_u_battle_performance_metrics_widget_aebeab1f8c0d638658a6eba238ee52518} 
+virtual void {\bfseries Native\+Construct} () override
+\begin{DoxyCompactList}\small\item\em Initializes the widget and refresh timer. \end{DoxyCompactList}\item 
+\Hypertarget{class_u_battle_performance_metrics_widget_a86a62c8e5be17a17a5d4c1cb191c579b}\label{class_u_battle_performance_metrics_widget_a86a62c8e5be17a17a5d4c1cb191c579b} 
+virtual void {\bfseries Native\+Destruct} () override
+\begin{DoxyCompactList}\small\item\em Clears timers before the widget is destroyed. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_u_battle_performance_metrics_widget_a25b7e64a3fedf0998139fa997f0a36b0}{Native\+Tick}} (const FGeometry \&My\+Geometry, float In\+Delta\+Time) override
+\begin{DoxyCompactList}\small\item\em Per-\/frame tick used to sample metrics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_u_battle_performance_metrics_widget_a5863115d42d5b2f1615e46f18fd7ac84}\label{class_u_battle_performance_metrics_widget_a5863115d42d5b2f1615e46f18fd7ac84} 
+EBattle\+Metrics\+Count\+Source\+Mode {\bfseries Count\+Source\+Mode} = EBattle\+Metrics\+Count\+Source\+Mode::\+\+Auto\+Detect
+\begin{DoxyCompactList}\small\item\em Count source used when checking round state. \end{DoxyCompactList}\item 
+\Hypertarget{class_u_battle_performance_metrics_widget_a618c6102fa5c82b1f98926651913b019}\label{class_u_battle_performance_metrics_widget_a618c6102fa5c82b1f98926651913b019} 
+float {\bfseries Warmup\+Duration\+Seconds} = 3.\+0f
+\begin{DoxyCompactList}\small\item\em Warmup time before samples are recorded. \end{DoxyCompactList}\item 
+\Hypertarget{class_u_battle_performance_metrics_widget_a5d6cc7b7860f80da3775b9bda985be9c}\label{class_u_battle_performance_metrics_widget_a5d6cc7b7860f80da3775b9bda985be9c} 
+float {\bfseries Auto\+Refresh\+Interval} = 0.\+2f
+\begin{DoxyCompactList}\small\item\em Auto-\/refresh interval for round state checks. \end{DoxyCompactList}\item 
+\Hypertarget{class_u_battle_performance_metrics_widget_a0a1822d59368782d8ce0463107cb3adf}\label{class_u_battle_performance_metrics_widget_a0a1822d59368782d8ce0463107cb3adf} 
+bool {\bfseries b\+Auto\+Start\+When\+Round\+Detected} = true
+\begin{DoxyCompactList}\small\item\em If true, starts capture when a round is detected. \end{DoxyCompactList}\item 
+\Hypertarget{class_u_battle_performance_metrics_widget_a88b25e92c09019e5f4ca24c00e6ab5d4}\label{class_u_battle_performance_metrics_widget_a88b25e92c09019e5f4ca24c00e6ab5d4} 
+bool {\bfseries b\+Auto\+Finalize\+When\+Round\+Ends} = true
+\begin{DoxyCompactList}\small\item\em If true, finalizes capture when the round ends. \end{DoxyCompactList}\item 
+\Hypertarget{class_u_battle_performance_metrics_widget_af7299907781a00e7ef06dcd7259b1845}\label{class_u_battle_performance_metrics_widget_af7299907781a00e7ef06dcd7259b1845} 
+TObject\+Ptr$<$ UText\+Block $>$ {\bfseries metricssummarytext}
+\begin{DoxyCompactList}\small\item\em Text block used to display the summary string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+UI widget that captures and displays performance metrics. 
+
+\label{class_u_battle_performance_metrics_widget_doc-func-members}
+\Hypertarget{class_u_battle_performance_metrics_widget_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_battle_performance_metrics_widget_a8d3425d109fc2b67047468ed68a28c0f}\index{UBattlePerformanceMetricsWidget@{UBattlePerformanceMetricsWidget}!GetFinalizedMetrics@{GetFinalizedMetrics}}
+\index{GetFinalizedMetrics@{GetFinalizedMetrics}!UBattlePerformanceMetricsWidget@{UBattlePerformanceMetricsWidget}}
+\doxysubsubsection{\texorpdfstring{GetFinalizedMetrics()}{GetFinalizedMetrics()}}
+{\footnotesize\ttfamily \label{class_u_battle_performance_metrics_widget_a8d3425d109fc2b67047468ed68a28c0f} 
+bool UBattle\+Performance\+Metrics\+Widget::\+\+Get\+Finalized\+Metrics (\begin{DoxyParamCaption}\item[{FBattle\+Performance\+Metrics\+Snapshot \&}]{Out\+Snapshot}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves finalized metrics if available. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Out\+Snapshot} & Output snapshot to populate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True when finalized metrics were returned. 
+\end{DoxyReturn}
+\Hypertarget{class_u_battle_performance_metrics_widget_a9a46ac026a46e74ae7d8bc1c142d9aac}\index{UBattlePerformanceMetricsWidget@{UBattlePerformanceMetricsWidget}!IsCaptureFinalized@{IsCaptureFinalized}}
+\index{IsCaptureFinalized@{IsCaptureFinalized}!UBattlePerformanceMetricsWidget@{UBattlePerformanceMetricsWidget}}
+\doxysubsubsection{\texorpdfstring{IsCaptureFinalized()}{IsCaptureFinalized()}}
+{\footnotesize\ttfamily \label{class_u_battle_performance_metrics_widget_a9a46ac026a46e74ae7d8bc1c142d9aac} 
+bool UBattle\+Performance\+Metrics\+Widget::\+\+Is\+Capture\+Finalized (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns true if capture is finalized. 
+
+\begin{DoxyReturn}{Returns}
+True when finalized metrics are available. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{class_u_battle_performance_metrics_widget_a9a46ac026a46e74ae7d8bc1c142d9aac_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{class_u_battle_performance_metrics_widget_a9a46ac026a46e74ae7d8bc1c142d9aac_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_battle_performance_metrics_widget_a25b7e64a3fedf0998139fa997f0a36b0}\index{UBattlePerformanceMetricsWidget@{UBattlePerformanceMetricsWidget}!NativeTick@{NativeTick}}
+\index{NativeTick@{NativeTick}!UBattlePerformanceMetricsWidget@{UBattlePerformanceMetricsWidget}}
+\doxysubsubsection{\texorpdfstring{NativeTick()}{NativeTick()}}
+{\footnotesize\ttfamily \label{class_u_battle_performance_metrics_widget_a25b7e64a3fedf0998139fa997f0a36b0} 
+void UBattle\+Performance\+Metrics\+Widget::\+\+Native\+Tick (\begin{DoxyParamCaption}\item[{const FGeometry \&}]{My\+Geometry}{, }\item[{float}]{In\+Delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Per-\/frame tick used to sample metrics. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em My\+Geometry} & Widget geometry data. \\
+\hline
+{\em In\+Delta\+Time} & Tick delta time in seconds. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+Battle\+Sim/\+\+UI/\+Battle\+Performance\+Metrics\+Widget.\+h\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+Battle\+Sim/\+\+UI/\+Battle\+Performance\+Metrics\+Widget.\+cpp\end{DoxyCompactItemize}

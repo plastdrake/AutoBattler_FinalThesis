@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,43,106,69"/>
+<area shape="rect" id="Node000001" href="$class_u_battle_performance_metrics_widget.html" title="UI widget that captures and displays performance metrics." alt="" coords="154,5,336,48"/>
+<area shape="poly" id="edge17_Node000000_Node000001" title=" " alt="" coords="120,43,156,40,151,42,121,49"/>
+<area shape="rect" id="Node000002" href="$class_u_battle_team_count_widget.html" title="UI widget that displays live team counts for the battle simulation." alt="" coords="158,72,332,99"/>
+<area shape="poly" id="edge18_Node000000_Node000002" title=" " alt="" coords="121,63,160,71,155,72,121,69"/>
+</map>

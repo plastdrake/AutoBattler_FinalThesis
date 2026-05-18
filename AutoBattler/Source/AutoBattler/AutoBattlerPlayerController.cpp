@@ -13,15 +13,15 @@ void AAutoBattlerPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// only spawn touch controls on local player controllers
+	/** Only spawn touch controls on local player controllers. */
 	if (ShouldUseTouchControls() && IsLocalPlayerController())
 	{
-		// spawn the mobile controls widget
+		/** Spawn the mobile controls widget. */
 		MobileControlsWidget = CreateWidget<UUserWidget>(this, MobileControlsWidgetClass);
 
 		if (MobileControlsWidget)
 		{
-			// add the controls to the player screen
+			/** Add the controls to the player screen. */
 			MobileControlsWidget->AddToPlayerScreen(0);
 
 		} else {
@@ -37,10 +37,10 @@ void AAutoBattlerPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 
-	// only add IMCs for local player controllers
+	/** Only add input mapping contexts for local player controllers. */
 	if (IsLocalPlayerController())
 	{
-		// Add Input Mapping Contexts
+		/** Add input mapping contexts. */
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
 		{
 			for (UInputMappingContext* CurrentContext : DefaultMappingContexts)
@@ -48,7 +48,7 @@ void AAutoBattlerPlayerController::SetupInputComponent()
 				Subsystem->AddMappingContext(CurrentContext, 0);
 			}
 
-			// only add these IMCs if we're not using mobile touch input
+			/** Only add these input mapping contexts when touch input is disabled. */
 			if (!ShouldUseTouchControls())
 			{
 				for (UInputMappingContext* CurrentContext : MobileExcludedMappingContexts)
@@ -62,6 +62,6 @@ void AAutoBattlerPlayerController::SetupInputComponent()
 
 bool AAutoBattlerPlayerController::ShouldUseTouchControls() const
 {
-	// are we on a mobile platform? Should we force touch?
+	/** Use touch controls on mobile platforms or when forced by config. */
 	return SVirtualJoystick::ShouldDisplayTouchInterface() || bForceTouchControls;
 }

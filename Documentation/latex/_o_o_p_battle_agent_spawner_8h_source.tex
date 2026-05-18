@@ -1,0 +1,53 @@
+\doxysection{OOPBattle\+Agent\+Spawner.\+h}
+\hypertarget{_o_o_p_battle_agent_spawner_8h_source}{}\label{_o_o_p_battle_agent_spawner_8h_source}\index{D:/School/AutoBattler\_FinalThesis/AutoBattler/Source/AutoBattler/Variant\_BattleSim/AI/OOPBattleAgentSpawner.h@{D:/School/AutoBattler\_FinalThesis/AutoBattler/Source/AutoBattler/Variant\_BattleSim/AI/OOPBattleAgentSpawner.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}GameFramework/Actor.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}OOPBattleAgent.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}OOPBattleAgentSpawner.generated.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }UArrowComponent;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00011\ UCLASS()}
+\DoxyCodeLine{00012\ class\ AUTOBATTLER\_API\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_spawner_ab111137bdce5cc43e592d819c6f6c3df}{AOOPBattleAgentSpawner}}\ :\ public\ AActor}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_spawner_ab111137bdce5cc43e592d819c6f6c3df}{AOOPBattleAgentSpawner}}();}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00021\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Spawner"{}})}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_spawner_a783d9224e4669ed5fc37041efc04423a}{SpawnAgents}}();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_spawner_a7e91eb210c47804e68e0eaff5f076326}{BeginPlay}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00029\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Components"{}})}
+\DoxyCodeLine{00030\ \ \ \ \ TObjectPtr<UArrowComponent>\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_spawner_ad65ef55ccd07094b98bd6d3d9fe4b4a3}{SpawnDirection}};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00033\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Spawner"{}})}
+\DoxyCodeLine{00034\ \ \ \ \ TSubclassOf<\doxymbox{\hyperlink{class_a_o_o_p_battle_agent}{AOOPBattleAgent}}>\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_spawner_aeb7c614dfe8fa3a6802569302d92a48a}{AgentClass}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00037\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Spawner"{}},\ meta\ =\ (ClampMin\ =\ 0,\ ClampMax\ =\ 500))}
+\DoxyCodeLine{00038\ \ \ \ \ int32\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_spawner_a481e65600661e472185858df6669ae87}{SpawnCount}}\ =\ 10;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00041\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Spawner"{}},\ meta\ =\ (ClampMin\ =\ 0.0,\ Units\ =\ \textcolor{stringliteral}{"{}cm"{}}))}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_spawner_a0d65b9b4d9872bd47503a115d4524290}{SpawnSpacing}}\ =\ 120.0f;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00045\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Spawner"{}},\ meta\ =\ (ClampMin\ =\ 1,\ ClampMax\ =\ 100))}
+\DoxyCodeLine{00046\ \ \ \ \ int32\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_spawner_a3385e3e7e10a2d55ccdc613a843a2519}{SpawnRows}}\ =\ 1;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00049\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Spawner"{}},\ meta\ =\ (ClampMin\ =\ 0.0,\ Units\ =\ \textcolor{stringliteral}{"{}cm"{}}))}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_spawner_aee0eccc7d19aef6fb825818e91d0bdd7}{RowSpacing}}\ =\ 120.0f;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00053\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Spawner"{}})}
+\DoxyCodeLine{00054\ \ \ \ \ EBattleAgentTeam\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_spawner_a7ce247f27ad074a840f3d1bc36b5b4a2}{Team}}\ =\ EBattleAgentTeam::Red;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00057\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Spawner"{}})}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent_spawner_aaace28780505fd9299dc933eed36d8e1}{bSpawnOnBeginPlay}}\ =\ true;}
+\DoxyCodeLine{00059\ \};}
+
+\end{DoxyCode}

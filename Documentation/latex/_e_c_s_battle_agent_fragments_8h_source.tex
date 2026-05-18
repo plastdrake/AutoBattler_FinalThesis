@@ -1,0 +1,91 @@
+\doxysection{ECSBattle\+Agent\+Fragments.\+h}
+\hypertarget{_e_c_s_battle_agent_fragments_8h_source}{}\label{_e_c_s_battle_agent_fragments_8h_source}\index{D:/School/AutoBattler\_FinalThesis/AutoBattler/Source/AutoBattler/Variant\_ECS/AI/ECSBattleAgentFragments.h@{D:/School/AutoBattler\_FinalThesis/AutoBattler/Source/AutoBattler/Variant\_ECS/AI/ECSBattleAgentFragments.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}MassEntityHandle.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}MassEntityTypes.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}MassCommonFragments.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}ECSBattleAgentFragments.generated.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00010\ UENUM(BlueprintType)}
+\DoxyCodeLine{00011\ \textcolor{keyword}{enum\ class}\ EECSBattleAgentTeam\ :\ uint8}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ Red\ UMETA(DisplayName\ =\ \textcolor{stringliteral}{"{}Red\ Team"{}}),}
+\DoxyCodeLine{00014\ \ \ \ \ Blue\ UMETA(DisplayName\ =\ \textcolor{stringliteral}{"{}Blue\ Team"{}})}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00018\ USTRUCT()}
+\DoxyCodeLine{00019\ struct\ AUTOBATTLER\_API\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment}{FECSBattleAgentFragment}}\ :\ public\ FMassFragment}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent"{}})}
+\DoxyCodeLine{00025\ \ \ \ \ EECSBattleAgentTeam\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_aa78c20cbdf8bf29ab93ec7c7d0763882}{Team}}\ =\ EECSBattleAgentTeam::Red;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00028\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Stats"{}})}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_a79b0fefaf9cb9fa2d6e15cd1309b9ef4}{MaxHealth}}\ =\ 100.0f;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Stats"{}})}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_ae2e4b8d05e8562b0ff158ed31c2d0600}{CurrentHealth}}\ =\ 100.0f;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00036\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Stats"{}})}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_a796a465af05ca05d223f57a18a1f10b0}{MoveSpeed}}\ =\ 300.0f;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00040\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Combat"{}})}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_abfb798fdf8e95682b624b1888a571924}{AttackRange}}\ =\ 140.0f;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00044\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Combat"{}})}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_a18e46165ff40f10518589b4dfca3249c}{AttackDamage}}\ =\ 10.0f;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00048\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Combat"{}})}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_a8322709c5049bb444dfc0a34c75e2635}{AttackInterval}}\ =\ 0.6f;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00052\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Targeting"{}})}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_a798b1c0b505168aadd2a824f9e9111d4}{TargetSearchRadius}}\ =\ 100000.0f;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00056\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Targeting"{}})}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_a1fc65e185fab2f1d65d4374a1cf5eeb7}{TargetRefreshInterval}}\ =\ 0.25f;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00060\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Death"{}})}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_a757106680f69b5650643f4875bbcaf4b}{DestroyDelay}}\ =\ 2.0f;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00064\ \ \ \ \ UPROPERTY(Transient)}
+\DoxyCodeLine{00065\ \ \ \ \ FMassEntityHandle\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_abeaafd5aa59338ec761375da21639a75}{CurrentTarget}}\ =\ FMassEntityHandle();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00068\ \ \ \ \ UPROPERTY(Transient)}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_aacad993e61f18a5993225cc1e03807b2}{TimeUntilNextAttack}}\ =\ 0.0f;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00072\ \ \ \ \ UPROPERTY(Transient)}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_a4634d45f4c15a5ae80da537517932c28}{TimeUntilTargetRefresh}}\ =\ 0.0f;}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00076\ \ \ \ \ UPROPERTY(Transient)}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_a63459e460bf42c20c88b43bcd29e8b92}{LifeTimeRemaining}}\ =\ 0.0f;}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00080\ \ \ \ \ UPROPERTY(Transient)}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_a86c32b832298c234fed84652b4bbb48a}{bDying}}\ =\ false;}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00084\ \ \ \ \ UPROPERTY(Transient)}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_a436d66b85c7596978ce7be7b475025d4}{bPendingEntityDestroy}}\ =\ false;}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00088\ \ \ \ \ UPROPERTY(Transient)}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_a6d3fbf8bc9d39c3a392b5ce67f78569b}{bTriggerAttackMontage}}\ =\ false;}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00092\ \ \ \ \ UPROPERTY(Transient)}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_fragment_af916c9cb8e232f363c0e3bd5b9584479}{SlotAngleDegrees}}\ =\ 0.0f;}
+\DoxyCodeLine{00094\ \};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00097\ USTRUCT()}
+\DoxyCodeLine{00098\ struct\ AUTOBATTLER\_API\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_representation_fragment}{FECSBattleAgentRepresentationFragment}}\ :\ public\ FMassFragment}
+\DoxyCodeLine{00099\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category\ =\ \textcolor{stringliteral}{"{}Battle\ Agent|Visual"{}})}
+\DoxyCodeLine{00104\ \ \ \ \ uint64\ \doxymbox{\hyperlink{struct_f_e_c_s_battle_agent_representation_fragment_a940671b948faba046422a06e277d2d90}{VisualCharacterClassAddress}}\ =\ 0;}
+\DoxyCodeLine{00105\ \};}
+
+\end{DoxyCode}

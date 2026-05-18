@@ -1,0 +1,6 @@
+<map id="AOOPBattleAgent::GetTeam" name="AOOPBattleAgent::GetTeam">
+<area shape="rect" id="Node000001" title="Returns the assigned team." alt="" coords="239,29,427,56"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="372,14,360,10,333,8,308,10,295,15,292,20,298,30,293,28,286,21,291,11,307,5,333,3,361,5,377,15"/>
+<area shape="rect" id="Node000002" href="$class_a_o_o_p_battle_agent.html#acbe5fcffa9fe649f92823481049ec8b6" title="Returns the number of alive agents on the specified team." alt="" coords="5,21,191,64"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,43,191,45,191,40,226,42"/>
+</map>

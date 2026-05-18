@@ -1,0 +1,11 @@
+<map id="AOOPBattleAgent::GetAliveTeamCount" name="AOOPBattleAgent::GetAliveTeamCount">
+<area shape="rect" id="Node000001" title="Returns the number of alive agents on the specified team." alt="" coords="5,88,191,131"/>
+<area shape="rect" id="Node000002" href="$class_a_o_o_p_battle_agent.html#a551616c970c335f1c0dab3f5edd8be56" title="Default constructor." alt="" coords="239,5,446,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,85,238,57,261,52,256,55,240,63,161,90"/>
+<area shape="rect" id="Node000003" href="$class_a_o_o_p_battle_agent.html#aa87f505e402ee30893288bc015de33a5" title="Returns the assigned team." alt="" coords="248,96,436,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="191,107,235,109,230,110,191,112"/>
+<area shape="rect" id="Node000004" href="$class_a_o_o_p_battle_agent.html#af85f99e578fc81733de2e55710791c72" title="Returns true if the agent is alive." alt="" coords="255,171,430,197"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="171,129,284,165,279,167,170,134"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="301,95,294,87,299,77,315,71,342,69,372,72,389,81,383,81,370,77,342,75,317,77,302,81,299,87,306,96"/>
+<area shape="poly" id="edge5_Node000004_Node000004" title=" " alt="" coords="301,169,294,162,299,152,315,146,342,144,372,147,389,156,383,156,370,152,342,149,317,151,302,156,299,161,306,171"/>
+</map>

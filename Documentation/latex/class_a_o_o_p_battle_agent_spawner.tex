@@ -1,0 +1,82 @@
+\doxysection{AOOPBattle\+Agent\+Spawner Class Reference}
+\hypertarget{class_a_o_o_p_battle_agent_spawner}{}\label{class_a_o_o_p_battle_agent_spawner}\index{AOOPBattleAgentSpawner@{AOOPBattleAgentSpawner}}
+
+
+Spawns OOP battle agents for a battle simulation team.  
+
+
+
+
+{\ttfamily \+\#include $<$OOPBattle\+Agent\+Spawner.\+h$>$}
+
+
+
+Inheritance diagram for AOOPBattle\+Agent\+Spawner:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{class_a_o_o_p_battle_agent_spawner__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for AOOPBattle\+Agent\+Spawner:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{class_a_o_o_p_battle_agent_spawner__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_o_o_p_battle_agent_spawner_ab111137bdce5cc43e592d819c6f6c3df}\label{class_a_o_o_p_battle_agent_spawner_ab111137bdce5cc43e592d819c6f6c3df} 
+{\bfseries AOOPBattle\+Agent\+Spawner} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_spawner_a783d9224e4669ed5fc37041efc04423a}\label{class_a_o_o_p_battle_agent_spawner_a783d9224e4669ed5fc37041efc04423a} 
+void {\bfseries Spawn\+Agents} ()
+\begin{DoxyCompactList}\small\item\em Spawns agents based on the current spawner settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_o_o_p_battle_agent_spawner_a7e91eb210c47804e68e0eaff5f076326}\label{class_a_o_o_p_battle_agent_spawner_a7e91eb210c47804e68e0eaff5f076326} 
+virtual void {\bfseries Begin\+Play} () override
+\begin{DoxyCompactList}\small\item\em Handles spawn-\/on-\/begin-\/play behavior. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_o_o_p_battle_agent_spawner_ad65ef55ccd07094b98bd6d3d9fe4b4a3}\label{class_a_o_o_p_battle_agent_spawner_ad65ef55ccd07094b98bd6d3d9fe4b4a3} 
+TObject\+Ptr$<$ UArrow\+Component $>$ {\bfseries Spawn\+Direction}
+\begin{DoxyCompactList}\small\item\em Direction indicator used to place agent rows. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_spawner_aeb7c614dfe8fa3a6802569302d92a48a}\label{class_a_o_o_p_battle_agent_spawner_aeb7c614dfe8fa3a6802569302d92a48a} 
+TSubclass\+Of$<$ \doxymbox{\hyperlink{class_a_o_o_p_battle_agent}{AOOPBattle\+Agent}} $>$ {\bfseries Agent\+Class}
+\begin{DoxyCompactList}\small\item\em Agent class to spawn. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_spawner_a481e65600661e472185858df6669ae87}\label{class_a_o_o_p_battle_agent_spawner_a481e65600661e472185858df6669ae87} 
+int32 {\bfseries Spawn\+Count} = 10
+\begin{DoxyCompactList}\small\item\em Number of agents to spawn for this team. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_spawner_a0d65b9b4d9872bd47503a115d4524290}\label{class_a_o_o_p_battle_agent_spawner_a0d65b9b4d9872bd47503a115d4524290} 
+float {\bfseries Spawn\+Spacing} = 120.\+0f
+\begin{DoxyCompactList}\small\item\em Spacing between agents in a row. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_spawner_a3385e3e7e10a2d55ccdc613a843a2519}\label{class_a_o_o_p_battle_agent_spawner_a3385e3e7e10a2d55ccdc613a843a2519} 
+int32 {\bfseries Spawn\+Rows} = 1
+\begin{DoxyCompactList}\small\item\em Number of rows to distribute agents across. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_spawner_aee0eccc7d19aef6fb825818e91d0bdd7}\label{class_a_o_o_p_battle_agent_spawner_aee0eccc7d19aef6fb825818e91d0bdd7} 
+float {\bfseries Row\+Spacing} = 120.\+0f
+\begin{DoxyCompactList}\small\item\em Spacing between rows. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_spawner_a7ce247f27ad074a840f3d1bc36b5b4a2}\label{class_a_o_o_p_battle_agent_spawner_a7ce247f27ad074a840f3d1bc36b5b4a2} 
+EBattle\+Agent\+Team {\bfseries Team} = EBattle\+Agent\+Team::\+\+Red
+\begin{DoxyCompactList}\small\item\em Team assignment for spawned agents. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_o_o_p_battle_agent_spawner_aaace28780505fd9299dc933eed36d8e1}\label{class_a_o_o_p_battle_agent_spawner_aaace28780505fd9299dc933eed36d8e1} 
+bool {\bfseries b\+Spawn\+On\+Begin\+Play} = true
+\begin{DoxyCompactList}\small\item\em If true, spawns agents on Begin\+Play. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Spawns OOP battle agents for a battle simulation team. 
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+Battle\+Sim/\+\+AI/\+OOPBattle\+Agent\+Spawner.\+h\item 
+D:\+/\+\+School/\+\+Auto\+Battler\+\_\+\+Final\+Thesis/\+\+Auto\+Battler/\+\+Source/\+\+Auto\+Battler/\+\+Variant\+\_\+\+Battle\+Sim/\+\+AI/\+OOPBattle\+Agent\+Spawner.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,83 @@
+\doxysection{Auto\+Battler\+Character.\+h}
+\hypertarget{_auto_battler_character_8h_source}{}\label{_auto_battler_character_8h_source}\index{D:/School/AutoBattler\_FinalThesis/AutoBattler/Source/AutoBattler/AutoBattlerCharacter.h@{D:/School/AutoBattler\_FinalThesis/AutoBattler/Source/AutoBattler/AutoBattlerCharacter.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ Epic\ Games,\ Inc.\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}GameFramework/Character.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Logging/LogMacros.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}AutoBattlerCharacter.generated.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }USpringArmComponent;}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }UCameraComponent;}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }UInputAction;}
+\DoxyCodeLine{00013\ \textcolor{keyword}{struct\ }FInputActionValue;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ DECLARE\_LOG\_CATEGORY\_EXTERN(LogTemplateCharacter,\ Log,\ All);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00018\ UCLASS(abstract)}
+\DoxyCodeLine{00019\ class\ \doxymbox{\hyperlink{class_a_auto_battler_character_a20a4d1cbf242d101cd7b1e1d3a0aedec}{AAutoBattlerCharacter}}\ :\ public\ ACharacter}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ BlueprintReadOnly,\ Category=\textcolor{stringliteral}{"{}Components"{}},\ meta\ =\ (AllowPrivateAccess\ =\ \textcolor{stringliteral}{"{}true"{}}))}
+\DoxyCodeLine{00025\ \ \ \ \ USpringArmComponent*\ CameraBoom;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00028\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ BlueprintReadOnly,\ Category=\textcolor{stringliteral}{"{}Components"{}},\ meta\ =\ (AllowPrivateAccess\ =\ \textcolor{stringliteral}{"{}true"{}}))}
+\DoxyCodeLine{00029\ \ \ \ \ UCameraComponent*\ FollowCamera;}
+\DoxyCodeLine{00030\ \ \ \ \ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00034\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category=\textcolor{stringliteral}{"{}Input"{}})}
+\DoxyCodeLine{00035\ \ \ \ \ UInputAction*\ \doxymbox{\hyperlink{class_a_auto_battler_character_ad80e95a09911dbd42ccd754995e1f417}{JumpAction}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00038\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category=\textcolor{stringliteral}{"{}Input"{}})}
+\DoxyCodeLine{00039\ \ \ \ \ UInputAction*\ \doxymbox{\hyperlink{class_a_auto_battler_character_ab4719067a84f317aec5e8320269c8d43}{MoveAction}};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00042\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category=\textcolor{stringliteral}{"{}Input"{}})}
+\DoxyCodeLine{00043\ \ \ \ \ UInputAction*\ \doxymbox{\hyperlink{class_a_auto_battler_character_ab71b536b36ebda18bce528ca80c75aca}{LookAction}};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00046\ \ \ \ \ UPROPERTY(EditAnywhere,\ Category=\textcolor{stringliteral}{"{}Input"{}})}
+\DoxyCodeLine{00047\ \ \ \ \ UInputAction*\ \doxymbox{\hyperlink{class_a_auto_battler_character_a22d03d7705e135ba96305617e01a8ccd}{MouseLookAction}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ public:}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00052\ \ \ \ \ \doxymbox{\hyperlink{class_a_auto_battler_character_a20a4d1cbf242d101cd7b1e1d3a0aedec}{AAutoBattlerCharacter}}();\ \ \ \ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ protected:}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00060\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_a_auto_battler_character_a557ded62e8f0f6b9a8238f3decb9eb25}{SetupPlayerInputComponent}}(class\ UInputComponent*\ PlayerInputComponent)\ override;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ protected:}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_a_auto_battler_character_a8a7d2f1de50773974a53bbdc5224d7bb}{Move}}(const\ FInputActionValue\&\ Value);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_a_auto_battler_character_a1dd47971e59273f35f6d88f1d9c4c66f}{Look}}(const\ FInputActionValue\&\ Value);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ public:}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00083\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category=\textcolor{stringliteral}{"{}Input"{}})}
+\DoxyCodeLine{00084\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_a_auto_battler_character_a17ffb66f93bdec026df75cb09a05124c}{DoMove}}(\textcolor{keywordtype}{float}\ Right,\ \textcolor{keywordtype}{float}\ Forward);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00091\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category=\textcolor{stringliteral}{"{}Input"{}})}
+\DoxyCodeLine{00092\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_a_auto_battler_character_acc005ffe581d36ac524e77477081c52c}{DoLook}}(\textcolor{keywordtype}{float}\ Yaw,\ \textcolor{keywordtype}{float}\ Pitch);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00095\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category=\textcolor{stringliteral}{"{}Input"{}})}
+\DoxyCodeLine{00096\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_a_auto_battler_character_add13fb76ce30519014de7b595e75eee0}{DoJumpStart}}();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00099\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category=\textcolor{stringliteral}{"{}Input"{}})}
+\DoxyCodeLine{00100\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_a_auto_battler_character_abce4a8a2cdf12a8a04ecb6de57a3b1d7}{DoJumpEnd}}();}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ public:}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00108\ \ \ \ \ FORCEINLINE\ class\ USpringArmComponent*\ \doxymbox{\hyperlink{class_a_auto_battler_character_a212bf616a6f1bd1fd8044dc7dace420f}{GetCameraBoom}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ CameraBoom;\ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00114\ \ \ \ \ FORCEINLINE\ \textcolor{keyword}{class\ }UCameraComponent*\ \doxymbox{\hyperlink{class_a_auto_battler_character_af4208bc4768e813ad5969eae384adde6}{GetFollowCamera}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ FollowCamera;\ \}}
+\DoxyCodeLine{00115\ \};}
+\DoxyCodeLine{00116\ }
+
+\end{DoxyCode}

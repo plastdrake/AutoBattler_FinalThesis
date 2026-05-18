@@ -1,0 +1,10 @@
+<map id="AOOPBattleAgent::IsAlive" name="AOOPBattleAgent::IsAlive">
+<area shape="rect" id="Node000001" title="Returns true if the agent is alive." alt="" coords="239,80,414,107"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="364,65,353,61,326,59,302,61,289,65,286,71,293,80,287,79,281,71,286,61,301,55,326,53,354,56,370,65"/>
+<area shape="rect" id="Node000002" href="$class_a_o_o_p_battle_agent.html#acbe5fcffa9fe649f92823481049ec8b6" title="Returns the number of alive agents on the specified team." alt="" coords="5,5,191,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="261,76,174,51,174,46,266,74"/>
+<area shape="rect" id="Node000003" href="$class_a_o_o_p_battle_agent.html#ad290db65470e3361bf69f635a8dc4908" title="Applies damage to this agent." alt="" coords="6,72,190,115"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="220,94,191,96,190,91,226,93"/>
+<area shape="rect" id="Node000004" href="$class_a_o_o_p_battle_agent.html#a43a4c1d0e02e506fba2a84dfef379df8" title="Per&#45;frame update." alt="" coords="18,139,178,165"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="259,111,153,141,152,136,254,111"/>
+</map>

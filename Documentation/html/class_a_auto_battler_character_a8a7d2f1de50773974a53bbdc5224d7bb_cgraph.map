@@ -1,0 +1,5 @@
+<map id="AAutoBattlerCharacter::Move" name="AAutoBattlerCharacter::Move">
+<area shape="rect" id="Node000001" title="Handles raw movement input." alt="" coords="5,5,158,48"/>
+<area shape="rect" id="Node000002" href="$class_a_auto_battler_character.html#a17ffb66f93bdec026df75cb09a05124c" title="Handles move input from either controls or UI interfaces." alt="" coords="206,5,358,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,24,193,26,188,27,158,29"/>
+</map>
